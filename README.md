@@ -18,3 +18,9 @@ The aforementioned functionality represents the core features that we aim to ach
 - Sharing the song: Allow users to share their songs via social media platforms by simply pressing a button.
 
 By incorporating these additional features, we aim to enhance the user experience and offer a comprehensive song lyrics generation platform.
+
+### Technical specification: 
+
+- Backend: Java Spring
+- Frontend: TypeScript React Next.js
+- Database: MongoDB
