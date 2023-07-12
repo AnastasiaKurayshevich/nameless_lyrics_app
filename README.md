@@ -1,17 +1,20 @@
 # nameless_lyrics_app
-Song lyrics generator app powered by AI. 
+A powerful AI-driven song lyrics generator application.
 
-### nameless_team's final project idea: Song Lyrics Generator connected with OpenAI API. 
-The premiss of the project is to create mobile app where User can input some values like style, mood of the song, artists the User is inspired of, structure of the song. User can also give a description on what the song is about and/or input some lyrics that should be in the song. After the User is satisfied with the input, the songs lyrics are generated. User now can edit song components (verse, pre-chorus, chorus, bridge, etc.), change the structure of the song by draging and dropping components, regenerate chosen components or regenereate the whole song. 
+### nameless_team's Final Project Idea: Song Lyrics Generator connected with OpenAI API
+The premise of this project is to develop a mobile app that allows users to generate song lyrics based on their inputs. Users can specify the style, mood, and artists that inspire them, as well as provide a description or input specific lyrics for the song. Once the user is satisfied with their input, the app will generate the lyrics accordingly. Users will also have the ability to modify song components such as verses, pre-choruses, choruses, bridges, etc. They can drag and drop components to change the song's structure, edit, delete or regenerate selected sections, or regenerate the entire song.
 
-After the User is satisfied with the result, the song can be saved into User's personal songs list. From that list User can access existing songs, search through the list, edit or delete specific song.  
+Once users are satisfied with the generated lyrics, they can save the song to their personal songs list. Within this list, users can access existing songs, search through the collection, and edit or delete specific songs.
 
-The app will only generate text lyrics of the song, no music will be generated. 
+It's important to note that the app will only generate text lyrics and will not provide music composition.
 
-Described above is a basic functionality of the application that we aim to accive. If time allows we are planing to introduce extra features: 
-- Autentification: sing up and log in pages, so multiple Users could access their personal accounts.
-- Social connections: create an interface for Users to interact with each other's profiles - upvote other User's songs, save them to list of favourits.
-- Filtering: filter the list of songs based on different input cathegories.
-- Multiple lyric options: while generating the song we give the User multiple song options generated based on the same input, so the User could chose.
-- Saving the song as PDF: inplementing the fuctionality to save the lyrics in PDF format.
-- Sharing the song: giving the User possibility to share the song via social media by pressing the button. 
+The aforementioned functionality represents the core features that we aim to achieve. If time permits, we plan to introduce additional features, including:
+
+- Authentication: Implement sign-up and log-in pages to allow multiple users to access their personal accounts.
+- Social connections: Create an interface for users to interact with each other's profiles, such as upvoting other users' songs or saving them as favorites.
+- Filtering: Enable users to filter their song list based on various categories.
+- Multiple lyric options: Provide users with multiple song options generated based on the same input, allowing them to choose their preferred version.
+- Saving the song as PDF: Implement functionality to save lyrics in PDF format.
+- Sharing the song: Allow users to share their songs via social media platforms by simply pressing a button.
+
+By incorporating these additional features, we aim to enhance the user experience and offer a comprehensive song lyrics generation platform.
