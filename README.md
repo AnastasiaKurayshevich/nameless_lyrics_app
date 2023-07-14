@@ -3,7 +3,7 @@
 A powerful AI-driven song lyrics generator application. 
 
 ### nameless_team's Final Project Idea: Song Lyrics Generator connected with OpenAI API
-The premise of this project is to develop a mobile app that allows users to generate song lyrics based on their inputs. Users can specify the style, mood, and artists that inspire them, as well as provide a description or input specific lyrics for the song. Once the user is satisfied with their input, the app will generate the lyrics accordingly. Users will also have the ability to modify song components such as verses, pre-choruses, choruses, bridges, etc. They can drag and drop components to change the song's structure, edit, delete or regenerate selected sections, or regenerate the entire song.
+The premise of this project is to develop a mobile-first app that allows users to generate song lyrics based on their inputs. Users can specify the style, mood, and artists that inspire them, as well as provide a description or input specific lyrics for the song. Once the user is satisfied with their input, the app will generate the lyrics accordingly. Users will also have the ability to modify song components such as verses, pre-choruses, choruses, bridges, etc. They can drag and drop components to change the song's structure, edit, delete or regenerate selected sections, or regenerate the entire song.
 
 Once users are satisfied with the generated lyrics, they can save the song to their personal songs list. Within this list, users can access existing songs, search through the collection, and edit or delete specific songs.
 
