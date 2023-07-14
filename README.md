@@ -1,4 +1,4 @@
-# nameless_lyrics_app
+# lyrigator_lyrics_app
 A powerful AI-driven song lyrics generator application.
 
 ### nameless_team's Final Project Idea: Song Lyrics Generator connected with OpenAI API
@@ -24,3 +24,12 @@ By incorporating these additional features, we aim to enhance the user experienc
 - Backend: Java Spring
 - Frontend: TypeScript React Next.js
 - Database: MongoDB
+
+### Project's Architecture 
+
+![Lyrigator App Architecture (1)](https://github.com/AnastasiaKurayshevich/nameless_lyrics_app/assets/125829513/0449b664-b1f8-43cf-991d-32968090ca81)
+
+[Lyrigator App Architecture.pdf](https://github.com/AnastasiaKurayshevich/nameless_lyrics_app/files/12048292/Lyrigator.App.Architecture.pdf)
+
+
+
