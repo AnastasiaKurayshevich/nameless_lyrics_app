@@ -1,5 +1,6 @@
-# lyrigator_lyrics_app
-A powerful AI-driven song lyrics generator application.
+# <img src="https://github.com/AnastasiaKurayshevich/nameless_lyrics_app/assets/48127840/daf2c645-b823-4f34-ac71-eaf9da172377" alt="Lyrigator_image_1-modified" width="100" style="vertical-align: middle; margin-bottom: -5px;"> lyrigator_lyrics_app
+
+A powerful AI-driven song lyrics generator application. 
 
 ### nameless_team's Final Project Idea: Song Lyrics Generator connected with OpenAI API
 The premise of this project is to develop a mobile app that allows users to generate song lyrics based on their inputs. Users can specify the style, mood, and artists that inspire them, as well as provide a description or input specific lyrics for the song. Once the user is satisfied with their input, the app will generate the lyrics accordingly. Users will also have the ability to modify song components such as verses, pre-choruses, choruses, bridges, etc. They can drag and drop components to change the song's structure, edit, delete or regenerate selected sections, or regenerate the entire song.
