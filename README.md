@@ -27,7 +27,8 @@ By incorporating these additional features, we aim to enhance the user experienc
 
 ### Project's Architecture 
 
-![Lyrigator App Architecture (4)](https://github.com/AnastasiaKurayshevich/nameless_lyrics_app/assets/125829513/9c7ac08f-9a05-4248-94f9-1f62342f5079)
+![Lyrigator App Architecture (4) (1)](https://github.com/AnastasiaKurayshevich/nameless_lyrics_app/assets/125829513/b9155253-93da-4f13-9862-8e5221a98888)
+
 
 See detailed veiw: [Lyrigator App Architecture.pdf](https://github.com/AnastasiaKurayshevich/nameless_lyrics_app/files/12048292/Lyrigator.App.Architecture.pdf)
 
