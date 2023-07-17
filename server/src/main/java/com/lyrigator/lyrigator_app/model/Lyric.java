@@ -1,4 +1,4 @@
-package model;
+package com.lyrigator.lyrigator_app.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

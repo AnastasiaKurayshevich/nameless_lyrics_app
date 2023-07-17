@@ -1,6 +1,6 @@
-package model;
+package com.lyrigator.lyrigator_app.model;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.lyrigator.lyrigator_app.model.Lyric;
 import org.springframework.data.repository.CrudRepository;
 
 public interface JpaLyricRepo extends CrudRepository<Lyric, Integer> {
