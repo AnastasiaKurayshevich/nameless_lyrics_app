@@ -1,5 +1,7 @@
-package com.lyrigator.lyrigator_app.model;
+package com.lyrigator.lyrigator_app.controller;
 
+import com.lyrigator.lyrigator_app.model.Lyric;
+import com.lyrigator.lyrigator_app.service.LyricService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

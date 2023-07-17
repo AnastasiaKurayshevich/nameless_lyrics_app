@@ -1,5 +1,7 @@
-package com.lyrigator.lyrigator_app.model;
+package com.lyrigator.lyrigator_app.service;
 
+import com.lyrigator.lyrigator_app.model.Lyric;
+import com.lyrigator.lyrigator_app.repository.LyricRepo;
 import org.springframework.stereotype.Service;
 
 @Service

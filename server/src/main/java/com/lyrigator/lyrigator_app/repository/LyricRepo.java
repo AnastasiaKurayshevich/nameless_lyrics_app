@@ -1,6 +1,6 @@
-package com.lyrigator.lyrigator_app.model;
+package com.lyrigator.lyrigator_app.repository;
 
-import com.lyrigator.lyrigator_app.model.JpaLyricRepo;
+import com.lyrigator.lyrigator_app.model.Lyric;
 import org.springframework.stereotype.Repository;
 
 @Repository
