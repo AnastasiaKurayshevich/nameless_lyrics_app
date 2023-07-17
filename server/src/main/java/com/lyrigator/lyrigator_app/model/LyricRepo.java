@@ -11,5 +11,8 @@ public class LyricRepo {
         this.repo = repo;
     }
 
+    public void saveLyric(Lyric lyric) {
+        repo.save(lyric);
+    }
 
 }
