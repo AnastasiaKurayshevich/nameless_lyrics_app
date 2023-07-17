@@ -50,12 +50,14 @@ jobs:
 
       - name: Build with Maven
         run: mvn clean install
+        working-directory: server
+
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
           name: java-app
-          path: '${{ github.workspace }}/target/*.jar'
+          path: 'server/target/*.jar'
 
   deploy:
     permissions:
