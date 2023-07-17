@@ -24,7 +24,7 @@ By incorporating these additional features, we aim to enhance the user experienc
 
 - Backend: Java Spring
 - Frontend: TypeScript React Next.js
-- Database: MongoDB
+- Database: Postgresql
 
 ### Project's Architecture 
 
