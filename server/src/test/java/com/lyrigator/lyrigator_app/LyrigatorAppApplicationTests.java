@@ -8,6 +8,7 @@ class LyrigatorAppApplicationTests {
 
 	@Test
 	void contextLoads() {
+		//comment
 	}
 
 }
