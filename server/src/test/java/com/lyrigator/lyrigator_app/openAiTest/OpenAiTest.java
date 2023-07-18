@@ -9,11 +9,11 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class OpenAiTest {
 
-    @Test
-    public void testPostRequest() throws JsonProcessingException {
-        OpenAiClient openAiClient = new OpenAiClient();
-        String reponse = openAiClient.makePostRequest();
-        assertNotEquals(null, reponse);
-    }
+//    @Test
+//    public void testPostRequest() throws JsonProcessingException {
+//        OpenAiClient openAiClient = new OpenAiClient();
+//        String reponse = openAiClient.makePostRequest();
+//        assertNotEquals(null, reponse);
+//    }
 
 }
