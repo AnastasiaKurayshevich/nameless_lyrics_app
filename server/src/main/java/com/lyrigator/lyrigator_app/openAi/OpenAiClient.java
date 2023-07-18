@@ -3,6 +3,8 @@ package com.lyrigator.lyrigator_app.openAi;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
@@ -16,14 +18,16 @@ import java.io.InputStream;
 import java.util.Properties;
 
 @Component
+@PropertySource("classpath:secrets.properties")
 public class OpenAiClient {
 
     private final String API_KEY;
     private final String jsonPayload;
 
     @Autowired
-    public OpenAiClient() {
-        API_KEY = loadApiKeyFromProperties("secrets.properties", "OPENAI_API_KEY");
+    public OpenAiClient(@Value("${OPENAI_API_KEY}") String apiKey) {
+        this.API_KEY = apiKey;
+//        API_KEY = loadApiKeyFromProperties("secrets.properties", "OPENAI_API_KEY");
         this.jsonPayload = initializeJsonPayload();
     }
 
@@ -39,22 +43,22 @@ public class OpenAiClient {
             throw new RuntimeException("Failed to convert payload to JSON", e);
         }
     }
-    private String loadApiKeyFromProperties(String propertiesFileName, String apiKeyProperty) {
-        Properties prop = new Properties();
-        InputStream inputStream = getClass().getClassLoader().getResourceAsStream(propertiesFileName);
-
-        if (inputStream != null) {
-            try {
-                prop.load(inputStream);
-            } catch (IOException e) {
-                throw new RuntimeException("Failed to load properties from file: " + propertiesFileName, e);
-            }
-        } else {
-            throw new RuntimeException("Property file '" + propertiesFileName + "' not found in the classpath");
-        }
-
-        return prop.getProperty(apiKeyProperty);
-    }
+//    private String loadApiKeyFromProperties(String propertiesFileName, String apiKeyProperty) {
+//        Properties prop = new Properties();
+//        InputStream inputStream = getClass().getClassLoader().getResourceAsStream(propertiesFileName);
+//
+//        if (inputStream != null) {
+//            try {
+//                prop.load(inputStream);
+//            } catch (IOException e) {
+//                throw new RuntimeException("Failed to load properties from file: " + propertiesFileName, e);
+//            }
+//        } else {
+//            throw new RuntimeException("Property file '" + propertiesFileName + "' not found in the classpath");
+//        }
+//
+//        return prop.getProperty(apiKeyProperty);
+//    }
 
     public String makePostRequest() {
         WebClient webClient = WebClient.builder()
