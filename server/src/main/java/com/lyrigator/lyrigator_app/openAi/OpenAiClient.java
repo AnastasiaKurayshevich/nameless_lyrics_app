@@ -19,18 +19,26 @@ import java.util.Properties;
 public class OpenAiClient {
 
     private final String API_KEY;
-    ObjectMapper objectMapper = new ObjectMapper();
-    CompletionPayload payload = new CompletionPayload(
-            "text-davinci-002", "Once upon a time", 10, 0.5, 1, 1
-    );
-    String jsonPayload = objectMapper.writeValueAsString(payload);
-
+    private final String jsonPayload;
 
     @Autowired
-    public OpenAiClient() throws JsonProcessingException {
+    public OpenAiClient() {
         API_KEY = loadApiKeyFromProperties("secrets.properties", "OPENAI_API_KEY");
+        this.jsonPayload = initializeJsonPayload();
     }
 
+    private String initializeJsonPayload() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        CompletionPayload payload = new CompletionPayload(
+                "text-davinci-002", "Once upon a time", 10, 0.5, 1, 1
+        );
+
+        try {
+            return objectMapper.writeValueAsString(payload);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException("Failed to convert payload to JSON", e);
+        }
+    }
     private String loadApiKeyFromProperties(String propertiesFileName, String apiKeyProperty) {
         Properties prop = new Properties();
         InputStream inputStream = getClass().getClassLoader().getResourceAsStream(propertiesFileName);
