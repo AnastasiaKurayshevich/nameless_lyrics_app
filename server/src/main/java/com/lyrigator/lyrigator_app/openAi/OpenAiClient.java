@@ -6,6 +6,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import io.github.cdimascio.dotenv.Dotenv;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
@@ -15,7 +17,7 @@ import org.springframework.web.reactive.function.client.WebClientResponseExcepti
 import reactor.core.publisher.Mono;
 
 @Component
-
+@PropertySource("classpath:secrets.properties")
 public class OpenAiClient {
 
     private final String API_KEY;
@@ -39,9 +41,8 @@ public class OpenAiClient {
 
 
     @Autowired
-    public OpenAiClient() throws JsonProcessingException {
-        Dotenv dotenv = Dotenv.load();
-        API_KEY = dotenv.get("OPENAI_API_KEY");
+    public OpenAiClient(@Value("${OPENAI_API_KEY}") String apiKey) {
+        this.API_KEY = apiKey;
     }
 
 
