@@ -3,6 +3,7 @@ package com.lyrigator.lyrigator_app.openAi;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import io.github.cdimascio.dotenv.Dotenv;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -14,14 +15,27 @@ import org.springframework.web.reactive.function.client.WebClientResponseExcepti
 import reactor.core.publisher.Mono;
 
 @Component
+
 public class OpenAiClient {
 
     private final String API_KEY;
     ObjectMapper objectMapper = new ObjectMapper();
-    CompletionPayload payload = new CompletionPayload(
-            "text-davinci-002", "Once upon a time", 100, 0.5, 1, 1
-    );
-    String jsonPayload = objectMapper.writeValueAsString(payload);
+//    CompletionPayload payload = new CompletionPayload(
+//            "text-davinci-002", "Once upon a time", 100, 0.5, 1, 1
+//    );
+
+    private String createJsonPayload(String prompt) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        ObjectNode payload = objectMapper.createObjectNode();
+        payload.put("model", "text-davinci-002");
+        payload.put("prompt", prompt);
+        payload.put("max_tokens", 10);
+        payload.put("temperature", 0.5);
+        payload.put("top_p", 1);
+        payload.put("n", 1);
+        return payload.toString();
+    }
+    //String jsonPayload = objectMapper.writeValueAsString(payload);
 
 
     @Autowired
@@ -30,7 +44,9 @@ public class OpenAiClient {
         API_KEY = dotenv.get("OPENAI_API_KEY");
     }
 
-    public String makePostRequest() {
+
+    public String makePostRequest(String userInput) {
+//        String jsonPayload = createJsonPayload(userInput);
         WebClient webClient = WebClient.builder()
                 .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .defaultHeader(HttpHeaders.AUTHORIZATION, "Bearer " + API_KEY)
@@ -39,7 +55,7 @@ public class OpenAiClient {
             Mono<String> responseMono = webClient.post()
                     .uri("https://api.openai.com/v1/completions")
                     .contentType(MediaType.APPLICATION_JSON)
-                    .body(BodyInserters.fromValue(jsonPayload))
+                    .body(BodyInserters.fromValue(createJsonPayload(userInput)))
                     .retrieve()
                     .bodyToMono(String.class);
             String response = responseMono.block();
