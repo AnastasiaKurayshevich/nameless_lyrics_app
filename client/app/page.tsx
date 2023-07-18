@@ -5,11 +5,12 @@ import React, { useEffect, useState } from 'react';
 export default function Home() {
 
   const [test, setTest] = useState('');
+  const [inputValue, setInputValue] = useState('');
 
   useEffect(() => {
     const getInfo = async () => {
       try {
-        const response = await fetch('https://lyrigator.azurewebsites.net/api');
+        const response = await fetch('http://localhost:8080/api');
         if (response.ok) {
           const text = await response.text();
           setTest(text);
@@ -24,42 +25,39 @@ export default function Home() {
     getInfo();
   }, []);
 
-  const [inputValue, setInputValue] = useState("");
-  
+  const handleSubmit =  async (event: React.FormEvent<HTMLFormElement> | null) => {
+    if(event){
+    event.preventDefault();
+    }
 
+   fetch('http://localhost:8080/api', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ test: inputValue })
+    })
+    .then(response => response.text())
+    .then(text => console.log(text))
+    .catch(error => console.log(error));
 
+    console.log(inputValue)
+  };
 
-  // const handleSubmit =  async (event: any) => {
-  //   event.preventDefault();
-
-  //  fetch('https://lyrigator.azurewebsites.net/api', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify({ input: inputValue })
-  //   })
-  //   .then(response => response.text())
-  //   .then(text => console.log(text))
-  //   .catch(error => console.log(error));
-  // };
-
-  // useEffect(() => {
-  //   handleSubmit(event);
-  // }, []);
+  useEffect(() => {
+    handleSubmit(null);
+  }, []);
   
   return (
     <>
       <h1>Hello!</h1>
       <p>{test}</p>
       <div>
-        <form>
-        {/* <form onSubmit={handleSubmit}> */}
+        <form onSubmit={handleSubmit}> 
           <input
           type='text'
           value={inputValue} 
           onChange={(e) => setInputValue(e.target.value)}/>
-
           <input type="submit"/>
         </form>
       </div>
