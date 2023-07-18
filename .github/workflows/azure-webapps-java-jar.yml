@@ -49,6 +49,8 @@ jobs:
           cache: 'maven'
 
       - name: Build with Maven
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY}}
         run: mvn clean install
         working-directory: server
 
