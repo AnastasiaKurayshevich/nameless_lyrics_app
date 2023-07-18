@@ -37,7 +37,6 @@ public class OpenAiClient {
         payload.put("n", 1);
         return payload.toString();
     }
-    //String jsonPayload = objectMapper.writeValueAsString(payload);
 
 
     @Autowired
@@ -47,7 +46,6 @@ public class OpenAiClient {
 
 
     public String makePostRequest(String userInput) {
-//        String jsonPayload = createJsonPayload(userInput);
         WebClient webClient = WebClient.builder()
                 .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .defaultHeader(HttpHeaders.AUTHORIZATION, "Bearer " + API_KEY)
