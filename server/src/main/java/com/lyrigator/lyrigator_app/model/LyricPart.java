@@ -9,25 +9,27 @@ public class LyricPart {
 
     @Id
     @Column(name = "lyric_part_id")
-    private String lyricPartId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
     private String lyricTitle;
 
     private String lyric;
 
+    @ManyToOne
+    @JoinColumn(name = "song_id")
+    private Song song;
 
     public LyricPart(String lyricTitle, String lyric) {
-        this.lyricPartId = UUID.randomUUID().toString();
         this.lyricTitle = lyricTitle;
         this.lyric = lyric;
     }
 
     public LyricPart() {
-        this.lyricPartId = UUID.randomUUID().toString();
     }
 
-    public String getLyricPartId() {
-        return lyricPartId;
+    public void getId(int id) {
+        this.id = id;
     }
 
     public String getLyricTitle() {

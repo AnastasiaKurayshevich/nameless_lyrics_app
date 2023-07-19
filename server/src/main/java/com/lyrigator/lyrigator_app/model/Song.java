@@ -13,12 +13,10 @@ public class Song {
     @Column(name = "song_id")
     private int id;
 
-    private String inner_id =  UUID.randomUUID().toString();
 
     private String songName;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "song_id")
+    @OneToMany(mappedBy = "song", cascade = CascadeType.ALL)
     private List<LyricPart> songList;
 
     public Song() {
@@ -28,13 +26,7 @@ public class Song {
         return id;
     }
 
-    public String getInner_id() {
-        return inner_id;
-    }
 
-    public void setInner_id(String inner_id) {
-        this.inner_id = inner_id;
-    }
 
     public String getSongName() {
         return songName;
