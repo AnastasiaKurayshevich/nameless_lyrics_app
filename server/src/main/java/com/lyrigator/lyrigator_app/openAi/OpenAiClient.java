@@ -15,7 +15,6 @@ import org.springframework.web.reactive.function.client.WebClientResponseExcepti
 import reactor.core.publisher.Mono;
 
 @Component
-//@PropertySource("classpath:secrets.properties")
 public class OpenAiClient {
 
     private final String API_KEY;
