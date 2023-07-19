@@ -10,7 +10,7 @@ export default function Home() {
   useEffect(() => {
     const getInfo = async () => {
       try {
-        const response = await fetch('http://localhost:8080/api');
+        const response = await fetch('https://lyrigator.azurewebsites.net/api');
         if (response.ok) {
           const text = await response.text();
           setTest(text);
@@ -30,7 +30,7 @@ export default function Home() {
     event.preventDefault();
     }
 
-   fetch('http://localhost:8080/api', {
+   fetch('https://lyrigator.azurewebsites.net/api', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
