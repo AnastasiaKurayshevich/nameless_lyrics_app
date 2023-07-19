@@ -4,6 +4,8 @@ import com.lyrigator.lyrigator_app.model.Song;
 import com.lyrigator.lyrigator_app.repository.SongRepo;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class SongService {
     SongRepo songRepo;
@@ -15,5 +17,10 @@ public class SongService {
     public void saveLyric(Song song) {
         songRepo.saveLyric(song);
     }
+
+    public List<Song> findAllSongs(){
+        return songRepo.getListOfSongs();
+    }
+
 
 }

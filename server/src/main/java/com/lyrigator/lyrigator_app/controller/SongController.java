@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api")
 @CrossOrigin(origins = "*")
@@ -21,6 +23,20 @@ public class SongController {
         this.songService = songService;
         this.ai = ai;
     }
+
+    @GetMapping("/all-songs")
+    public ResponseEntity<List<Song>> getAllSongs(){
+       List<Song> songList = songService.findAllSongs();
+       return ResponseEntity.ok().body(songList);
+    }
+
+
+
+
+
+
+
+
 
     @PostMapping
     public ResponseEntity<String> postLyricToDb(@RequestBody Song song){

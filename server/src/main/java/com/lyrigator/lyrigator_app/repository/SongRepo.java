@@ -1,7 +1,10 @@
 package com.lyrigator.lyrigator_app.repository;
 
 import com.lyrigator.lyrigator_app.model.Song;
+import org.springframework.data.util.Streamable;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public class SongRepo {
@@ -13,6 +16,11 @@ public class SongRepo {
 
     public void saveLyric(Song song) {
         repo.save(song);
+    }
+
+    public List<Song> getListOfSongs(){
+        Iterable<Song> list = repo.findAll();
+        return Streamable.of(list).toList();
     }
 
 
