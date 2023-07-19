@@ -52,7 +52,6 @@ public class SongController {
        String structure = prompt.structure();
 
        String promptMessage =
-
                "You are a song writer. We need you to generate a song based on the following parameters: " +
                        "\n mood: " + mood +
                        "\n genre: " + genre +
@@ -70,14 +69,6 @@ public class SongController {
                        "\"*Chorus*\nLyrics here\n*End of Chorus*\", \"*Bridge*\nLyrics here\n*End of Bridge*\" and so on. " +
 
                        "The lyrics you generate should only include the song part name and the lyrics for that part. No other information is required.";
-
-
-//               "You are a song writer, generate a song based on these parameters: \n mood: " + mood +
-//                       " \n genre: " + genre + " \n description: " + description + " \n structure: " + structure +
-//                       " \n If any of the fields are null, generate the whole song based on random parameters. \n If the structure field is " +
-//                       "not null, you should follow the exact structure. Your response should only contain " +
-//                       "the " + " lyrics and song part name (like verse, pre-chorus, chorus and etc...). Important: Before and After each song part place wildcard " +
-//                       "character (*).";
        return promptMessage;
     }
 
