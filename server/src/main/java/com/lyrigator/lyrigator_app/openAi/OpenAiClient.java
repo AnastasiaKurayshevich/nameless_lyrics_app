@@ -1,10 +1,8 @@
 
 package com.lyrigator.lyrigator_app.openAi;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import io.github.cdimascio.dotenv.Dotenv;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
@@ -21,10 +19,7 @@ import reactor.core.publisher.Mono;
 public class OpenAiClient {
 
     private final String API_KEY;
-    ObjectMapper objectMapper = new ObjectMapper();
-//    CompletionPayload payload = new CompletionPayload(
-//            "text-davinci-002", "Once upon a time", 100, 0.5, 1, 1
-//    );
+
 
     private String createJsonPayload(String prompt) {
         ObjectMapper objectMapper = new ObjectMapper();
