@@ -2,8 +2,6 @@ package com.lyrigator.lyrigator_app.model;
 
 import jakarta.persistence.*;
 
-import java.util.UUID;
-
 @Entity
 public class LyricPart {
 
