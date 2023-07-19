@@ -9,8 +9,11 @@ import java.util.UUID;
 public class Song {
 
     @Id
-//    @Column(name = "lyric_id")
-    private String  id;
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @Column(name = "song_id")
+    private int id;
+
+    private String inner_id =  UUID.randomUUID().toString();
 
     private String songName;
 
@@ -19,13 +22,19 @@ public class Song {
     private List<LyricPart> songList;
 
     public Song() {
-        this.id = UUID.randomUUID().toString();
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
+    public String getInner_id() {
+        return inner_id;
+    }
+
+    public void setInner_id(String inner_id) {
+        this.inner_id = inner_id;
+    }
 
     public String getSongName() {
         return songName;
