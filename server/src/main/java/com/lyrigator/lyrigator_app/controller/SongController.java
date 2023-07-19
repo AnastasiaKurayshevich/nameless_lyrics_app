@@ -40,11 +40,11 @@ public class SongController {
 
     @PostMapping
     public ResponseEntity<String> postLyricToDb(@RequestBody Song song){
-        System.out.println(song.getLyricName());
-        String response = ai.makePostRequest(song.getLyricName());
+        System.out.println(song.getSongName());
+        String response = ai.makePostRequest(song.getSongName());
         System.out.println(response);
         Song aiResponse = new Song();
-        aiResponse.setLyricName(response);
+        aiResponse.setSongName(response);
         songService.saveLyric(aiResponse);
         return ResponseEntity.ok().body(response);
     }

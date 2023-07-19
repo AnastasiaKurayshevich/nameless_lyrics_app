@@ -16,7 +16,7 @@ public class LyricPart {
     private String lyric;
 
     @ManyToOne
-    @JoinColumn(name = "lyric_id")
+    @JoinColumn(name = "song_id")
     private Song songClass;
 
     public LyricPart(String lyricTitle, String lyric) {

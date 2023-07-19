@@ -12,11 +12,11 @@ public class Song {
 //    @Column(name = "lyric_id")
     private String  id;
 
-    private String lyricName;
+    private String songName;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "lyric_id")
-    private List<LyricPart> lyricList;
+    @JoinColumn(name = "song_id")
+    private List<LyricPart> songList;
 
     public Song() {
         this.id = UUID.randomUUID().toString();
@@ -27,19 +27,19 @@ public class Song {
     }
 
 
-    public String getLyricName() {
-        return lyricName;
+    public String getSongName() {
+        return songName;
     }
 
-    public void setLyricName(String lyricName) {
-        this.lyricName = lyricName;
+    public void setSongName(String songName) {
+        this.songName = songName;
     }
 
-    public List<LyricPart> getLyricList() {
-        return lyricList;
+    public List<LyricPart> getSongList() {
+        return songList;
     }
 
-    public void setLyricList(List<LyricPart> lyricList) {
-        this.lyricList = lyricList;
+    public void setSongList(List<LyricPart> songList) {
+        this.songList = songList;
     }
 }
