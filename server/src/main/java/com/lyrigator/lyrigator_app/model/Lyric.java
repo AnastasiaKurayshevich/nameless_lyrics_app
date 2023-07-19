@@ -9,13 +9,13 @@ import java.util.UUID;
 public class Lyric {
 
     @Id
+//    @Column(name = "lyric_id")
     private String  id;
 
     private String lyricName;
 
-
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "lyric_part_id")
+    @JoinColumn(name = "lyric_id")
     private List<LyricPart> lyricList;
 
     public Lyric() {

@@ -15,7 +15,12 @@ public class LyricPart {
 
     private String lyric;
 
+    @ManyToOne
+    @JoinColumn(name = "lyric_id")
+    private Lyric lyricClass;
+
     public LyricPart(String lyricTitle, String lyric) {
+        this.lyricPartId = UUID.randomUUID().toString();
         this.lyricTitle = lyricTitle;
         this.lyric = lyric;
     }
