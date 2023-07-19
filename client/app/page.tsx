@@ -10,7 +10,7 @@ export default function Home() {
   useEffect(() => {
     const getInfo = async () => {
       try {
-        const response = await fetch('https://namelessly.azurewebsites.net/api');
+        const response = await fetch('http://localhost:8080/api');
         if (response.ok) {
           const text = await response.text();
           setTest(text);
@@ -30,7 +30,7 @@ export default function Home() {
     event.preventDefault();
     }
 
-   fetch('https://namelessly.azurewebsites.net/api', {
+   fetch('http://localhost:8080/api', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

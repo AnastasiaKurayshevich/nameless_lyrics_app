@@ -73,7 +73,7 @@ public class SongController {
         System.out.println(response);
         Song aiResponse = new Song();
         aiResponse.setSongName(response);
-        songService.saveLyric(aiResponse);
+//        songService.saveLyric(aiResponse);
         return ResponseEntity.ok().body(response);
     }
 
