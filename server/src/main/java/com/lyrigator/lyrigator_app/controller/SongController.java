@@ -1,8 +1,8 @@
 package com.lyrigator.lyrigator_app.controller;
 
-import com.lyrigator.lyrigator_app.model.Lyric;
+import com.lyrigator.lyrigator_app.model.Song;
 import com.lyrigator.lyrigator_app.openAi.OpenAiClient;
-import com.lyrigator.lyrigator_app.service.LyricService;
+import com.lyrigator.lyrigator_app.service.SongService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,26 +10,26 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api")
 @CrossOrigin(origins = "*")
-public class LyricController {
-    LyricService lyricService;
+public class SongController {
+    SongService songService;
 
     OpenAiClient ai;
 
     @Autowired
-    public LyricController(LyricService lyricService, OpenAiClient ai) {
+    public SongController(SongService songService, OpenAiClient ai) {
 
-        this.lyricService = lyricService;
+        this.songService = songService;
         this.ai = ai;
     }
 
     @PostMapping
-    public ResponseEntity<String> postLyricToDb(@RequestBody Lyric lyric){
-        System.out.println(lyric.getLyricName());
-        String response = ai.makePostRequest(lyric.getLyricName());
+    public ResponseEntity<String> postLyricToDb(@RequestBody Song song){
+        System.out.println(song.getLyricName());
+        String response = ai.makePostRequest(song.getLyricName());
         System.out.println(response);
-        Lyric aiResponse = new Lyric();
+        Song aiResponse = new Song();
         aiResponse.setLyricName(response);
-        lyricService.saveLyric(aiResponse);
+        songService.saveLyric(aiResponse);
         return ResponseEntity.ok().body(response);
     }
 

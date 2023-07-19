@@ -17,7 +17,7 @@ public class LyricPart {
 
     @ManyToOne
     @JoinColumn(name = "lyric_id")
-    private Lyric lyricClass;
+    private Song songClass;
 
     public LyricPart(String lyricTitle, String lyric) {
         this.lyricPartId = UUID.randomUUID().toString();

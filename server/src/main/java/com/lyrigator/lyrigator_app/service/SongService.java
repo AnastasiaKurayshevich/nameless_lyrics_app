@@ -1,0 +1,19 @@
+package com.lyrigator.lyrigator_app.service;
+
+import com.lyrigator.lyrigator_app.model.Song;
+import com.lyrigator.lyrigator_app.repository.SongRepo;
+import org.springframework.stereotype.Service;
+
+@Service
+public class SongService {
+    SongRepo songRepo;
+
+    public SongService(SongRepo songRepo) {
+        this.songRepo = songRepo;
+    }
+
+    public void saveLyric(Song song) {
+        songRepo.saveLyric(song);
+    }
+
+}

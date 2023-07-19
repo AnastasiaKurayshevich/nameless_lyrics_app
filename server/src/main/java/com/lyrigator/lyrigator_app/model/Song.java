@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Entity
-public class Lyric {
+public class Song {
 
     @Id
 //    @Column(name = "lyric_id")
@@ -18,7 +18,7 @@ public class Lyric {
     @JoinColumn(name = "lyric_id")
     private List<LyricPart> lyricList;
 
-    public Lyric() {
+    public Song() {
         this.id = UUID.randomUUID().toString();
     }
 
