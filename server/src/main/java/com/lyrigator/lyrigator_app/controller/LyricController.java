@@ -24,11 +24,11 @@ public class LyricController {
 
     @PostMapping
     public ResponseEntity<String> postLyricToDb(@RequestBody Lyric lyric){
-        System.out.println(lyric.getTest());
-        String response = ai.makePostRequest(lyric.getTest());
+        System.out.println(lyric.getLyricName());
+        String response = ai.makePostRequest(lyric.getLyricName());
         System.out.println(response);
         Lyric aiResponse = new Lyric();
-        aiResponse.setTest(response);
+        aiResponse.setLyricName(response);
         lyricService.saveLyric(aiResponse);
         return ResponseEntity.ok().body(response);
     }

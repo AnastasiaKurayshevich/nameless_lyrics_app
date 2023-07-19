@@ -2,13 +2,14 @@ package com.lyrigator.lyrigator_app.model;
 
 import jakarta.persistence.*;
 
+import java.util.UUID;
+
 @Entity
 public class LyricPart {
 
     @Id
     @Column(name = "lyric_part_id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int lyricPartId;
+    private String lyricPartId;
 
     private String lyricTitle;
 
@@ -20,10 +21,10 @@ public class LyricPart {
     }
 
     public LyricPart() {
-
+        this.lyricPartId = UUID.randomUUID().toString();
     }
 
-    public int getLyricPartId() {
+    public String getLyricPartId() {
         return lyricPartId;
     }
 

@@ -9,7 +9,7 @@ import java.util.UUID;
 public class Lyric {
 
     @Id
-    private String id;
+    private String  id;
 
     private String lyricName;
 
