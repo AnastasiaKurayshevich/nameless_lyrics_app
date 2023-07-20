@@ -26,8 +26,8 @@ public class LyricPart {
     public LyricPart() {
     }
 
-    public void getId(int id) {
-        this.id = id;
+    public int getId(int id) {
+        return id;
     }
 
     public String getLyricTitle() {
