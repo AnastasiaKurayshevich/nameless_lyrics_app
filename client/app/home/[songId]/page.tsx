@@ -46,7 +46,7 @@ export default function Song(props: Props) {
                 ))}
                 </ul>
             ) : (
-                <p>Loading...</p> // You can display a loading message while fetching the data
+                <p>LOGO</p> 
             )}
         </div>
     )
