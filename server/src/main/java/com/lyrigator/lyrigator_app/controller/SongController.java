@@ -45,6 +45,12 @@ public class SongController {
         return ResponseEntity.ok().body(song);
     }
 
+    @GetMapping("/songs/{id}")
+    public ResponseEntity<Song> getSongById(@PathVariable("id") Integer id) {
+        Song song = songService.getSongById(id);
+        return ResponseEntity.ok().body(song);
+    }
+
     private String createAiCall(Prompt prompt) {
        String mood = prompt.mood();
        String genre = prompt.genre();

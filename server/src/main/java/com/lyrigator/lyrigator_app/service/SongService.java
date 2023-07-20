@@ -22,5 +22,8 @@ public class SongService {
         return songRepo.getListOfSongs();
     }
 
+    public Song getSongById(Integer id) {
+        return songRepo.getSongById(id);
+    }
 
 }
