@@ -75,7 +75,7 @@ public class SongController {
                        "\n structure: " + finalStructure +
 
                        "\n If any of the fields are null, you are free to generate the song based on random parameters. " +
-                       "\n If the structure field is not empty, please follow it exactly. " +
+                       "\n If the structure field is not null, please follow it exactly. " +
 
                        "Please structure your response in the following way: " +
                        "- For each part of the song (verse, pre-chorus, chorus, bridge, outro), please precede and follow the lyrics with an asterisk (*). " +

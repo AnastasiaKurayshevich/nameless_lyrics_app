@@ -26,4 +26,12 @@ public class Structure {
     public void setLyrics(String lyrics) {
         this.lyrics = lyrics;
     }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "name='" + name + '\'' +
+                ", lyrics='" + lyrics + '\'' +
+                '}';
+    }
 }
