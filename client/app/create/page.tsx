@@ -86,7 +86,7 @@ export default function Create() {
         <br />
         <button type="button" onClick={() => setIsVisible(!isVisible)}>Customise</button>
         {isVisible && <SongStructure/>}
-        <button type="submit">Submit</button>
+        <button type="submit">Generate</button>
       </form>
     </div>
   );
