@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect, useState } from 'react'
-import Link from 'next/link'; // Import Link
+import Link from 'next/link'; 
 
 type Song = {
   id: number;

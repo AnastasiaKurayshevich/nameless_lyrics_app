@@ -3,11 +3,17 @@ import { type } from "os";
 import React, { use, useState } from "react";
 import SongStructure from "./SongStructure";
 
+type SongPart = {
+  name: string;
+  lyrics: string;
+}
+
 
 type FormData = {
   genre?: string;
   mood?: string;
   description?: string;
+  structure?: SongPart[];
 };
 
 export default function Create() {
@@ -15,6 +21,7 @@ export default function Create() {
     genre: "",
     mood: "",
     description: "",
+    structure: [],
   });
 
   const [isVisible, setIsVisible] = useState(false);
@@ -31,6 +38,11 @@ export default function Create() {
     event: React.ChangeEvent<HTMLTextAreaElement>
   ) => {
     setFormData({ ...formData, description: event.target.value });
+  };
+
+  const setStructure = (parts: SongPart[]) => {
+    setFormData({...formData, structure: parts});
+    console.log(formData.structure);
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -85,7 +97,7 @@ export default function Create() {
         </label>
         <br />
         <button type="button" onClick={() => setIsVisible(!isVisible)}>Customise</button>
-        {isVisible && <SongStructure/>}
+        {isVisible && <SongStructure structure={formData.structure || []} setStructure={setStructure}/>}
         <button type="submit">Generate</button>
       </form>
     </div>

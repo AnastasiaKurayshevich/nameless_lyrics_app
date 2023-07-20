@@ -5,17 +5,22 @@ type SongPart = {
   lyrics: string;
 }
 
-export default function SongStructure() {
-  const [songParts, setSongParts] = useState<SongPart[]>([]);
+type SongStructureProps = {
+  structure: SongPart[];
+  setStructure: (parts: SongPart[]) => void; 
+}
+
+export default function SongStructure({ structure, setStructure} : SongStructureProps) {
+ // const [songParts, setSongParts] = useState<SongPart[]>([]);
 
   const handleClick = (partName: string) => {
-    setSongParts([...songParts, { name: partName, lyrics: "" }]);
+    setStructure([...structure, { name: partName, lyrics: "" }]);
   };
 
   const handleLyricsChange = (event: React.ChangeEvent<HTMLTextAreaElement>, index: number) => {
-    let updatedParts = [...songParts];
+    let updatedParts = [...structure];
     updatedParts[index].lyrics = event.target.value;
-    setSongParts(updatedParts);
+    setStructure(updatedParts);
   };
 
   return (
@@ -27,7 +32,7 @@ export default function SongStructure() {
       <button type="button" onClick={() => handleClick('Bridge')}>Bridge</button>
 
 
-      {songParts.map((part, index) => (
+      {structure.map((part, index) => (
         <div key={index}>
           <h3>{part.name}</h3>
           <textarea
