@@ -53,7 +53,7 @@ export default function Create() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ formData }),
+      body: JSON.stringify(formData),
     })
       .then((response) => response.text())
       .then((text) => console.log(text))
