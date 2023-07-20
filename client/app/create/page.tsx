@@ -1,6 +1,7 @@
 "use client";
 import { type } from "os";
 import React, { use, useState } from "react";
+import SongStructure from "./SongStructure";
 
 
 type FormData = {
@@ -15,6 +16,8 @@ export default function Create() {
     mood: "",
     description: "",
   });
+
+  const [isVisible, setIsVisible] = useState(false);
 
   const handleGenreChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setFormData({ ...formData, genre: event.target.value });
@@ -81,7 +84,8 @@ export default function Create() {
           ></textarea>
         </label>
         <br />
-        <button>Customise</button>
+        <button onClick={() => setIsVisible(!isVisible)}>Customise</button>
+        {isVisible && <SongStructure/>}
         <button type="submit">Submit</button>
       </form>
     </div>
