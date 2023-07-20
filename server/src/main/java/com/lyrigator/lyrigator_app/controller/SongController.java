@@ -2,6 +2,7 @@ package com.lyrigator.lyrigator_app.controller;
 
 import com.lyrigator.lyrigator_app.model.LyricPart;
 import com.lyrigator.lyrigator_app.model.Song;
+import com.lyrigator.lyrigator_app.model.Structure;
 import com.lyrigator.lyrigator_app.openAi.OpenAiClient;
 import com.lyrigator.lyrigator_app.openAi.Prompt;
 import com.lyrigator.lyrigator_app.service.SongService;
@@ -18,9 +19,9 @@ import java.util.regex.Pattern;
 @RequestMapping("/api")
 @CrossOrigin(origins = "*")
 public class SongController {
-    SongService songService;
+    private final SongService songService;
 
-    OpenAiClient ai;
+    private final OpenAiClient ai;
 
     @Autowired
     public SongController(SongService songService, OpenAiClient ai) {
@@ -55,7 +56,8 @@ public class SongController {
        String mood = prompt.mood();
        String genre = prompt.genre();
        String description = prompt.description();
-       String structure = prompt.structure();
+       List<Structure> structure = prompt.structure();
+        System.out.println(structure);
 
        String promptMessage =
                "You are a song writer. We need you to generate a song based on the following parameters: " +
