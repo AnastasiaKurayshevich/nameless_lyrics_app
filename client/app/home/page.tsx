@@ -6,10 +6,16 @@ import Link from "next/link";
 type Song = {
   id: number;
   songName: string;
+  listOfSongs: LyricPart[];
 };
 
+type LyricPart = {
+  lyricTitle: string; 
+  lyric: string;
+}
+
 export default function Home() {
-  const [songs, setSongs] = useState<any>([]);
+  const [songs, setSongs] = useState<Song[]>([]);
 
   useEffect(() => {
     const getSongs = async () => {
