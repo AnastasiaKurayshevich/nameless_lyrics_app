@@ -5,6 +5,7 @@ import org.springframework.data.util.Streamable;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class SongRepo {
@@ -23,5 +24,8 @@ public class SongRepo {
         return Streamable.of(list).toList();
     }
 
+    public Song getSongById(Integer id) {
+        return repo.findById(id).orElse(null);
+    }
 
 }
