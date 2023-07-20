@@ -1,5 +1,6 @@
 "use client"
 import React, { useEffect, useState } from 'react'
+import Link from 'next/link'; // Import Link
 
 type Song = {
   id: number;
@@ -50,6 +51,7 @@ export default function Song(props: Props) {
       ) : (
         <p>LOGO</p>
       )}
+      <Link href="/home"><button>Go to Home</button></Link>
     </div>
   )
 }

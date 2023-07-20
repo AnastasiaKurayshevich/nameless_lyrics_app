@@ -36,6 +36,7 @@ export default function Home() {
           </li>
         ))}
       </ul>
+      <Link href="/create"><button>Create new song bro</button></Link>
     </main>
   );
 }
