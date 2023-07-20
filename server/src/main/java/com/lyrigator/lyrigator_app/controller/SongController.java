@@ -25,7 +25,7 @@ public class SongController {
         this.ai = ai;
     }
 
-    @GetMapping("/all-songs")
+    @GetMapping("/songs")
     public ResponseEntity<List<Song>> getAllSongs(){
        List<Song> songList = songService.findAllSongs();
        return ResponseEntity.ok().body(songList);
