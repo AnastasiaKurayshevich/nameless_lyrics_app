@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api")
@@ -57,17 +58,24 @@ public class SongController {
        String genre = prompt.genre();
        String description = prompt.description();
        List<Structure> structure = prompt.structure();
-        System.out.println(structure);
+        StringBuilder sb = new StringBuilder();
+        for (Structure line : structure) {
+            String string = line.toString();
+            sb.append(string);
+        }
+        String finalStructure = sb.toString();
+
+        System.out.println(finalStructure);
 
        String promptMessage =
                "You are a song writer. We need you to generate a song based on the following parameters: " +
                        "\n mood: " + mood +
                        "\n genre: " + genre +
                        "\n description: " + description +
-                       "\n structure: " + structure +
+                       "\n structure: " + finalStructure +
 
                        "\n If any of the fields are null, you are free to generate the song based on random parameters. " +
-                       "\n If the structure field is not null, please follow it exactly. " +
+                       "\n If the structure field is not empty, please follow it exactly. " +
 
                        "Please structure your response in the following way: " +
                        "- For each part of the song (verse, pre-chorus, chorus, bridge, outro), please precede and follow the lyrics with an asterisk (*). " +
@@ -77,6 +85,7 @@ public class SongController {
                        "\"*Chorus*\nLyrics here\n*End of Chorus*\", \"*Bridge*\nLyrics here\n*End of Bridge*\" and so on. " +
 
                        "The lyrics you generate should only include the song part name and the lyrics for that part. No other information is required.";
+        System.out.println(promptMessage);
        return promptMessage;
     }
 
