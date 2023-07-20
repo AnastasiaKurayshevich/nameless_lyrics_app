@@ -97,7 +97,7 @@ export default function Create() {
         </label>
         <br />
         <button type="button" onClick={() => setIsVisible(!isVisible)}>Customise</button>
-        {isVisible && <SongStructure structure={formData.structure || []} setStructure={setStructure}/>}
+        <SongStructure isVisible={isVisible} structure={formData.structure || []} setStructure={setStructure}/>
         <button type="submit">Generate</button>
       </form>
     </div>

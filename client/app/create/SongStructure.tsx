@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react';
 
 type SongPart = {
   name: string;
@@ -6,13 +6,12 @@ type SongPart = {
 }
 
 type SongStructureProps = {
+  isVisible: boolean;
   structure: SongPart[];
-  setStructure: (parts: SongPart[]) => void; 
+  setStructure: (parts: SongPart[]) => void;
 }
 
-export default function SongStructure({ structure, setStructure} : SongStructureProps) {
- // const [songParts, setSongParts] = useState<SongPart[]>([]);
-
+export default function SongStructure({ isVisible, structure, setStructure } : SongStructureProps) {
   const handleClick = (partName: string) => {
     setStructure([...structure, { name: partName, lyrics: "" }]);
   };
@@ -25,13 +24,15 @@ export default function SongStructure({ structure, setStructure} : SongStructure
 
   return (
     <div>
-      <button type="button" onClick={() => handleClick('Intro')}>Intro</button>
-      <button type="button" onClick={() => handleClick('Verse')}>Verse</button>
-      <button type="button" onClick={() => handleClick('Chorus')}>Chorus</button>
-      <button type="button" onClick={() => handleClick('Pre-Chorus')}>Pre-Chorus</button>
-      <button type="button" onClick={() => handleClick('Bridge')}>Bridge</button>
-
-
+      {isVisible && (
+        <>
+          <button type="button" onClick={() => handleClick('Intro')}>Intro</button>
+          <button type="button" onClick={() => handleClick('Verse')}>Verse</button>
+          <button type="button" onClick={() => handleClick('Chorus')}>Chorus</button>
+          <button type="button" onClick={() => handleClick('Pre-Chorus')}>Pre-Chorus</button>
+          <button type="button" onClick={() => handleClick('Bridge')}>Bridge</button>
+        </>
+      )}
       {structure.map((part, index) => (
         <div key={index}>
           <h3>{part.name}</h3>
@@ -42,6 +43,5 @@ export default function SongStructure({ structure, setStructure} : SongStructure
         </div>
       ))}
     </div>
-  )
+  );
 }
-
