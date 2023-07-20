@@ -26,7 +26,7 @@ export default function Home() {
       <ul>
         {songs.map((song: Song) => (
           <li key={song.id}>
-            <Link href="">{song.songName}</Link>
+            <Link href={`/home/${song.id}`}>{song.songName}</Link>
           </li>
         ))}
       </ul>
