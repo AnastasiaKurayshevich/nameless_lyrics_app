@@ -2,6 +2,7 @@
 import { type } from "os";
 import React, { use, useState } from "react";
 
+
 type FormData = {
   genre?: string;
   mood?: string;
@@ -48,7 +49,7 @@ export default function Create() {
 
   return (
     <div>
-      <h2>Create</h2>
+      <h2 className="text-3xl font-bold underline">Create</h2>
       <form onSubmit={handleSubmit}>
         <label>
           Genre:
