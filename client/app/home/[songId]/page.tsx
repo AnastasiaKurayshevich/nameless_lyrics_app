@@ -1,8 +1,47 @@
 "use client"
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
-export default function Song () {
+type Song = {
+    id: number;
+    songName: string;
+    listOfSongs: LyricPart[];
+  };
+  
+  type LyricPart = {
+    id: number;
+    lyricTitle: string; 
+    lyric: string;
+  }
+
+  type Props = {
+    params: {
+      songId: string;
+    }
+}
+
+export default function Song (props: Props) {
+    const [song, setSong] = useState<Song>();
+
+
+  useEffect(() => {
+    const getSongs = async () => {
+      const response = await fetch(`http://localhost:8080/api/songs/${props.params.songId}`);
+      const data = await response.json();
+      setSong(data);
+    };
+    getSongs();
+  }, []);
+
+
   return (
-    <div>we are inside</div>
+    <div>
+        {song?.songName}
+        <ul>{song?.listOfSongs.map((lyricPart: LyricPart) => (
+            <li key={lyricPart.id}>
+                <h3>{lyricPart.lyricTitle}</h3>
+                <h4>{lyricPart.lyric}</h4>
+            </li>
+        ))}</ul>
+    </div>
   )
 }
