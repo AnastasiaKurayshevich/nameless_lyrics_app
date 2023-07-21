@@ -34,20 +34,22 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center justify-center p-24">
       <h2 className="text-5xl text-center">Your Lyrics</h2>
       <input
+        className="input input-bordered w-full max-w-xs"
         type="text"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
         placeholder="Search"
       />
-      <ul>
+      <ul className="menu bg-base-200 w-56 rounded-box">
         {filteredSongs.map((song: Song) => (
           <li key={song.id}>
             <Link href={`/home/${song.id}`}>{song.songName}</Link>
           </li>
         ))}
       </ul>
+      
       <Link href="/create">
-        <button>Create new song</button>
+        <button className="btn btn-success">Create new song</button>
       </Link>
     </main>
   );

@@ -36,7 +36,7 @@ export default function Song(props: Props) {
 
 
   return (
-    <div>
+    <div className='flex min-h-screen flex-col items-center justify-center p-24'>
       {song?.songName}
       {song?.songList ? (
         <ul>
@@ -49,7 +49,7 @@ export default function Song(props: Props) {
           ))}
         </ul>
       ) : (
-        <p>LOGO</p>
+        <p className='loading loading-ring loading-lg'></p>
       )}
       <Link href="/home"><button>Go to Home</button></Link>
     </div>
