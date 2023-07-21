@@ -48,8 +48,6 @@ export default function SongStructure({ isVisible, structure, setStructure } : S
           />
           <button type="button" onClick={() => handleDelete(index)}>
             Delete
-          </button><button type="button" onClick={() => handleDelete(index)}>
-            Delete
           </button>
         </div>
       ))}
