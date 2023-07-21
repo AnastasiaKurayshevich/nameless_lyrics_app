@@ -31,25 +31,27 @@ export default function SongStructure({ isVisible, structure, setStructure } : S
   return (
     <div>
       {isVisible && (
-        <>
-          <button type="button" onClick={() => handleClick('Intro')}>Intro</button>
-          <button type="button" onClick={() => handleClick('Verse')}>Verse</button>
-          <button type="button" onClick={() => handleClick('Chorus')}>Chorus</button>
-          <button type="button" onClick={() => handleClick('Pre-Chorus')}>Pre-Chorus</button>
-          <button type="button" onClick={() => handleClick('Bridge')}>Bridge</button>
-        </>
+        <div className='add-song-part'>
+          <button className='btn btn-outline btn-success btn-sm' type="button" onClick={() => handleClick('Intro')}>Intro</button>
+          <button className='btn btn-outline btn-success btn-sm'  type="button" onClick={() => handleClick('Verse')}>Verse</button>
+          <button className='btn btn-outline btn-success btn-sm'  type="button" onClick={() => handleClick('Chorus')}>Chorus</button>
+          <button className='btn btn-outline btn-success btn-sm'  type="button" onClick={() => handleClick('Pre-Chorus')}>Pre-Chorus</button>
+          <button className='btn btn-outline btn-success btn-sm'  type="button" onClick={() => handleClick('Bridge')}>Bridge</button>
+        </div>
       )}
       {structure.map((part, index) => (
         <div key={index}>
           <h3>{part.name}</h3>
           <textarea
+            className="textarea textarea-success"
             cols={40}
             rows={8}
             value={part.lyrics}
             onChange={(event) => handleLyricsChange(event, index)}
           />
-          <button type="button" onClick={() => handleDelete(index)}>
-            Delete
+          <button className='btn btn-circle btn-outline btn-xs' type="button" onClick={() => handleDelete(index)}>
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
+
           </button>
         </div>
       ))}

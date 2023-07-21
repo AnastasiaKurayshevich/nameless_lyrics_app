@@ -26,6 +26,32 @@ body {
     rgb(var(--background-start-rgb));
 } */
 
+
+.create-flex-container {
+  margin: 20px;
+  padding: 30px;
+}
+
+.flex-container {
+  margin: 20px 0px 20px 0px;
+  display: flex;
+  gap: 20px;
+}
+
+.customise-btn {
+  margin: 10px 0px 20px 0px;
+
+}
+
+.add-song-part {
+  display: flex;
+  gap: 20px;
+}
+
+.select {
+  margin: 20px 0px;
+}
+
 .home-page {
   gap: 10px;
 }

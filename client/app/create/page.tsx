@@ -7,7 +7,7 @@ import Link from "next/link";
 type SongPart = {
   name: string;
   lyrics: string;
-}
+};
 
 type APISongPart = {
   lyricTitle: string;
@@ -18,7 +18,7 @@ type APISong = {
   id: number;
   songName: string | null;
   songList: APISongPart[];
-}
+};
 
 type FormData = {
   genre?: string;
@@ -52,13 +52,13 @@ export default function Create() {
   };
 
   const setStructure = (parts: SongPart[]) => {
-    setFormData({...formData, structure: parts});
+    setFormData({ ...formData, structure: parts });
     console.log(formData.structure);
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-  
+
     fetch("http://localhost:8080/api/new-song", {
       method: "POST",
       headers: {
@@ -68,32 +68,32 @@ export default function Create() {
     })
       .then((response) => response.json())
       .then((data: APISong) => {
-        const newStructure = formData.structure!.map(part => {
-          const apiPart = data.songList.find(apiPart => apiPart.lyricTitle === part.name);
-  
-          if(apiPart) {
+        const newStructure = formData.structure!.map((part) => {
+          const apiPart = data.songList.find(
+            (apiPart) => apiPart.lyricTitle === part.name
+          );
+
+          if (apiPart) {
             return { ...part, lyrics: apiPart.lyric };
           } else {
             return part;
           }
         });
-  
+
         setStructure(newStructure);
       })
       .catch((error) => console.log(error));
-  
+
     console.log(formData);
   };
-  
 
   return (
-    <div>
+    <div className="create-flex-container">
       <h2 className="text-3xl font-bold underline">Create</h2>
       <form onSubmit={handleSubmit}>
         <label>
-          Genre:
-          <select value={formData.genre} onChange={handleGenreChange}>
-            <option value=""></option>
+          <select className="select select-accent w-full max-w-xs" value={formData.genre} onChange={handleGenreChange}>
+            <option value="">Genre</option>
             <option value="Pop">Pop</option>
             <option value="Rock">Rock</option>
             <option value="Blues">Blues</option>
@@ -101,9 +101,8 @@ export default function Create() {
         </label>
         <br />
         <label>
-          Mood:
-          <select value={formData.mood} onChange={handleMoodChange}>
-            <option value=""></option>
+          <select className="select select-accent w-full max-w-xs" value={formData.mood} onChange={handleMoodChange}>
+            <option value="">Mood</option>
             <option value="Happy">Happy</option>
             <option value="Sad">Sad</option>
             <option value="Angsty">Angsty</option>
@@ -111,8 +110,9 @@ export default function Create() {
         </label>
         <br />
         <label>
-          Description:
           <textarea
+            className="textarea textarea-success"
+            placeholder="Description"
             cols={50}
             rows={5}
             value={formData.description}
@@ -120,13 +120,30 @@ export default function Create() {
           ></textarea>
         </label>
         <br />
-        <button className="btn btn-outline btn-primary" type="button" onClick={() => setIsVisible(!isVisible)}>Customise</button>
-        <SongStructure isVisible={isVisible} structure={formData.structure || []} setStructure={setStructure}/>
-        <button type="submit">Generate</button>
+        <button
+          className="customise-btn btn btn-outline btn-success btn-sm"
+          type="button"
+          onClick={() => setIsVisible(!isVisible)}
+        >
+          Customise
+        </button>
+        <SongStructure
+          isVisible={isVisible}
+          structure={formData.structure || []}
+          setStructure={setStructure}
+        />
+        <div className="flex-container">
+        <button type="submit" className="btn btn-success btn-sm">
+          Generate
+        </button>
+        <Link href="../home">
+          <button className="btn btn-outline btn-success btn-sm">
+            Home
+          </button>
+        </Link>
+        </div>
+        
       </form>
-      <Link href="../home">
-        <button>Home</button>
-      </Link>
     </div>
   );
 }
