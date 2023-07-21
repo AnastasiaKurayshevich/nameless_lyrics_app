@@ -26,6 +26,7 @@ body {
     rgb(var(--background-start-rgb));
 } */
 
+
 .create-flex-container {
   margin: 20px;
   padding: 30px;
@@ -49,4 +50,19 @@ body {
 
 .select {
   margin: 20px 0px;
+}
+
+.home-page {
+  gap: 10px;
+}
+
+ .add-new-home {
+  margin-top: 200px;
+}
+
+.song-title-done {
+  font-weight: bold;
+}
+.song-lyric-done {
+  margin-bottom: 15px;
 }
