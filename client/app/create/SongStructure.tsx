@@ -31,13 +31,13 @@ export default function SongStructure({ isVisible, structure, setStructure } : S
   return (
     <div>
       {isVisible && (
-        <>
-          <button type="button" onClick={() => handleClick('Intro')}>Intro</button>
-          <button type="button" onClick={() => handleClick('Verse')}>Verse</button>
-          <button type="button" onClick={() => handleClick('Chorus')}>Chorus</button>
-          <button type="button" onClick={() => handleClick('Pre-Chorus')}>Pre-Chorus</button>
-          <button type="button" onClick={() => handleClick('Bridge')}>Bridge</button>
-        </>
+        <div className='add-song-part'>
+          <button className='btn btn-outline btn-success btn-sm' type="button" onClick={() => handleClick('Intro')}>Intro</button>
+          <button className='btn btn-outline btn-success btn-sm'  type="button" onClick={() => handleClick('Verse')}>Verse</button>
+          <button className='btn btn-outline btn-success btn-sm'  type="button" onClick={() => handleClick('Chorus')}>Chorus</button>
+          <button className='btn btn-outline btn-success btn-sm'  type="button" onClick={() => handleClick('Pre-Chorus')}>Pre-Chorus</button>
+          <button className='btn btn-outline btn-success btn-sm'  type="button" onClick={() => handleClick('Bridge')}>Bridge</button>
+        </div>
       )}
       {structure.map((part, index) => (
         <div key={index}>
