@@ -22,6 +22,12 @@ export default function SongStructure({ isVisible, structure, setStructure } : S
     setStructure(updatedParts);
   };
 
+  const handleDelete = (index: number) => {
+    let updatedParts = [...structure];
+    updatedParts.splice(index, 1);
+    setStructure(updatedParts);
+  };
+
   return (
     <div>
       {isVisible && (
@@ -40,6 +46,11 @@ export default function SongStructure({ isVisible, structure, setStructure } : S
             value={part.lyrics}
             onChange={(event) => handleLyricsChange(event, index)}
           />
+          <button type="button" onClick={() => handleDelete(index)}>
+            Delete
+          </button><button type="button" onClick={() => handleDelete(index)}>
+            Delete
+          </button>
         </div>
       ))}
     </div>
