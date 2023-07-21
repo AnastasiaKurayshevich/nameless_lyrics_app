@@ -31,7 +31,7 @@ export default function Home() {
   );
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-24">
+    <main className="home-page flex min-h-screen flex-col items-center justify-center p-24">
       <h2 className="text-5xl text-center">Your Lyrics</h2>
       <input
         className="input input-bordered w-full max-w-xs"
@@ -49,7 +49,7 @@ export default function Home() {
       </ul>
       
       <Link href="/create">
-        <button className="btn btn-success">Create new song</button>
+        <button className="add-new-home btn btn-success">Create new song</button>
       </Link>
     </main>
   );

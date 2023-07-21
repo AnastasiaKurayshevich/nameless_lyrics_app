@@ -39,11 +39,11 @@ export default function Song(props: Props) {
     <div className='flex min-h-screen flex-col items-center justify-center p-24'>
       {song?.songName}
       {song?.songList ? (
-        <ul>
+        <ul className='card w-96 bg-base-100 shadow-xl'>
           {song?.songList.map((lyricPart: LyricPart, index: number) => (
             <li key={index}>
-              <h3>{lyricPart.lyricTitle}</h3>
-              <h4>{lyricPart.lyric}</h4>
+              <h3 className='song-title-done'>{lyricPart.lyricTitle}</h3>
+              <h4 className='song-lyric-done'>{lyricPart.lyric}</h4>
               <h4>{lyricPart.id}</h4>
             </li>
           ))}
@@ -51,7 +51,7 @@ export default function Song(props: Props) {
       ) : (
         <p className='loading loading-ring loading-lg'></p>
       )}
-      <Link href="/home"><button>Go to Home</button></Link>
+      <Link href="/home"><button className='btn btn-info'>Go to Home</button></Link>
     </div>
   )
 }
