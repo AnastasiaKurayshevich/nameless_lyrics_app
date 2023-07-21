@@ -29,7 +29,7 @@ public class OpenAiClient {
         ObjectNode payload = objectMapper.createObjectNode();
         payload.put("model", "text-davinci-002");
         payload.put("prompt", prompt);
-        payload.put("max_tokens", 100);
+        payload.put("max_tokens", 200);
         payload.put("temperature", 0.5);
         payload.put("top_p", 1);
         payload.put("n", 1);

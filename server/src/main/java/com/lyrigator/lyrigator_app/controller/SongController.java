@@ -44,6 +44,7 @@ public class SongController {
 
         Song song = new Song();
         song.setSongList(lyricParts);
+        System.out.println(lyricParts);
         return ResponseEntity.ok().body(song);
     }
 
@@ -75,16 +76,19 @@ public class SongController {
                        "\n structure: " + finalStructure +
 
                        "\n If any of the fields are null, you are free to generate the song based on random parameters. " +
-                       "\n If the structure field is not null, please follow it exactly. " +
+                       "\n Example: {name='Intro', lyrics='banana'} is an example of a lyric part, where 'name' is the title of the lyric part (verse, pre-chorus, chorus, bridge, intro) " +
+                       "\n and 'lyrics' is the users input (can be empty) that have to be included in generated song part, you MUST incorporate it into your generated lyrics" +
+                       "\n Example: if the structure contains name='Intro', lyrics='banana', that means that you should set 'Intro' as the title and generate lyrics that starts with the users input, in this case 'banana' and CONTINUE generating lyrics." +
+                       "\n You MUST follow the lyric part sequence EXACTLY " +
 
                        "Please structure your response in the following way: " +
-                       "- For each part of the song (verse, pre-chorus, chorus, bridge, outro), please precede and follow the lyrics with an asterisk (*). " +
+                       "- For each part of the song (verse, pre-chorus, chorus, bridge, intro), please precede and follow the lyrics with an asterisk (*). " +
                        "- For example, if you are writing a verse, it should look like this: " +
                        "\"*Verse 1*\nLyrics here\n*End of Verse 1*\". " +
                        "- Similarly, for other parts like the chorus or bridge, use: " +
                        "\"*Chorus*\nLyrics here\n*End of Chorus*\", \"*Bridge*\nLyrics here\n*End of Bridge*\" and so on. " +
 
-                       "The lyrics you generate should only include the song part name and the lyrics for that part. No other information is required.";
+                       "The lyrics you generate should only include the song part name and the lyrics for that part. No other information is required. Do not give the song a name";
         System.out.println(promptMessage);
        return promptMessage;
     }
