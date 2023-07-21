@@ -93,7 +93,8 @@ export default function Create() {
   };
 
   const handleRegenerate = () => {
-   // handleSubmit();
+   // handleSubmit(event: React.FormEvent<HTMLFormElement>);
+   
   };
  
   const handleSave = () => {
