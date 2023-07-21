@@ -14,7 +14,6 @@ type APISongPart = {
 };
 
 type APISong = {
-  id: number;
   songName: string | null;
   songList: APISongPart[];
 }
@@ -108,6 +107,7 @@ export default function Create() {
       ...songData!,
       songName: songName || "Untitled",
     };
+    console.log(songToSave);
 
     fetch("http://localhost:8080/api/save-song", {
       method: "POST",

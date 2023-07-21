@@ -48,6 +48,12 @@ public class SongController {
         return ResponseEntity.ok().body(song);
     }
 
+    @PostMapping("/save-song")
+    public ResponseEntity<Song> saveSongToDb(@RequestBody Song song) {
+        songService.saveLyric(song);
+        return ResponseEntity.ok().body(song);
+    }
+
     @GetMapping("/songs/{id}")
     public ResponseEntity<Song> getSongById(@PathVariable("id") Integer id) {
         Song song = songService.getSongById(id);
