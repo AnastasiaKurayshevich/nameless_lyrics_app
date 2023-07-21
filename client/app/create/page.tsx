@@ -103,10 +103,24 @@ export default function Create() {
 
   const handleModalSave = () => {
     setIsSaveModalVisible(false);
+
     const songToSave = {
       ...songData!,
       songName: songName || "Untitled",
     };
+
+    fetch("http://localhost:8080/api/save-song", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(songToSave),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const handleModalCancel = () => {
@@ -165,14 +179,14 @@ export default function Create() {
         )}
       </form>
       {isSaveModalVisible && (
-        <div className="modal">
-          <div className="modal-content">
+        <div>
+          <div>
             <h3>Save Song</h3>
             <input
               type="text"
               value={songName}
               onChange={(e) => setSongName(e.target.value)}
-              placeholder="Enter song name (optional)"
+              placeholder="Enter song name"
             />
             <button type="button" onClick={handleModalSave}>Save</button>
             <button type="button" onClick={handleModalCancel}>Cancel</button>
