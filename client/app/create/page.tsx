@@ -57,7 +57,7 @@ export default function Create() {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
+  
     fetch("http://localhost:8080/api/new-song", {
       method: "POST",
       headers: {
@@ -65,18 +65,25 @@ export default function Create() {
       },
       body: JSON.stringify(formData),
     })
-    .then((response) => response.json())
-    .then((data: APISong) => {
-      // Map the API response to match the SongPart structure
-      const newStructure = data.songList.map((part) => {
-        return { name: part.lyricTitle, lyrics: part.lyric };
-      });
-      setStructure(newStructure);
-    })
-    .catch((error) => console.log(error));
-
+      .then((response) => response.json())
+      .then((data: APISong) => {
+        const newStructure = formData.structure!.map(part => {
+          const apiPart = data.songList.find(apiPart => apiPart.lyricTitle === part.name);
+  
+          if(apiPart) {
+            return { ...part, lyrics: apiPart.lyric };
+          } else {
+            return part;
+          }
+        });
+  
+        setStructure(newStructure);
+      })
+      .catch((error) => console.log(error));
+  
     console.log(formData);
   };
+  
 
   return (
     <div>
