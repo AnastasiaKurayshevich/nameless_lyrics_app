@@ -43,6 +43,8 @@ export default function SongStructure({ isVisible, structure, setStructure } : S
         <div key={index}>
           <h3>{part.name}</h3>
           <textarea
+            cols={40}
+            rows={8}
             value={part.lyrics}
             onChange={(event) => handleLyricsChange(event, index)}
           />
