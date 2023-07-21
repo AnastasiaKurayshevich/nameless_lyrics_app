@@ -119,7 +119,7 @@ export default function Create() {
           ></textarea>
         </label>
         <br />
-        <button type="button" onClick={() => setIsVisible(!isVisible)}>Customise</button>
+        <button className="btn btn-outline btn-primary" type="button" onClick={() => setIsVisible(!isVisible)}>Customise</button>
         <SongStructure isVisible={isVisible} structure={formData.structure || []} setStructure={setStructure}/>
         <button type="submit">Generate</button>
       </form>
