@@ -1,6 +1,6 @@
 "use client";
 import { type } from "os";
-import React, { use, useState } from "react";
+import React, { useState } from "react";
 import SongStructure from "./SongStructure";
 
 type SongPart = {
@@ -8,6 +8,16 @@ type SongPart = {
   lyrics: string;
 }
 
+type APISongPart = {
+  lyricTitle: string;
+  lyric: string;
+};
+
+type APISong = {
+  id: number;
+  songName: string | null;
+  songList: APISongPart[];
+}
 
 type FormData = {
   genre?: string;
@@ -55,9 +65,15 @@ export default function Create() {
       },
       body: JSON.stringify(formData),
     })
-      .then((response) => response.text())
-      .then((text) => console.log(text))
-      .catch((error) => console.log(error));
+    .then((response) => response.json())
+    .then((data: APISong) => {
+      // Map the API response to match the SongPart structure
+      const newStructure = data.songList.map((part) => {
+        return { name: part.lyricTitle, lyrics: part.lyric };
+      });
+      setStructure(newStructure);
+    })
+    .catch((error) => console.log(error));
 
     console.log(formData);
   };
