@@ -1,66 +1,37 @@
-"use client";
-import React, { useEffect, useState } from 'react';
+"use client"
+import Link from "next/link"
 
-
-export default function Home() {
-
-  const [test, setTest] = useState('');
-  const [inputValue, setInputValue] = useState('');
-
-  useEffect(() => {
-    const getInfo = async () => {
-      try {
-        const response = await fetch('https://namelessly.azurewebsites.net/api');
-        if (response.ok) {
-          const text = await response.text();
-          setTest(text);
-        } else {
-          console.error('Error:', response.status);
-        }
-      } catch (error) {
-        console.error('Error:', error);
-      }
-    };
-
-    getInfo();
-  }, []);
-
-  const handleSubmit =  async (event: React.FormEvent<HTMLFormElement> | null) => {
-    if(event){
-    event.preventDefault();
-    }
-
-   fetch('https://namelessly.azurewebsites.net/api', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ test: inputValue })
-    })
-    .then(response => response.text())
-    .then(text => console.log(text))
-    .catch(error => console.log(error));
-
-    console.log(inputValue)
-  };
-
-  useEffect(() => {
-    handleSubmit(null);
-  }, []);
-  
+export default function Start() {
   return (
-    <>
-      <h1>Hello!</h1>
-      <p>{test}</p>
-      <div>
-        <form onSubmit={handleSubmit}> 
-          <input
-          type='text'
-          value={inputValue} 
-          onChange={(e) => setInputValue(e.target.value)}/>
-          <input type="submit"/>
-        </form>
+    <div className="hero min-h-screen bg-base-200">
+      <div className="hero-content flex-col lg:flex-row-reverse items-center">
+        <img src="/Lyrigator_image_1.png" className="max-w-sm rounded-lg shadow-2xl" />
+        <div>
+          <h2 className="text-5xl font-bold">Welcome to <span className="text-accent-focus">Lyrigator</span></h2>
+          <p className="py-6">An AI powered lyric generator.</p>
+          <Link href="/home">
+            <button className="btn btn-primary">Your Lyrics</button>
+          </Link>
+          <Link href="/create">
+            <button className="btn btn-success">New lyrics</button>
+          </Link>
+        </div>
       </div>
-    </>
-  );
-};
+    </div>
+  )
+}
+
+
+
+
+// "use client"
+// import Link from "next/link"
+
+// export default function Start() {
+//   return (
+//     <main className="flex min-h-screen flex-col items-center justify-center p-24">
+//       <h2 className="text-5xl text-center">Start page lyrigator</h2>
+//       <Link href="/home">Home</Link>
+//     </main>
+//   )
+// }
