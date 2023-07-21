@@ -33,7 +33,8 @@ export default function Create() {
     description: "",
     structure: [],
   });
-
+  const [isGenerating, setIsGenerating] = useState(false);
+  const [songData, setSongData] = useState<APISong | null>(null);
   const [isVisible, setIsVisible] = useState(false);
 
   const handleGenreChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -57,6 +58,7 @@ export default function Create() {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setIsGenerating(true);
   
     fetch("http://localhost:8080/api/new-song", {
       method: "POST",
@@ -67,6 +69,8 @@ export default function Create() {
     })
       .then((response) => response.json())
       .then((data: APISong) => {
+        setIsGenerating(false);
+        setSongData(data);
         const newStructure = formData.structure!.map(part => {
           const apiPart = data.songList.find(apiPart => apiPart.lyricTitle === part.name);
   
@@ -79,11 +83,21 @@ export default function Create() {
   
         setStructure(newStructure);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log(error);
+        setIsGenerating(false);      
+      });
   
     console.log(formData);
   };
-  
+
+  const handleRegenerate = () => {
+   // handleSubmit();
+  };
+  const handleSave = () => {
+    // Implement saving the song data to your database here
+    // You can use the 'songData' variable to access the generated song information
+  };
 
   return (
     <div>
@@ -121,7 +135,20 @@ export default function Create() {
         <br />
         <button className="btn btn-outline btn-primary" type="button" onClick={() => setIsVisible(!isVisible)}>Customise</button>
         <SongStructure isVisible={isVisible} structure={formData.structure || []} setStructure={setStructure}/>
-        <button type="submit">Generate</button>
+        {songData ? (
+          <>
+            <button type="button" onClick={handleRegenerate} disabled={isGenerating}>
+              {isGenerating ? "Generating..." : "Regenerate"}
+            </button>
+            <button type="button" onClick={handleSave} disabled={isGenerating}>
+              Save
+            </button>
+          </>
+        ) : (
+          <button type="submit" disabled={isGenerating}>
+            {isGenerating ? "Generating..." : "Generate"}
+          </button>
+        )}
       </form>
     </div>
   );
