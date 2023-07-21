@@ -36,6 +36,8 @@ export default function Create() {
   const [isGenerating, setIsGenerating] = useState(false);
   const [songData, setSongData] = useState<APISong | null>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [isSaveModalVisible, setIsSaveModalVisible] = useState(false);
+  const [songName, setSongName] = useState("");
 
   const handleGenreChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setFormData({ ...formData, genre: event.target.value });
@@ -94,10 +96,22 @@ export default function Create() {
   const handleRegenerate = () => {
    // handleSubmit();
   };
+ 
   const handleSave = () => {
-    // Implement saving the song data to your database here
-    // You can use the 'songData' variable to access the generated song information
+    setIsSaveModalVisible(true);
   };
+
+  const handleModalSave = () => {
+    setIsSaveModalVisible(false);
+    const songToSave = {
+      ...songData!,
+      songName: songName || "Untitled",
+    };
+  };
+
+  const handleModalCancel = () => {
+      setIsSaveModalVisible(false);
+    };
 
   return (
     <div>
@@ -150,6 +164,21 @@ export default function Create() {
           </button>
         )}
       </form>
+      {isSaveModalVisible && (
+        <div className="modal">
+          <div className="modal-content">
+            <h3>Save Song</h3>
+            <input
+              type="text"
+              value={songName}
+              onChange={(e) => setSongName(e.target.value)}
+              placeholder="Enter song name (optional)"
+            />
+            <button type="button" onClick={handleModalSave}>Save</button>
+            <button type="button" onClick={handleModalCancel}>Cancel</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
