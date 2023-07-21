@@ -2,6 +2,7 @@
 import { type } from "os";
 import React, { useState } from "react";
 import SongStructure from "./SongStructure";
+import Link from "next/link";
 
 type SongPart = {
   name: string;
@@ -123,6 +124,9 @@ export default function Create() {
         <SongStructure isVisible={isVisible} structure={formData.structure || []} setStructure={setStructure}/>
         <button type="submit">Generate</button>
       </form>
+      <Link href="../home">
+        <button>Home</button>
+      </Link>
     </div>
   );
 }
