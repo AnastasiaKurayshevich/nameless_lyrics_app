@@ -35,7 +35,11 @@ export default function Create() {
     structure: [],
   });
 
+  const [isGenerating, setIsGenerating] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [songData, setSongData] = useState<APISong | null>(null);
+  const [isSaveModalVisible, setIsSaveModalVisible] = useState(false);
+
 
   const handleGenreChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setFormData({ ...formData, genre: event.target.value });
@@ -99,6 +103,7 @@ const createPrompt = (promptData: FormData): string => {
 }
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setIsGenerating(true);
 
     fetch("http://localhost:8080/api/new-song", {
       method: "POST",
@@ -109,6 +114,8 @@ const createPrompt = (promptData: FormData): string => {
     })
       .then((response) => response.json())
       .then((data: APISong) => {
+        setIsGenerating(false);
+        setSongData(data);
         const newStructure = formData.structure!.map((part) => {
           const apiPart = data.songList.find(
             (apiPart) => apiPart.lyricTitle.toUpperCase() === part.name.toUpperCase()
@@ -122,14 +129,53 @@ const createPrompt = (promptData: FormData): string => {
         });
         setStructure(newStructure);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log(error);
+        setIsGenerating(false);
+      });
   };
 
-  // useEffect(() => {
-  //   // This code will run whenever formData.structure changes
-  //   // Update the SongStructure component with the new structure data
-  //   setStructure(formData.structure || []);
-  // }, [formData.structure]);
+  const handleRegenerate = () => {
+  
+    fetch("http://localhost:8080/api/new-song", {
+     method: "POST",
+     headers: {
+       "Content-Type": "application/json",
+     },
+     body: createPrompt(formData),
+   })
+     .then((response) => response.json())
+     .then((data: APISong) => {
+       setIsGenerating(false);
+       setSongData(data);
+       const newStructure = formData.structure!.map(part => {
+        const apiPart = data.songList.find(
+          (apiPart) => apiPart.lyricTitle.toUpperCase() === part.name.toUpperCase()
+        );
+ 
+         if(apiPart) {
+           return { ...part, lyrics: apiPart.lyric };
+         } else {
+           return part;
+         }
+       });
+ 
+       setStructure(newStructure);
+     })
+     .catch((error) => {
+       console.log(error);
+       setIsGenerating(false);      
+     });
+ 
+   console.log(formData);
+    
+   };
+
+   const handleSave = () => {
+    setIsSaveModalVisible(true);
+  };
+
+
 
   return (
     <div className="create-flex-container">
@@ -177,9 +223,20 @@ const createPrompt = (promptData: FormData): string => {
           setStructure={setStructure}
         />
         <div className="flex-container">
-        <button type="submit" className="btn btn-success btn-sm">
-          Generate
-        </button>
+        {songData ? (
+          <>
+            <button type="button" onClick={handleRegenerate} disabled={isGenerating}>
+              {isGenerating ? "Generating..." : "Regenerate"}
+            </button>
+            <button type="button" disabled={isGenerating}>
+              Save
+            </button>
+          </>
+        ) : (
+          <button type="submit" disabled={isGenerating}>
+            {isGenerating ? "Generating..." : "Generate"}
+          </button>
+        )}
         <Link href="../home">
           <button className="btn btn-outline btn-success btn-sm">
             Home
