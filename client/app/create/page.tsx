@@ -1,6 +1,6 @@
 "use client";
 import { type } from "os";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SongStructure from "./SongStructure";
 import Link from "next/link";
 
@@ -53,7 +53,6 @@ export default function Create() {
 
   const setStructure = (parts: SongPart[]) => {
     setFormData({ ...formData, structure: parts });
-    console.log(formData.structure);
   };
 
   const convertToJsonString = (songPartList: SongPart[] | undefined): string => {
@@ -96,7 +95,6 @@ const createPrompt = (promptData: FormData): string => {
  \n You MUST follow the provided structure EXACTLY.
  \n Each part of the song name should be wrapped in asterisk (*) - like that: *INTRO*, *VERSE*, *CHORUS*, *PRE-CHORUS*, *BRIDGE* etc.
  \n The lyrics you generate should only include the song part name and the lyrics for that part. No other information is required. Do not give the song a name.`
-
   return prompt;
 }
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -113,7 +111,7 @@ const createPrompt = (promptData: FormData): string => {
       .then((data: APISong) => {
         const newStructure = formData.structure!.map((part) => {
           const apiPart = data.songList.find(
-            (apiPart) => apiPart.lyricTitle === part.name
+            (apiPart) => apiPart.lyricTitle.toUpperCase() === part.name.toUpperCase()
           );
 
           if (apiPart) {
@@ -122,13 +120,16 @@ const createPrompt = (promptData: FormData): string => {
             return part;
           }
         });
-
         setStructure(newStructure);
       })
       .catch((error) => console.log(error));
-
-    console.log(formData);
   };
+
+  // useEffect(() => {
+  //   // This code will run whenever formData.structure changes
+  //   // Update the SongStructure component with the new structure data
+  //   setStructure(formData.structure || []);
+  // }, [formData.structure]);
 
   return (
     <div className="create-flex-container">
