@@ -35,6 +35,8 @@ export default function Create() {
     structure: [],
   });
 
+  const [formDataRegenerate, setFormDataRegenerate] = useState<FormData>({});
+
   const [isGenerating, setIsGenerating] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [songData, setSongData] = useState<APISong | null>(null);
@@ -89,7 +91,7 @@ const createPrompt = (promptData: FormData): string => {
  const structure = convertToJsonString(promptData.structure) 
  const prompt = `You are a song writer.
  \n We need you to generate a song based on the following structure:
- \n ${structure}
+ \n${structure}
  \n---STOP---
  \nThe song needs to be generated based on following parameters:
  \n mood: ${mood}
@@ -102,6 +104,7 @@ const createPrompt = (promptData: FormData): string => {
   return prompt;
 }
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    setFormDataRegenerate(formData);
     event.preventDefault();
     setIsGenerating(true);
 
@@ -143,7 +146,7 @@ const createPrompt = (promptData: FormData): string => {
      headers: {
        "Content-Type": "application/json",
      },
-     body: createPrompt(formData),
+     body: createPrompt(formDataRegenerate),
    })
      .then((response) => response.json())
      .then((data: APISong) => {
