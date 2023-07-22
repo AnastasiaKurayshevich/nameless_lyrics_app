@@ -229,15 +229,15 @@ const createPrompt = (promptData: FormData): string => {
         <div className="flex-container">
         {songData ? (
           <>
-            <button type="button" onClick={handleRegenerate} disabled={isGenerating}>
+            <button className="btn btn-outline btn-error btn-sm" type="button" onClick={handleRegenerate} disabled={isGenerating}>
               {isGenerating ? "Regenerating..." : "Regenerate all"}
             </button>
-            <button type="button" disabled={isGenerating}>
+            <button className="btn btn-active btn-neutral btn-sm" type="button" disabled={isGenerating}>
               Save
             </button>
           </>
         ) : (
-          <button type="submit" disabled={isGenerating}>
+          <button className="btn btn-outline btn-success btn-sm" type="submit" disabled={isGenerating}>
             {isGenerating ? "Generating..." : "Generate"}
           </button>
         )}
