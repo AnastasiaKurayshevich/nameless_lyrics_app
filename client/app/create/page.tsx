@@ -136,6 +136,7 @@ const createPrompt = (promptData: FormData): string => {
   };
 
   const handleRegenerate = () => {
+    setIsGenerating(true);
   
     fetch("http://localhost:8080/api/new-song", {
      method: "POST",
@@ -226,7 +227,7 @@ const createPrompt = (promptData: FormData): string => {
         {songData ? (
           <>
             <button type="button" onClick={handleRegenerate} disabled={isGenerating}>
-              {isGenerating ? "Generating..." : "Regenerate"}
+              {isGenerating ? "Regenerating..." : "Regenerate all"}
             </button>
             <button type="button" disabled={isGenerating}>
               Save
