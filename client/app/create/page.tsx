@@ -94,6 +94,35 @@ export default function Create() {
 
   const handleRegenerate = () => {
    // handleSubmit(event: React.FormEvent<HTMLFormElement>);
+   fetch("http://localhost:8080/api/new-song", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(formData),
+  })
+    .then((response) => response.json())
+    .then((data: APISong) => {
+      setIsGenerating(false);
+      setSongData(data);
+      const newStructure = formData.structure!.map(part => {
+        const apiPart = data.songList.find(apiPart => apiPart.lyricTitle === part.name);
+
+        if(apiPart) {
+          return { ...part, lyrics: apiPart.lyric };
+        } else {
+          return part;
+        }
+      });
+
+      setStructure(newStructure);
+    })
+    .catch((error) => {
+      console.log(error);
+      setIsGenerating(false);      
+    });
+
+  console.log(formData);
    
   };
  
