@@ -56,6 +56,49 @@ export default function Create() {
     console.log(formData.structure);
   };
 
+  const convertToJsonString = (songPartList: SongPart[] | undefined): string => {
+    let result = "";
+
+    if(songPartList !== undefined){
+
+    for (let i = 0; i < songPartList.length; i++) {
+        const { name, lyrics } = songPartList[i];
+
+        result += '*' + name.toUpperCase() + '*';
+
+        if (lyrics.length !== 0) {
+            result += '\n' + lyrics + `\n(continue generating *${name.toUpperCase()}* with this input)`;
+        }
+
+        if (i < songPartList.length - 1) {
+            result += "\n";
+        }
+    }
+  }
+
+    return result;
+}
+
+const createPrompt = (promptData: FormData): string => {
+ const genre = promptData.genre;
+ const mood = promptData.mood;
+ const description = promptData.description;
+ const structure = convertToJsonString(promptData.structure) 
+ const prompt = `You are a song writer.
+ \n We need you to generate a song based on the following structure:
+ \n ${structure}
+ \n---STOP---
+ \nThe song needs to be generated based on following parameters:
+ \n mood: ${mood}
+ \n genre: ${genre}
+ \n description: ${description}
+ \n If any of the parameters are null, you are free to generate the song based on random parameters.
+ \n You MUST follow the provided structure EXACTLY.
+ \n Each part of the song name should be wrapped in asterisk (*) - like that: *INTRO*, *VERSE*, *CHORUS*, *PRE-CHORUS*, *BRIDGE* etc.
+ \n The lyrics you generate should only include the song part name and the lyrics for that part. No other information is required. Do not give the song a name.`
+
+  return prompt;
+}
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -64,7 +107,7 @@ export default function Create() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(formData),
+      body: createPrompt(formData),
     })
       .then((response) => response.json())
       .then((data: APISong) => {
