@@ -45,4 +45,12 @@ public class LyricPart {
     public void setLyric(String lyric) {
         this.lyric = lyric;
     }
+
+    public Song getSong() {
+        return song;
+    }
+
+    public void setSong(Song song) {
+        this.song = song;
+    }
 }

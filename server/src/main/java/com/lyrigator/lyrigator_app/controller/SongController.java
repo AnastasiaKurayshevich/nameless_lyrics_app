@@ -67,8 +67,21 @@ public class SongController {
 
     @PostMapping("/save-song")
     public ResponseEntity<Song> saveSongToDb(@RequestBody Song song) {
-        songService.saveLyric(song);
-        return ResponseEntity.ok().body(song);
+        Song songToSave = new Song();
+        songToSave.setSongName(song.getSongName());
+        songToSave.setGenre(song.getGenre());
+        songToSave.setMood(song.getMood());
+        songToSave.setDescription(song.getDescription());
+        songToSave.setSongList(song.getSongList());
+
+        List<LyricPart> songList = song.getSongList();
+        if (songList != null) {
+            for (LyricPart lyricPart : songList) {
+                lyricPart.setSong(songToSave);
+            }
+        }
+        songService.saveLyric(songToSave);
+        return ResponseEntity.ok().body(songToSave);
     }
 
     @PostMapping("/regenerate-part")

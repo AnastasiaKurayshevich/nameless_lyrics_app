@@ -25,7 +25,7 @@ type SongToSave = {
   genre?: string;
   mood?: string;
   description?: string;
-  songList: APISongPart[];
+  songList: APISongPart[] | undefined;
 };
 
 type FormData = {
@@ -224,8 +224,12 @@ const regeneratePrompt = (promptData: FormData): string => {
       genre: formData.genre, 
       mood: formData.mood,
       description: formData.description,
-      ...songData!
+      songList: songData?.songList
     };
+
+    console.log("___name: " + songToSave.songName);
+    console.log("___description: " + songToSave.description);
+    console.log("___description2: " + formData.description)
 
     fetch("http://localhost:8080/api/save-song", {
       method: "POST",
@@ -240,8 +244,6 @@ const regeneratePrompt = (promptData: FormData): string => {
         console.log(error);
       });
     
-
-    //POST request to save a song here
   }
 
 
