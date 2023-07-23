@@ -14,7 +14,6 @@ public class Song {
     @Column(name = "song_id")
     private int id;
 
-
     private String songName;
 
     private String genre;
