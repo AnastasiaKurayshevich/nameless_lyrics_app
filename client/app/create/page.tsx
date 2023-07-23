@@ -9,6 +9,14 @@ type SongPart = {
   lyrics: string;
 };
 
+type RegenerateData = {
+  genre: string;
+  mood: string;
+  description: string;
+  songPart: SongPart;
+};
+
+
 type APISongPart = {
   lyricTitle: string;
   lyric: string;
@@ -70,35 +78,39 @@ export default function Create() {
     setFormData({ ...formData, structure: parts });
   };
 
-  const convertToJsonString = (songPartList: SongPart[] | undefined): string => {
+  const convertToJsonString = (
+    songPartList: SongPart[] | undefined
+  ): string => {
     let result = "";
 
-    if(songPartList !== undefined){
-
-    for (let i = 0; i < songPartList.length; i++) {
+    if (songPartList !== undefined) {
+      for (let i = 0; i < songPartList.length; i++) {
         const { name, lyrics } = songPartList[i];
 
-        result += '*' + name.toUpperCase() + '*';
+        result += "*" + name.toUpperCase() + "*";
 
         if (lyrics.length !== 0) {
-            result += '\n' + lyrics + `\n(continue generating *${name.toUpperCase()}* with this input)`;
+          result +=
+            "\n" +
+            lyrics +
+            `\n(continue generating *${name.toUpperCase()}* with this input)`;
         }
 
         if (i < songPartList.length - 1) {
-            result += "\n";
+          result += "\n";
         }
+      }
     }
-  }
 
     return result;
-}
+  };
 
-const createPrompt = (promptData: FormData): string => {
- const genre = promptData.genre;
- const mood = promptData.mood;
- const description = promptData.description;
- const structure = convertToJsonString(promptData.structure) 
- const prompt = `You are a song writer.
+  const createPrompt = (promptData: FormData): string => {
+    const genre = promptData.genre;
+    const mood = promptData.mood;
+    const description = promptData.description;
+    const structure = convertToJsonString(promptData.structure);
+    const prompt = `You are a song writer.
  \n We need you to generate a song based on the following structure:
  \n${structure}
  \n---STOP---
@@ -109,32 +121,30 @@ const createPrompt = (promptData: FormData): string => {
  \n If any of the parameters are null, you are free to generate the song based on random parameters.
  \n You MUST follow the provided structure EXACTLY.
  \n Each part of the song name should be wrapped in asterisk (*) - like that: *INTRO*, *VERSE*, *CHORUS*, *PRE-CHORUS*, *BRIDGE* etc.
- \n The lyrics you generate should only include the song part name and the lyrics for that part. No other information is required. Do not give the song a name.`
-  return prompt;
-}
+ \n The lyrics you generate should only include the song part name and the lyrics for that part. No other information is required. Do not give the song a name.`;
+    return prompt;
+  };
 
-const regeneratePrompt = (promptData: FormData): string => {
+  const regeneratePrompt = (data: RegenerateData): string => {
+    const { genre, mood, description, songPart } = data;
+    const { name, lyrics } = songPart;
   
-  const genre = promptData.genre;
-  const mood = promptData.mood;
-  const description = promptData.description;
-  const songPart = "";
-  const lyrics = ""; 
- // const structure = convertToJsonString(promptData.structure) 
-  const prompt = `You are a song writer.
-  \n We need you to rewrite this *${songPart.toUpperCase()}*: 
-  \n
-  \n ${lyrics}
-  \n
-  \n based on the following parameters:
-  \n mood: ${mood}
-  \n genre: ${genre}
-  \n description: ${description}
-  \n If any of the parameters are null, you are free to generate the song based on random parameters.
-  \n Each part of the song name should be wrapped in asterisk (*) - like that: *INTRO*, *VERSE*, *CHORUS*, *PRE-CHORUS*, *BRIDGE* etc.
-  \n The lyrics you generate should only include the song part name and the lyrics for that part. No other information can be added.`
-   return prompt;
-}
+    const prompt = `You are a song writer.
+    \n We need you to rewrite this *${name.toUpperCase()}*: 
+    \n
+    \n ${lyrics}
+    \n
+    \n based on the following parameters:
+    \n mood: ${mood}
+    \n genre: ${genre}
+    \n description: ${description}
+    \n If any of the parameters are null, you are free to generate the song based on random parameters.
+    \n The lyrics you generate should only include the song part name and the lyrics for that part. No other information can be added.`;
+  
+    return prompt;
+  };
+
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     setFormDataRegenerate(formData);
     event.preventDefault();
@@ -153,7 +163,8 @@ const regeneratePrompt = (promptData: FormData): string => {
         setSongData(data);
         const newStructure = formData.structure!.map((part) => {
           const apiPart = data.songList.find(
-            (apiPart) => apiPart.lyricTitle.toUpperCase() === part.name.toUpperCase()
+            (apiPart) =>
+              apiPart.lyricTitle.toUpperCase() === part.name.toUpperCase()
           );
 
           if (apiPart) {
@@ -172,42 +183,42 @@ const regeneratePrompt = (promptData: FormData): string => {
 
   const handleRegenerate = () => {
     setIsGenerating(true);
-  
-    fetch("http://localhost:8080/api/new-song", {
-     method: "POST",
-     headers: {
-       "Content-Type": "application/json",
-     },
-     body: createPrompt(formDataRegenerate),
-   })
-     .then((response) => response.json())
-     .then((data: APISong) => {
-       setIsGenerating(false);
-       setSongData(data);
-       const newStructure = formData.structure!.map(part => {
-        const apiPart = data.songList.find(
-          (apiPart) => apiPart.lyricTitle.toUpperCase() === part.name.toUpperCase()
-        );
- 
-         if(apiPart) {
-           return { ...part, lyrics: apiPart.lyric };
-         } else {
-           return part;
-         }
-       });
- 
-       setStructure(newStructure);
-     })
-     .catch((error) => {
-       console.log(error);
-       setIsGenerating(false);      
-     });
- 
-   console.log(formData);
-    
-   };
 
-   const handleSave = () => {
+    fetch("http://localhost:8080/api/new-song", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: createPrompt(formDataRegenerate),
+    })
+      .then((response) => response.json())
+      .then((data: APISong) => {
+        setIsGenerating(false);
+        setSongData(data);
+        const newStructure = formData.structure!.map((part) => {
+          const apiPart = data.songList.find(
+            (apiPart) =>
+              apiPart.lyricTitle.toUpperCase() === part.name.toUpperCase()
+          );
+
+          if (apiPart) {
+            return { ...part, lyrics: apiPart.lyric };
+          } else {
+            return part;
+          }
+        });
+
+        setStructure(newStructure);
+      })
+      .catch((error) => {
+        console.log(error);
+        setIsGenerating(false);
+      });
+
+    console.log(formData);
+  };
+
+  const handleSave = () => {
     setIsSaveModalVisible(true);
   };
 
@@ -246,14 +257,48 @@ const regeneratePrompt = (promptData: FormData): string => {
     
   }
 
+  const handleRegeneratePart = (part: SongPart) => {
+    setIsGenerating(true);
 
+    const data: RegenerateData = {
+      genre: formDataRegenerate.genre || "",
+      mood: formDataRegenerate.mood || "",
+      description: formDataRegenerate.description || "", 
+      songPart: part,
+    };
+  
+    fetch("http://localhost:8080/api/regenerate-part", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: regeneratePrompt(data),
+    })
+      .then((response) => response.json())
+      .then((data: APISongPart) => {
+        setIsGenerating(false);
+        const updatedStructure = formData.structure!.map((item) =>
+          item === part ? { ...item, lyrics: data.lyric } : item
+        );
+        setStructure(updatedStructure);
+      })
+      .catch((error) => {
+        console.log(error);
+        setIsGenerating(false);
+      });
+  };
+  
 
   return (
     <div className="create-flex-container">
       <h2 className="text-3xl font-bold underline">Create</h2>
       <form onSubmit={handleSubmit}>
         <label>
-          <select className="select select-accent w-full max-w-xs" value={formData.genre} onChange={handleGenreChange}>
+          <select
+            className="select select-accent w-full max-w-xs"
+            value={formData.genre}
+            onChange={handleGenreChange}
+          >
             <option value="">Genre</option>
             <option value="Pop">Pop</option>
             <option value="Rock">Rock</option>
@@ -262,7 +307,11 @@ const regeneratePrompt = (promptData: FormData): string => {
         </label>
         <br />
         <label>
-          <select className="select select-accent w-full max-w-xs" value={formData.mood} onChange={handleMoodChange}>
+          <select
+            className="select select-accent w-full max-w-xs"
+            value={formData.mood}
+            onChange={handleMoodChange}
+          >
             <option value="">Mood</option>
             <option value="Happy">Happy</option>
             <option value="Sad">Sad</option>
@@ -292,6 +341,8 @@ const regeneratePrompt = (promptData: FormData): string => {
           isVisible={isVisible}
           structure={formData.structure || []}
           setStructure={setStructure}
+          onRegeneratePart={handleRegeneratePart}
+          isGenerating={isGenerating}
         />
         <div className="flex-container">
         {songData ? (
