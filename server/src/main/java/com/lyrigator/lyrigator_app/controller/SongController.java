@@ -87,7 +87,7 @@ public class SongController {
     }
 
     private static LyricPart parseSingleSongPart(String songPart) {
-        String cleanSongPart = songPart.replaceAll("(?m)^\\s*\\r?\\n", "");
+        String cleanSongPart = songPart.replaceAll("---STOP---|(?m)\\s*\\r?\\n", "");
 
         String[] lines = cleanSongPart.split("\n");
 
