@@ -123,4 +123,14 @@ public class SongController {
         String newLyric = "whatever inside";
         return ResponseEntity.ok().body(newLyric);
     }
+
+    @DeleteMapping("/songs/{id}")
+    public ResponseEntity<Integer> deleteSongById(@PathVariable Integer id) {
+        Song songToDelete = songService.getSongById(id);
+        if (songToDelete == null){
+            return ResponseEntity.notFound().build();
+        }
+        songService.deleteById(id);
+        return ResponseEntity.ok().build();
+    }
 }
