@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -67,17 +68,44 @@ public class SongController {
     @PostMapping("/regenerate-part")
     public ResponseEntity<LyricPart> createSongPart(@RequestBody String prompt) {
         String response = ai.makePostRequest(prompt);
+        System.out.println(response);
         LyricPart regeneratedPart = parseSingleSongPart(response);
         return  ResponseEntity.ok().body(regeneratedPart);
     }
 
     private static LyricPart parseSingleSongPart(String songPart) {
-        Pattern pattern = Pattern.compile("\\*(.*?)\\*\\s*([\\s\\S]*?)(?=\\*|$)");
-        Matcher matcher = pattern.matcher(songPart);
-        String lyricTitle = matcher.group(1).trim();
-        String lyric = matcher.group(2).trim();
-        return new LyricPart(lyricTitle, lyric);
+        String cleanSongPart = songPart.replaceAll("(?m)^\\s*\\r?\\n", "");
+
+        String[] lines = cleanSongPart.split("\n");
+
+        if (lines.length > 1) {
+            String firstLine = lines[0].trim();
+            String[] possibleTitles = {"INTRO", "VERSE", "CHORUS", "PRE-CHORUS", "BRIDGE"};
+
+            String lyricTitle = "";
+            for (String title : possibleTitles) {
+                if (firstLine.toUpperCase().startsWith(title)) {
+                    lyricTitle = title;
+                    break;
+                }
+            }
+
+            String lyric;
+            if (!lyricTitle.isEmpty()) {
+                lyric = String.join("\n", Arrays.copyOfRange(lines, 1, lines.length)).trim();
+            } else {
+                lyric = String.join("\n", lines).trim();
+            }
+
+            return new LyricPart(lyricTitle, lyric);
+        } else {
+            return null;
+        }
     }
+
+
+
+
 
 
     @PostMapping
