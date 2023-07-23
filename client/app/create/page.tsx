@@ -15,8 +15,16 @@ type APISongPart = {
 };
 
 type APISong = {
-  id: number;
-  songName: string | null;
+  // id: number;
+  // songName: string | null;
+  songList: APISongPart[];
+};
+
+type SongToSave = {
+  songName: string;
+  genre?: string;
+  mood?: string;
+  description?: string;
   songList: APISongPart[];
 };
 
@@ -210,6 +218,29 @@ const regeneratePrompt = (promptData: FormData): string => {
   const handleModalSave = () => {
     setIsSaveModalVisible(false);
 
+    const songToSave: SongToSave = { 
+
+      songName: songName || "Untitled",
+      genre: formData.genre, 
+      mood: formData.mood,
+      description: formData.description,
+      ...songData!
+    };
+
+    fetch("http://localhost:8080/api/save-song", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(songToSave),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => {
+        console.log(error);
+      });
+    
+
     //POST request to save a song here
   }
 
@@ -275,8 +306,6 @@ const regeneratePrompt = (promptData: FormData): string => {
             {isGenerating ? "Generating..." : "Generate"}
           </button>
         )}
-        
-       
        </div>
       </form>
       {isSaveModalVisible && (
