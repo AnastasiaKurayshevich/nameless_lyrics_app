@@ -57,8 +57,7 @@ export default function Song(props: Props) {
           {song?.songList.map((lyricPart: LyricPart, index: number) => (
             <li key={index}>
               <h3 className='song-title-done'>{lyricPart.lyricTitle}</h3>
-              <h4 className='song-lyric-done'>{lyricPart.lyric}</h4>
-              <h4>{lyricPart.id}</h4>
+              <p className='song-lyric-done'>{lyricPart.lyric}</p>
             </li>
           ))}
         </ul>

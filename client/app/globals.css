@@ -65,4 +65,5 @@ body {
 }
 .song-lyric-done {
   margin-bottom: 15px;
+  white-space: pre-line;
 }
