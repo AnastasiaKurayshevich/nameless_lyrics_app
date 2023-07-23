@@ -130,6 +130,15 @@ public class SongController {
         return ResponseEntity.ok().body(newLyric);
     }
 
+    @PutMapping("/songs/{id}")
+    public ResponseEntity<Song> editSong(@PathVariable Integer id, @RequestBody Song song) {
+        Song songEdit = songService.editSong(id, song);
+        if (songEdit == null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(songEdit);
+    }
+
     @DeleteMapping("/songs/{id}")
     public ResponseEntity<Integer> deleteSongById(@PathVariable Integer id) {
         Song songToDelete = songService.getSongById(id);
