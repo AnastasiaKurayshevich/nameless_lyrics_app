@@ -65,6 +65,12 @@ public class SongController {
         return song;
     }
 
+    @PostMapping("/save-song")
+    public ResponseEntity<Song> saveSongToDb(@RequestBody Song song) {
+        songService.saveLyric(song);
+        return ResponseEntity.ok().body(song);
+    }
+
     @PostMapping("/regenerate-part")
     public ResponseEntity<LyricPart> createSongPart(@RequestBody String prompt) {
         String response = ai.makePostRequest(prompt);
