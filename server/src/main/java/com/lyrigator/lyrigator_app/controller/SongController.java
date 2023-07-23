@@ -74,12 +74,6 @@ public class SongController {
         songToSave.setDescription(song.getDescription());
         songToSave.setSongList(song.getSongList());
 
-        List<LyricPart> songList = song.getSongList();
-        if (songList != null) {
-            for (LyricPart lyricPart : songList) {
-                lyricPart.setSong(songToSave);
-            }
-        }
         songService.saveLyric(songToSave);
         return ResponseEntity.ok().body(songToSave);
     }

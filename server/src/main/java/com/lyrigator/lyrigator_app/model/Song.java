@@ -46,6 +46,11 @@ public class Song {
 
     public void setSongList(List<LyricPart> songList) {
         this.songList = songList;
+        if (songList != null) {
+            for (LyricPart lyricPart : songList) {
+                lyricPart.setSong(this);
+            }
+        }
     }
 
     public String getGenre() {
