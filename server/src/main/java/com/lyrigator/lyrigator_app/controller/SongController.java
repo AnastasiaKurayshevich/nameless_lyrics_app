@@ -81,8 +81,8 @@ public class SongController {
     @PostMapping("/regenerate-part")
     public ResponseEntity<LyricPart> createSongPart(@RequestBody String prompt) {
         String response = ai.makePostRequest(prompt);
-        System.out.println(response);
         LyricPart regeneratedPart = parseSingleSongPart(response);
+
         return  ResponseEntity.ok().body(regeneratedPart);
     }
 
@@ -97,7 +97,7 @@ public class SongController {
 
             String lyricTitle = "";
             for (String title : possibleTitles) {
-                if (firstLine.toUpperCase().startsWith(title)) {
+                if (firstLine.toUpperCase().contains(title)) {
                     lyricTitle = title;
                     break;
                 }

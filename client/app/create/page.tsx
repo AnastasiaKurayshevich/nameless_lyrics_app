@@ -130,10 +130,7 @@ export default function Create() {
     const { name, lyrics } = songPart;
   
     const prompt = `You are a song writer.
-    \n We need you to rewrite this *${name.toUpperCase()}*: 
-    \n
-    \n ${lyrics}
-    \n
+    \n We need you to create *${name.toUpperCase()}*  
     \n based on the following parameters:
     \n mood: ${mood}
     \n genre: ${genre}
@@ -141,6 +138,7 @@ export default function Create() {
     \n If any of the parameters are null, you are free to generate the song based on random parameters.
     \n The lyrics you generate should only include the song part name and the lyrics for that part. No other information can be added.`;
   
+    console.log(prompt);
     return prompt;
   };
 
