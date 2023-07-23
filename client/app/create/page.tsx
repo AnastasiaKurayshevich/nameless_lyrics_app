@@ -264,14 +264,15 @@ const regeneratePrompt = (promptData: FormData): string => {
             {isGenerating ? "Generating..." : "Generate"}
           </button>
         )}
-        <Link href="../home">
+       
+       </div>
+      </form>
+
+      <Link href="../home">
           <button className="btn btn-outline btn-success btn-sm">
             Home
           </button>
         </Link>
-        </div>
-        
-      </form>
     </div>
   );
 }
