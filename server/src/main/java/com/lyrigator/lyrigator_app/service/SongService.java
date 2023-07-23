@@ -26,6 +26,19 @@ public class SongService {
         return songRepo.getSongById(id);
     }
 
+    public Song editSong(Integer id, Song existingSong) {
+        Song songEdit = songRepo.getSongById(id);
+        if (songEdit != null) {
+            songEdit.setSongName(existingSong.getSongName());
+            songEdit.setGenre(existingSong.getGenre());
+            songEdit.setMood(existingSong.getMood());
+            songEdit.setDescription(existingSong.getDescription());
+            songEdit.setSongList(existingSong.getSongList());
+            songRepo.editSong(songEdit);
+        }
+        return null;
+    }
+
     public void deleteById(Integer id) {
         songRepo.deleteSongById(id);
     }

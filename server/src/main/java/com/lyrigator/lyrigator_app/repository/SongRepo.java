@@ -28,10 +28,10 @@ public class SongRepo {
         return repo.findById(id).orElse(null);
     }
 
-    public void updateSong(Song song) {
+    public void editSong(Song song) {
         repo.save(song);
     }
-    
+
     public void deleteSongById(Integer id) {
         repo.deleteById(id);
     }
