@@ -32,8 +32,23 @@ export default function Song(props: Props) {
       setSong(data);
     };
     getSongs();
-  }, []);
+  }, [props.params.songId]);
 
+  const handleDelete = async () => {
+    try {
+      const response = await fetch(`http://localhost:8080/api/songs/${props.params.songId}`, {
+        method: 'DELETE',
+      });
+
+      if (response.ok) {
+        window.location.href = '/home'; 
+      } else {
+        console.error('Failed to delete the song.');
+      }
+    } catch (error) {
+      console.error('An error occurred while trying to delete the song:', error);
+    }
+  };
 
   return (
     <div className='flex min-h-screen flex-col items-center justify-center p-24'>
@@ -51,6 +66,9 @@ export default function Song(props: Props) {
       ) : (
         <p className='loading loading-ring loading-lg'></p>
       )}
+      <button className='btn btn-error btn-sm' onClick={handleDelete}>
+        Delete Song
+      </button>
       <Link href="/home"><button className='btn btn-info'>Go to Home</button></Link>
     </div>
   )
