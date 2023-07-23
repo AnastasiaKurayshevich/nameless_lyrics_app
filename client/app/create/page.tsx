@@ -41,6 +41,7 @@ export default function Create() {
   const [isVisible, setIsVisible] = useState(false);
   const [songData, setSongData] = useState<APISong | null>(null);
   const [isSaveModalVisible, setIsSaveModalVisible] = useState(false);
+  const [songName, setSongName] = useState("");
 
 
   const handleGenreChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -202,6 +203,16 @@ const regeneratePrompt = (promptData: FormData): string => {
     setIsSaveModalVisible(true);
   };
 
+  const handleModalCancel = () => {
+    setIsSaveModalVisible(false);
+  };
+
+  const handleModalSave = () => {
+    setIsSaveModalVisible(false);
+
+    //POST request to save a song here
+  }
+
 
 
   return (
@@ -255,7 +266,7 @@ const regeneratePrompt = (promptData: FormData): string => {
             <button className="btn btn-outline btn-error btn-sm" type="button" onClick={handleRegenerate} disabled={isGenerating}>
               {isGenerating ? "Regenerating..." : "Regenerate all"}
             </button>
-            <button className="btn btn-active btn-neutral btn-sm" type="button" disabled={isGenerating}>
+            <button className="btn btn-active btn-neutral btn-sm" type="button" onClick={handleSave} disabled={isGenerating}>
               Save
             </button>
           </>
@@ -264,9 +275,25 @@ const regeneratePrompt = (promptData: FormData): string => {
             {isGenerating ? "Generating..." : "Generate"}
           </button>
         )}
+        
        
        </div>
       </form>
+      {isSaveModalVisible && (
+        <div>
+          <div>
+            <h3>Save Song</h3>
+            <input
+              type="text"
+              value={songName}
+              onChange={(e) => setSongName(e.target.value)}
+              placeholder="Enter song name"
+            />
+            <button type="button" onClick={handleModalSave}>Save</button>
+            <button type="button" onClick={handleModalCancel}>Cancel</button>
+          </div>
+        </div>
+      )}
 
       <Link href="../home">
           <button className="btn btn-outline btn-success btn-sm">
