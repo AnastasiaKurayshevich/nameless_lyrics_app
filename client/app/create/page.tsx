@@ -103,6 +103,29 @@ const createPrompt = (promptData: FormData): string => {
  \n The lyrics you generate should only include the song part name and the lyrics for that part. No other information is required. Do not give the song a name.`
   return prompt;
 }
+
+const regeneratePrompt = (promptData: FormData): string => {
+  
+  const genre = promptData.genre;
+  const mood = promptData.mood;
+  const description = promptData.description;
+  const songPart = "";
+  const lyrics = ""; 
+ // const structure = convertToJsonString(promptData.structure) 
+  const prompt = `You are a song writer.
+  \n We need you to rewrite this *${songPart.toUpperCase()}*: 
+  \n
+  \n ${lyrics}
+  \n
+  \n based on the following parameters:
+  \n mood: ${mood}
+  \n genre: ${genre}
+  \n description: ${description}
+  \n If any of the parameters are null, you are free to generate the song based on random parameters.
+  \n Each part of the song name should be wrapped in asterisk (*) - like that: *INTRO*, *VERSE*, *CHORUS*, *PRE-CHORUS*, *BRIDGE* etc.
+  \n The lyrics you generate should only include the song part name and the lyrics for that part. No other information can be added.`
+   return prompt;
+}
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     setFormDataRegenerate(formData);
     event.preventDefault();
