@@ -51,9 +51,9 @@ public class SongController {
         return ResponseEntity.ok().body(song);
     }
 
-    public static List<LyricPart> parseSong(String songString) {
+    private static List<LyricPart> parseSong(String songString) {
         List<LyricPart> song = new ArrayList<>();
-        Pattern pattern = Pattern.compile("\\*(.*?)\\*\\s*([\\s\\S]*?)(?=\\*|$)"); // Regex pattern to match parts of the song
+        Pattern pattern = Pattern.compile("\\*(.*?)\\*\\s*([\\s\\S]*?)(?=\\*|$)");
 
         Matcher matcher = pattern.matcher(songString);
         while (matcher.find()) {
@@ -61,8 +61,22 @@ public class SongController {
             String lyric = matcher.group(2).trim();
             song.add(new LyricPart(lyricTitle, lyric));
         }
-
         return song;
+    }
+
+    @PostMapping("/regenerate-part")
+    public ResponseEntity<LyricPart> createSongPart(@RequestBody String prompt) {
+        String response = ai.makePostRequest(prompt);
+        LyricPart regeneratedPart = parseSingleSongPart(response);
+        return  ResponseEntity.ok().body(regeneratedPart);
+    }
+
+    private static LyricPart parseSingleSongPart(String songPart) {
+        Pattern pattern = Pattern.compile("\\*(.*?)\\*\\s*([\\s\\S]*?)(?=\\*|$)");
+        Matcher matcher = pattern.matcher(songPart);
+        String lyricTitle = matcher.group(1).trim();
+        String lyric = matcher.group(2).trim();
+        return new LyricPart(lyricTitle, lyric);
     }
 
 
