@@ -28,7 +28,7 @@ public class SongRepo {
         return repo.findById(id).orElse(null);
     }
 
-    public void deleteSong(int id) {
+    public void deleteSongById(int id) {
         repo.deleteById(id);
     }
 

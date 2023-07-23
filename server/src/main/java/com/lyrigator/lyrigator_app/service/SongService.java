@@ -26,6 +26,8 @@ public class SongService {
         return songRepo.getSongById(id);
     }
 
-    
+    public void deleteById(int id) {
+        songRepo.deleteSongById(id);
+    }
 
 }
