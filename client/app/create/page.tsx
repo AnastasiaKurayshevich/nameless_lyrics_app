@@ -40,7 +40,7 @@ type FormData = {
   genre?: string;
   mood?: string;
   description?: string;
-  structure?: SongPart[];
+  structure: SongPart[];
 };
 
 export default function Create() {
@@ -51,8 +51,12 @@ export default function Create() {
     structure: [],
   });
 
-  const [formDataRegenerate, setFormDataRegenerate] = useState<FormData>({});
-
+  const [formDataRegenerate, setFormDataRegenerate] = useState<FormData>({
+    genre: "",
+    mood: "",
+    description: "",
+    structure: [],
+  });
   const [isGenerating, setIsGenerating] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [songData, setSongData] = useState<APISong | null>(null);
@@ -175,6 +179,20 @@ export default function Create() {
       .then((data: APISong) => {
         setIsGenerating(false);
         setSongData(data);
+
+        if (formData.structure.length === 0) {
+          console.log("I'm inside if statement")
+          const randomStructure = data.songList.map((apiPart) => ({
+            name: apiPart.lyricTitle.toUpperCase(),
+            lyrics: apiPart.lyric,
+          }));
+          randomStructure.map(line => {
+            console.log("name: "+line.name)
+            console.log("lyrics: " + line.lyrics)
+          })
+          setStructure(randomStructure);
+        } else {
+
         const newStructure = formData.structure!.map((part) => {
           const apiPart = data.songList.find(
             (apiPart) =>
@@ -188,6 +206,7 @@ export default function Create() {
           }
         });
         setStructure(newStructure);
+      }
       })
       .catch((error) => {
         console.log(error);

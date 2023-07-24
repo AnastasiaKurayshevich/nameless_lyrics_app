@@ -9,18 +9,18 @@ type SongStructureProps = {
   isVisible: boolean;
   structure: SongPart[];
   setStructure: (parts: SongPart[]) => void;
+  isGenerating: boolean; 
+  onRegeneratePart: (part: SongPart) => void; 
 }
 
 export default function SongStructure({ 
   isVisible, 
   structure, 
   setStructure, 
+  isGenerating,
   onRegeneratePart,
-  isGenerating 
-} : SongStructureProps & {
-    onRegeneratePart: (part: SongPart) => void;
-    isGenerating: boolean;
-  }) {
+  
+} : SongStructureProps) {
 
   const handleClick = (partName: string) => {
     setStructure([...structure, { name: partName, lyrics: "" }]);
