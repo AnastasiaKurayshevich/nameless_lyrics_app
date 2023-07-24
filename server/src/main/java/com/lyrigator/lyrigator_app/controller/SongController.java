@@ -81,18 +81,22 @@ public class SongController {
 
     @PostMapping("/regenerate-part")
     public ResponseEntity<LyricPart> createSongPart(@RequestBody String prompt) {
+        System.out.println("Prompt: " + prompt);
         String response = ai.makePostRequest(prompt);
+        System.out.println("Response: " + response);
         LyricPart regeneratedPart = parseSingleSongPart(response);
+        System.out.println("Regenerated part: " + regeneratedPart);
 
         return  ResponseEntity.ok().body(regeneratedPart);
     }
 
+
     private static LyricPart parseSingleSongPart(String songPart) {
-        String cleanSongPart = songPart.replaceAll("---STOP---|(?m)\\s*\\r?\\n", "");
+        String cleanSongPart = songPart.replace("---STOP---", "").trim();
 
         String[] lines = cleanSongPart.split("\n");
 
-        if (lines.length > 1) {
+        if (lines.length > 0) {
             String firstLine = lines[0].trim();
             String[] possibleTitles = {"INTRO", "VERSE", "CHORUS", "PRE-CHORUS", "BRIDGE"};
 
@@ -109,6 +113,7 @@ public class SongController {
                 lyric = String.join("\n", Arrays.copyOfRange(lines, 1, lines.length)).trim();
             } else {
                 lyric = String.join("\n", lines).trim();
+                lyricTitle = "UNKNOWN"; // Add a default title if no title was found.
             }
 
             return new LyricPart(lyricTitle, lyric);
@@ -116,6 +121,7 @@ public class SongController {
             return null;
         }
     }
+
 
 
     @PostMapping
