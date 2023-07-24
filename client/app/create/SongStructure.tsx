@@ -10,6 +10,7 @@ type SongStructureProps = {
   structure: SongPart[];
   setStructure: (parts: SongPart[]) => void;
   isGenerating: boolean; 
+  onLyricsChange: (updatedPart: SongPart, index: number) => void;
   onRegeneratePart: (part: SongPart) => void; 
 }
 
@@ -18,6 +19,7 @@ export default function SongStructure({
   structure, 
   setStructure, 
   isGenerating,
+  onLyricsChange,
   onRegeneratePart,
   
 } : SongStructureProps) {
@@ -26,16 +28,21 @@ export default function SongStructure({
     setStructure([...structure, { name: partName, lyrics: "" }]);
   };
 
-  const handleLyricsChange = (event: React.ChangeEvent<HTMLTextAreaElement>, index: number) => {
-    let updatedParts = [...structure];
-    updatedParts[index].lyrics = event.target.value;
-    setStructure(updatedParts);
-  };
+  // const handleLyricsChange = (event: React.ChangeEvent<HTMLTextAreaElement>, index: number) => {
+  //   let updatedParts = [...structure];
+  //   updatedParts[index].lyrics = event.target.value;
+  //   setStructure(updatedParts);
+  // };
 
   const handleDelete = (index: number) => {
     let updatedParts = [...structure];
     updatedParts.splice(index, 1);
     setStructure(updatedParts);
+  };
+
+  const handleLyricsChange = (event: React.ChangeEvent<HTMLTextAreaElement>, index: number) => {
+    const updatedPart = { ...structure[index], lyrics: event.target.value };
+    onLyricsChange(updatedPart, index); 
   };
 
   return (

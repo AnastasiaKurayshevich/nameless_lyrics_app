@@ -320,6 +320,22 @@ export default function Create() {
         setIsGenerating(false);
       });
   };
+
+
+const handleLyricsChange = (updatedPart: SongPart, index: number) => {
+  const updatedStructure = formData.structure.map((part, i) =>
+    i === index ? updatedPart : part
+  );
+  setFormData({ ...formData, structure: updatedStructure });
+  if (songData) {
+    const updatedSongData = { ...songData };
+    updatedSongData.songList = updatedStructure.map((part) => ({
+      lyricTitle: part.name,
+      lyric: part.lyrics,
+    }));
+    setSongData(updatedSongData);
+  }
+};
   
 
   return (
@@ -375,6 +391,7 @@ export default function Create() {
           structure={formData.structure || []}
           setStructure={setStructure}
           onRegeneratePart={handleRegeneratePart}
+          onLyricsChange={handleLyricsChange} 
           isGenerating={isGenerating}
         />
         <div className="flex-container">

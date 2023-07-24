@@ -38,7 +38,7 @@ type FormData = {
     genre?: string;
     mood?: string;
     description?: string;
-    structure?: SongPart[];
+    structure: SongPart[];
 };
 
 
@@ -56,7 +56,12 @@ export default function EditPage(props: Props) {
         structure: [],
     });
 
-    const [formDataRegenerate, setFormDataRegenerate] = useState<FormData>({});
+    const [formDataRegenerate, setFormDataRegenerate] = useState<FormData>({
+      genre: "",
+      mood: "",
+      description: "",
+      structure: [],
+    });
 
     const [isGenerating, setIsGenerating] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
@@ -341,6 +346,20 @@ export default function EditPage(props: Props) {
                 setIsGenerating(false);
             });
     };
+    const handleLyricsChange = (updatedPart: SongPart, index: number) => {
+      const updatedStructure = formData.structure.map((part, i) =>
+        i === index ? updatedPart : part
+      );
+      setFormData({ ...formData, structure: updatedStructure });
+      if (songData) {
+        const updatedSongData = { ...songData };
+        updatedSongData.songList = updatedStructure.map((part) => ({
+          lyricTitle: part.name,
+          lyric: part.lyrics,
+        }));
+        setSongData(updatedSongData);
+      }
+    };
 
 
     return (
@@ -396,6 +415,7 @@ export default function EditPage(props: Props) {
                     structure={formData.structure || []}
                     setStructure={setStructure}
                     onRegeneratePart={handleRegeneratePart}
+                    onLyricsChange={handleLyricsChange} 
                     isGenerating={isGenerating}
                 />
                 <div className="flex-container">
