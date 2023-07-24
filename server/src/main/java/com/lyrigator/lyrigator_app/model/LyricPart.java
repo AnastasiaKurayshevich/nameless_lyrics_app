@@ -1,5 +1,6 @@
 package com.lyrigator.lyrigator_app.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -11,11 +12,12 @@ public class LyricPart {
     private int id;
 
     private String lyricTitle;
-
+    @Column(length = 1000)
     private String lyric;
 
     @ManyToOne
     @JoinColumn(name = "song_id")
+    @JsonIgnore
     private Song song;
 
     public LyricPart(String lyricTitle, String lyric) {
@@ -44,5 +46,13 @@ public class LyricPart {
 
     public void setLyric(String lyric) {
         this.lyric = lyric;
+    }
+
+    public Song getSong() {
+        return song;
+    }
+
+    public void setSong(Song song) {
+        this.song = song;
     }
 }

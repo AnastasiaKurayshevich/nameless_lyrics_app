@@ -53,8 +53,6 @@ public class OpenAiClient {
             ObjectMapper mapper = new ObjectMapper();
             JsonNode responseJson = mapper.readTree(response);
             String text = responseJson.get("choices").get(0).get("text").asText();
-
-            System.out.println(text);
             return text;
 
         } catch (WebClientResponseException e) {
@@ -64,9 +62,6 @@ public class OpenAiClient {
         } catch (Exception e) {
             System.err.println("Unexpected error: " + e.getMessage());
         }
-
         return null;
     }
-
-
 }

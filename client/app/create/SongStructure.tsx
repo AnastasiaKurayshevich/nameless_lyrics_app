@@ -1,3 +1,4 @@
+import { DragDropContext, Droppable, Draggable, DropResult } from 'react-beautiful-dnd';
 import React from 'react';
 
 type SongPart = {
@@ -9,18 +10,29 @@ type SongStructureProps = {
   isVisible: boolean;
   structure: SongPart[];
   setStructure: (parts: SongPart[]) => void;
+  isGenerating: boolean; 
+  onLyricsChange: (updatedPart: SongPart, index: number) => void;
+  onRegeneratePart: (part: SongPart) => void; 
 }
 
-export default function SongStructure({ isVisible, structure, setStructure } : SongStructureProps) {
+export default function SongStructure({ 
+  isVisible, 
+  structure, 
+  setStructure,
+  isGenerating,
+  onLyricsChange,
+  onRegeneratePart,
+} : SongStructureProps) {
+  
   const handleClick = (partName: string) => {
     setStructure([...structure, { name: partName, lyrics: "" }]);
   };
 
-  const handleLyricsChange = (event: React.ChangeEvent<HTMLTextAreaElement>, index: number) => {
-    let updatedParts = [...structure];
-    updatedParts[index].lyrics = event.target.value;
-    setStructure(updatedParts);
-  };
+  // const handleLyricsChange = (event: React.ChangeEvent<HTMLTextAreaElement>, index: number) => {
+  //   let updatedParts = [...structure];
+  //   updatedParts[index].lyrics = event.target.value;
+  //   setStructure(updatedParts);
+  // };
 
   const handleDelete = (index: number) => {
     let updatedParts = [...structure];
@@ -28,29 +40,86 @@ export default function SongStructure({ isVisible, structure, setStructure } : S
     setStructure(updatedParts);
   };
 
+  const handleLyricsChange = (event: React.ChangeEvent<HTMLTextAreaElement>, index: number) => {
+    const updatedPart = { ...structure[index], lyrics: event.target.value };
+    onLyricsChange(updatedPart, index); 
+    let updatedParts = [...structure];
+    updatedParts[index].lyrics = event.target.value;
+    setStructure(updatedParts);
+  
+    
+  }
+  const handleDragEnd = (result: DropResult) => {
+    if (!result.destination) {
+      return;
+    }
+
+    const items = Array.from(structure);
+    const [reorderedItem] = items.splice(result.source.index, 1);
+    items.splice(result.destination.index, 0, reorderedItem);
+
+    console.log(items);
+    setStructure(items);
+  };
+
   return (
-    <div>
+    <DragDropContext onDragEnd={handleDragEnd}>
       {isVisible && (
-        <>
-          <button type="button" onClick={() => handleClick('Intro')}>Intro</button>
-          <button type="button" onClick={() => handleClick('Verse')}>Verse</button>
-          <button type="button" onClick={() => handleClick('Chorus')}>Chorus</button>
-          <button type="button" onClick={() => handleClick('Pre-Chorus')}>Pre-Chorus</button>
-          <button type="button" onClick={() => handleClick('Bridge')}>Bridge</button>
-        </>
-      )}
-      {structure.map((part, index) => (
-        <div key={index}>
-          <h3>{part.name}</h3>
-          <textarea
-            value={part.lyrics}
-            onChange={(event) => handleLyricsChange(event, index)}
-          />
-          <button type="button" onClick={() => handleDelete(index)}>
-            Delete
-          </button>
+        <div className='add-song-part'>
+          <button className='btn btn-outline btn-success btn-sm' type="button" onClick={() => handleClick('Intro')}>Intro</button>
+          <button className='btn btn-outline btn-success btn-sm' type="button" onClick={() => handleClick('Verse')}>Verse</button>
+          <button className='btn btn-outline btn-success btn-sm' type="button" onClick={() => handleClick('Chorus')}>Chorus</button>
+          <button className='btn btn-outline btn-success btn-sm' type="button" onClick={() => handleClick('Pre-Chorus')}>Pre-Chorus</button>
+          <button className='btn btn-outline btn-success btn-sm' type="button" onClick={() => handleClick('Bridge')}>Bridge</button>
+          <button className='btn btn-outline btn-success btn-sm' type="button" onClick={() => handleClick('Outro')}>Outro</button>
         </div>
-      ))}
-    </div>
+      )}
+      <Droppable droppableId="droppable">
+        {(provided) => (
+          <div ref={provided.innerRef} {...provided.droppableProps}>
+            {structure.map((part: SongPart, index: number) => (
+              <Draggable key={index.toString()} draggableId={index.toString()} index={index}>
+                {(provided) => (
+                  <div 
+                  className="songpart-card card w-auto bg-primary shadow-xl"
+                  ref={provided.innerRef} 
+                    {...provided.draggableProps} 
+                    {...provided.dragHandleProps} 
+                    key={index}
+                  >
+                    <div>
+                      <h2 className="card-title">{part.name}</h2>
+                      <textarea
+                        className="textarea textarea-success"
+                        cols={60}
+                        rows={5}
+                        value={part.lyrics}
+                        onChange={(event) => handleLyricsChange(event, index)}
+                      />
+                      <button 
+                        className='btn btn-circle btn-outline btn-xs' 
+                        type="button" 
+                        onClick={() => handleDelete(index)}
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                      </button>
+                      <button
+                        className="btn btn-outline btn-error btn-xs"
+                        type="button"
+                        onClick={() => onRegeneratePart(part)} 
+                        disabled={isGenerating}
+                      >
+                        {isGenerating ? "Regenerating..." : "Regenerate"}
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </Draggable>
+            ))}
+            {provided.placeholder}
+          </div>
+        )}
+      </Droppable>
+    </DragDropContext>
   );
 }
