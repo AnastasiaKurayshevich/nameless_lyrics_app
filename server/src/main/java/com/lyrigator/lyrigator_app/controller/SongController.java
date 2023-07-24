@@ -53,10 +53,11 @@ public class SongController {
     }
 
     private static List<LyricPart> parseSong(String songString) {
+        String processedSongString = songString.replace("---STOP---", "").replaceAll("(?m)\\s*\\r?\\n", "");
         List<LyricPart> song = new ArrayList<>();
         Pattern pattern = Pattern.compile("\\*(.*?)\\*\\s*([\\s\\S]*?)(?=\\*|$)");
 
-        Matcher matcher = pattern.matcher(songString);
+        Matcher matcher = pattern.matcher(processedSongString);
         while (matcher.find()) {
             String lyricTitle = matcher.group(1).trim();
             String lyric = matcher.group(2).trim();
