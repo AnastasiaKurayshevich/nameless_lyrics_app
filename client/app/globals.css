@@ -67,3 +67,8 @@ body {
   margin-bottom: 15px;
   white-space: pre-line;
 }
+
+.songpart-card {
+  margin: 20px;
+  padding: 20px;
+}

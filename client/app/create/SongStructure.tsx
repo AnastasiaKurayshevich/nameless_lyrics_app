@@ -1,3 +1,4 @@
+import { DragDropContext, Droppable, Draggable, DropResult } from 'react-beautiful-dnd';
 import React from 'react';
 
 type SongPart = {
@@ -17,13 +18,12 @@ type SongStructureProps = {
 export default function SongStructure({ 
   isVisible, 
   structure, 
-  setStructure, 
+  setStructure,
   isGenerating,
   onLyricsChange,
   onRegeneratePart,
-  
 } : SongStructureProps) {
-
+  
   const handleClick = (partName: string) => {
     setStructure([...structure, { name: partName, lyrics: "" }]);
   };
@@ -48,44 +48,78 @@ export default function SongStructure({
     setStructure(updatedParts);
   
     
+  }
+  const handleDragEnd = (result: DropResult) => {
+    if (!result.destination) {
+      return;
+    }
+
+    const items = Array.from(structure);
+    const [reorderedItem] = items.splice(result.source.index, 1);
+    items.splice(result.destination.index, 0, reorderedItem);
+
+    console.log(items);
+    setStructure(items);
   };
 
   return (
-    <div>
+    <DragDropContext onDragEnd={handleDragEnd}>
       {isVisible && (
         <div className='add-song-part'>
           <button className='btn btn-outline btn-success btn-sm' type="button" onClick={() => handleClick('Intro')}>Intro</button>
-          <button className='btn btn-outline btn-success btn-sm'  type="button" onClick={() => handleClick('Verse')}>Verse</button>
-          <button className='btn btn-outline btn-success btn-sm'  type="button" onClick={() => handleClick('Chorus')}>Chorus</button>
-          <button className='btn btn-outline btn-success btn-sm'  type="button" onClick={() => handleClick('Pre-Chorus')}>Pre-Chorus</button>
-          <button className='btn btn-outline btn-success btn-sm'  type="button" onClick={() => handleClick('Bridge')}>Bridge</button>
-          <button className='btn btn-outline btn-success btn-sm'  type="button" onClick={() => handleClick('Outro')}>Outro</button>
+          <button className='btn btn-outline btn-success btn-sm' type="button" onClick={() => handleClick('Verse')}>Verse</button>
+          <button className='btn btn-outline btn-success btn-sm' type="button" onClick={() => handleClick('Chorus')}>Chorus</button>
+          <button className='btn btn-outline btn-success btn-sm' type="button" onClick={() => handleClick('Pre-Chorus')}>Pre-Chorus</button>
+          <button className='btn btn-outline btn-success btn-sm' type="button" onClick={() => handleClick('Bridge')}>Bridge</button>
+          <button className='btn btn-outline btn-success btn-sm' type="button" onClick={() => handleClick('Outro')}>Outro</button>
         </div>
       )}
-      {structure.map((part, index) => (
-        <div key={index}>
-          <h3>{part.name}</h3>
-          <textarea
-            className="textarea textarea-success"
-            cols={40}
-            rows={8}
-            value={part.lyrics}
-            onChange={(event) => handleLyricsChange(event, index)}
-          />
-          <button className='btn btn-circle btn-outline btn-xs' type="button" onClick={() => handleDelete(index)}>
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
-
-          </button>
-          <button
-            className="btn btn-outline btn-error btn-xs"
-            type="button"
-            onClick={() => onRegeneratePart(part)} 
-            disabled={isGenerating}
-          >
-            {isGenerating ? "Regenerating..." : "Regenerate"}
-          </button>
-        </div>
-      ))}
-    </div>
+      <Droppable droppableId="droppable">
+        {(provided) => (
+          <div ref={provided.innerRef} {...provided.droppableProps}>
+            {structure.map((part: SongPart, index: number) => (
+              <Draggable key={index.toString()} draggableId={index.toString()} index={index}>
+                {(provided) => (
+                  <div 
+                  className="songpart-card card w-auto bg-primary shadow-xl"
+                  ref={provided.innerRef} 
+                    {...provided.draggableProps} 
+                    {...provided.dragHandleProps} 
+                    key={index}
+                  >
+                    <div>
+                      <h2 className="card-title">{part.name}</h2>
+                      <textarea
+                        className="textarea textarea-success"
+                        cols={60}
+                        rows={5}
+                        value={part.lyrics}
+                        onChange={(event) => handleLyricsChange(event, index)}
+                      />
+                      <button 
+                        className='btn btn-circle btn-outline btn-xs' 
+                        type="button" 
+                        onClick={() => handleDelete(index)}
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                      </button>
+                      <button
+                        className="btn btn-outline btn-error btn-xs"
+                        type="button"
+                        onClick={() => onRegeneratePart(part)} 
+                        disabled={isGenerating}
+                      >
+                        {isGenerating ? "Regenerating..." : "Regenerate"}
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </Draggable>
+            ))}
+            {provided.placeholder}
+          </div>
+        )}
+      </Droppable>
+    </DragDropContext>
   );
 }
