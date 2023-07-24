@@ -43,6 +43,11 @@ export default function SongStructure({
   const handleLyricsChange = (event: React.ChangeEvent<HTMLTextAreaElement>, index: number) => {
     const updatedPart = { ...structure[index], lyrics: event.target.value };
     onLyricsChange(updatedPart, index); 
+    let updatedParts = [...structure];
+    updatedParts[index].lyrics = event.target.value;
+    setStructure(updatedParts);
+  
+    
   };
 
   return (

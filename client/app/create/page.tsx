@@ -23,8 +23,6 @@ type APISongPart = {
 };
 
 type APISong = {
-  // id: number;
-  // songName: string | null;
   songList: APISongPart[];
 };
 
@@ -62,6 +60,7 @@ export default function Create() {
   const [songData, setSongData] = useState<APISong | null>(null);
   const [isSaveModalVisible, setIsSaveModalVisible] = useState(false);
   const [songName, setSongName] = useState("");
+  const [isGeneratingPart, setIsGeneratingPart] = useState(false);
 
 
   const handleGenreChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -147,7 +146,7 @@ export default function Create() {
 
   const regeneratePrompt = (data: RegenerateData): string => {
     const { genre, mood, description, songPart } = data;
-    const { name, lyrics } = songPart;
+    const { name } = songPart;
   
     const prompt = `You are a song writer.
     \n We need you to create *${name.toUpperCase()}*  
@@ -291,7 +290,7 @@ export default function Create() {
   }
 
   const handleRegeneratePart = (part: SongPart) => {
-    setIsGenerating(true);
+    setIsGeneratingPart(true);
 
     const data: RegenerateData = {
       genre: formDataRegenerate.genre || "",
@@ -299,15 +298,21 @@ export default function Create() {
       description: formDataRegenerate.description || "", 
       songPart: part,
     };
+
+    const dataToRegenerate = regeneratePrompt(data);
+    
   
     fetch("http://localhost:8080/api/regenerate-part", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: regeneratePrompt(data),
+      body: dataToRegenerate,
     })
-      .then((response) => response.json())
+      .then((response) => {
+        console.log(response);
+        return response.json()
+      })
       .then((data: APISongPart) => {
         setIsGenerating(false);
         const updatedStructure = formData.structure!.map((item) =>
@@ -317,7 +322,7 @@ export default function Create() {
       })
       .catch((error) => {
         console.log(error);
-        setIsGenerating(false);
+        setIsGeneratingPart(false);
       });
   };
 
