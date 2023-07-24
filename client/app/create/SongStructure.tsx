@@ -76,18 +76,18 @@ export default function SongStructure({
               <Draggable key={index.toString()} draggableId={index.toString()} index={index}>
                 {(provided) => (
                   <div 
-                    className="card w-auto bg-base-100 shadow-xl" 
-                    ref={provided.innerRef} 
+                  className="songpart-card card w-auto bg-primary shadow-xl"
+                  ref={provided.innerRef} 
                     {...provided.draggableProps} 
                     {...provided.dragHandleProps} 
                     key={index}
                   >
-                    <div className="card-body items-center text-center">
+                    <div>
                       <h2 className="card-title">{part.name}</h2>
                       <textarea
                         className="textarea textarea-success"
-                        cols={40}
-                        rows={8}
+                        cols={60}
+                        rows={5}
                         value={part.lyrics}
                         onChange={(event) => handleLyricsChange(event, index)}
                       />
