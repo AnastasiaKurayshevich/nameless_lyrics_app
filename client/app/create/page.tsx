@@ -261,18 +261,18 @@ export default function Create() {
   const handleModalSave = () => {
     setIsSaveModalVisible(false);
 
-    const songToSave: SongToSave = { 
+    const songPartsToSave = formData.structure.map(part => ({
+      lyricTitle: part.name,
+      lyric: part.lyrics,
+    }));
 
+    const songToSave: SongToSave = { 
       songName: songName || "Untitled",
       genre: formData.genre, 
       mood: formData.mood,
       description: formData.description,
-      songList: songData?.songList
+      songList: songPartsToSave
     };
-
-    console.log("___name: " + songToSave.songName);
-    console.log("___description: " + songToSave.description);
-    console.log("___description2: " + formData.description)
 
     fetch("http://localhost:8080/api/save-song", {
       method: "POST",
@@ -286,8 +286,8 @@ export default function Create() {
       .catch((error) => {
         console.log(error);
       });
-    
   }
+
 
   const handleRegeneratePart = (part: SongPart) => {
     setIsGeneratingPart(true);
