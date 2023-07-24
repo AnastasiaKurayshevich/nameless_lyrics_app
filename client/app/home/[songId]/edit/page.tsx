@@ -181,10 +181,6 @@ export default function EditPage(props: Props) {
         return prompt;
     };
 
-
-
-
-
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         setFormDataRegenerate(formData);
         event.preventDefault();
@@ -268,33 +264,18 @@ export default function EditPage(props: Props) {
 
     const handleModalSave = () => {
         setIsSaveModalVisible(false);
-
+    
         const songToSave: SongToSave = {
             songName: songName || "Untitled",
             genre: formData.genre,
             mood: formData.mood,
             description: formData.description,
-            songList: songData?.songList
+            songList: formData.structure?.map(part => ({
+                lyricTitle: part.name,
+                lyric: part.lyrics
+            }))
         };
-
-        console.log("___name: " + songToSave.songName);
-        console.log("___description: " + songToSave.description);
-        console.log("___description2: " + formData.description)
-
-        // fetch(`http://localhost:8080/api/songs/${props.params.songId}`, {
-        //     method: "PUT",
-        //     headers: {
-        //         "Content-Type": "application/json",
-        //     },
-        //     body: JSON.stringify(songToSave),
-        // })
-        //     .then((response) => response.json())
-        //     .then((data) => console.log(data))
-        //     .catch((error) => {
-        //         console.log(error);
-        //     });
-
-
+    
         fetch(`http://localhost:8080/api/songs/${props.params.songId}`, {
             method: "PUT",
             headers: {
@@ -312,8 +293,57 @@ export default function EditPage(props: Props) {
             .catch((error) => {
                 console.log(error);
             });
-
+    
     }
+
+    // const handleModalSave = () => {
+    //     setIsSaveModalVisible(false);
+
+    //     const songToSave: SongToSave = {
+    //         songName: songName || "Untitled",
+    //         genre: formData.genre,
+    //         mood: formData.mood,
+    //         description: formData.description,
+    //         songList: songData?.songList
+    //     };
+
+    //     console.log("___name: " + songToSave.songName);
+    //     console.log("___description: " + songToSave.description);
+    //     console.log("___description2: " + formData.description)
+
+    //     // fetch(`http://localhost:8080/api/songs/${props.params.songId}`, {
+    //     //     method: "PUT",
+    //     //     headers: {
+    //     //         "Content-Type": "application/json",
+    //     //     },
+    //     //     body: JSON.stringify(songToSave),
+    //     // })
+    //     //     .then((response) => response.json())
+    //     //     .then((data) => console.log(data))
+    //     //     .catch((error) => {
+    //     //         console.log(error);
+    //     //     });
+
+
+    //     fetch(`http://localhost:8080/api/songs/${props.params.songId}`, {
+    //         method: "PUT",
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //         },
+    //         body: JSON.stringify(songToSave),
+    //     })
+    //         .then((response) => {
+    //             if (!response.ok) {
+    //                 throw new Error(`HTTP error! status: ${response.status}`);
+    //             }
+    //             return response.json();
+    //         })
+    //         .then((data) => console.log(data))
+    //         .catch((error) => {
+    //             console.log(error);
+    //         });
+
+    // }
 
 
     const handleRegeneratePart = (part: SongPart) => {
