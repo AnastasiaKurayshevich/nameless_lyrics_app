@@ -47,6 +47,7 @@ export default function SongStructure({
           <button className='btn btn-outline btn-success btn-sm'  type="button" onClick={() => handleClick('Chorus')}>Chorus</button>
           <button className='btn btn-outline btn-success btn-sm'  type="button" onClick={() => handleClick('Pre-Chorus')}>Pre-Chorus</button>
           <button className='btn btn-outline btn-success btn-sm'  type="button" onClick={() => handleClick('Bridge')}>Bridge</button>
+          <button className='btn btn-outline btn-success btn-sm'  type="button" onClick={() => handleClick('Outro')}>Outro</button>
         </div>
       )}
       {structure.map((part, index) => (

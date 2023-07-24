@@ -1,5 +1,5 @@
 "use client";
-import { type } from "os";
+
 import React, { useEffect, useState } from "react";
 import SongStructure from "./SongStructure";
 import Link from "next/link";
