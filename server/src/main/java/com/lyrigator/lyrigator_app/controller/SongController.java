@@ -8,11 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 @RestController
 @RequestMapping("/api")
@@ -37,12 +33,10 @@ public class SongController {
     @PostMapping("/new-song")
     public ResponseEntity<Song> createSong(@RequestBody String prompt) {
         String response = ai.makePostRequest(prompt);
-        List<LyricPart> lyricParts = parseSong(response);
-        System.out.println(prompt);
+        List<LyricPart> lyricParts = SongService.parseSong(response);
 
         Song song = new Song();
         song.setSongList(lyricParts);
-        System.out.println(lyricParts);
         return ResponseEntity.ok().body(song);
     }
 
@@ -50,20 +44,6 @@ public class SongController {
     public ResponseEntity<Song> getSongById(@PathVariable("id") Integer id) {
         Song song = songService.getSongById(id);
         return ResponseEntity.ok().body(song);
-    }
-
-    private static List<LyricPart> parseSong(String songString) {
-        String processedSongString = songString.replace("---STOP---", "").replaceAll("(?m)\\s*\\r?\\n", "");
-        List<LyricPart> song = new ArrayList<>();
-        Pattern pattern = Pattern.compile("\\*(.*?)\\*\\s*([\\s\\S]*?)(?=\\*|$)");
-
-        Matcher matcher = pattern.matcher(processedSongString);
-        while (matcher.find()) {
-            String lyricTitle = matcher.group(1).trim();
-            String lyric = matcher.group(2).trim();
-            song.add(new LyricPart(lyricTitle, lyric));
-        }
-        return song;
     }
 
     @PostMapping("/save-song")
@@ -81,69 +61,16 @@ public class SongController {
 
     @PostMapping("/regenerate-part")
     public ResponseEntity<LyricPart> createSongPart(@RequestBody String prompt) {
-        System.out.println("Prompt: " + prompt);
         String response = ai.makePostRequest(prompt);
-        System.out.println("Response: " + response);
-        LyricPart regeneratedPart = parseSingleSongPart(response);
-        System.out.println("Regenerated part: " + regeneratedPart);
+        LyricPart regeneratedPart = SongService.parseSingleSongPart(response);
 
-        return  ResponseEntity.ok().body(regeneratedPart);
-    }
-
-
-    private static LyricPart parseSingleSongPart(String songPart) {
-        String cleanSongPart = songPart.replace("---STOP---", "").trim();
-
-        String[] lines = cleanSongPart.split("\n");
-
-        if (lines.length > 0) {
-            String firstLine = lines[0].trim();
-            String[] possibleTitles = {"INTRO", "VERSE", "CHORUS", "PRE-CHORUS", "BRIDGE"};
-
-            String lyricTitle = "";
-            for (String title : possibleTitles) {
-                if (firstLine.toUpperCase().contains(title)) {
-                    lyricTitle = title;
-                    break;
-                }
-            }
-
-            String lyric;
-            if (!lyricTitle.isEmpty()) {
-                lyric = String.join("\n", Arrays.copyOfRange(lines, 1, lines.length)).trim();
-            } else {
-                lyric = String.join("\n", lines).trim();
-                lyricTitle = "UNKNOWN"; // Add a default title if no title was found.
-            }
-
-            return new LyricPart(lyricTitle, lyric);
-        } else {
-            return null;
-        }
-    }
-
-
-
-    @PostMapping
-    public ResponseEntity<String> postLyricToDb(@RequestBody Song song) {
-        System.out.println(song.getSongName());
-        String response = ai.makePostRequest(song.getSongName());
-        System.out.println(response);
-        Song aiResponse = new Song();
-        aiResponse.setSongName(response);
-        return ResponseEntity.ok().body(response);
-    }
-
-    @GetMapping
-    public ResponseEntity<String> getLyric() {
-        String newLyric = "whatever inside";
-        return ResponseEntity.ok().body(newLyric);
+        return ResponseEntity.ok().body(regeneratedPart);
     }
 
     @PutMapping("/songs/{id}")
     public ResponseEntity<Song> editSong(@PathVariable Integer id, @RequestBody Song song) {
         Song songEdit = songService.editSong(id, song);
-        if (songEdit == null){
+        if (songEdit == null) {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(songEdit);
@@ -152,7 +79,7 @@ public class SongController {
     @DeleteMapping("/songs/{id}")
     public ResponseEntity<Integer> deleteSongById(@PathVariable Integer id) {
         Song songToDelete = songService.getSongById(id);
-        if (songToDelete == null){
+        if (songToDelete == null) {
             return ResponseEntity.notFound().build();
         }
         songService.deleteById(id);

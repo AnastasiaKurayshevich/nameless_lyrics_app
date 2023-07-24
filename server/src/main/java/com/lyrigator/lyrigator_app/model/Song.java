@@ -1,16 +1,14 @@
 package com.lyrigator.lyrigator_app.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
-import java.util.UUID;
 
 @Entity
 public class Song {
 
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "song_id")
     private int id;
 
