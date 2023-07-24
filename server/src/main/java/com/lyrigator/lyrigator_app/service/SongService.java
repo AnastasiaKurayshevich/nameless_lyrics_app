@@ -74,7 +74,21 @@ public class SongService {
 
     public static LyricPart parseSingleSongPart(String songPart) {
         String cleanSongPart = songPart.replace("---STOP---", "").trim();
+
         String[] lines = cleanSongPart.split("\n");
+
+        ArrayList<String> nonEmptyLines = new ArrayList<>();
+
+        for (String line : lines) {
+            if (!line.trim().isEmpty()) {
+                nonEmptyLines.add(line.trim());
+            }
+        }
+
+        cleanSongPart = String.join("\n", nonEmptyLines);
+
+        lines = cleanSongPart.split("\n");
+
         if (lines.length > 0) {
             String firstLine = lines[0].trim();
             String[] possibleTitles = {"INTRO", "VERSE", "CHORUS", "PRE-CHORUS", "BRIDGE"};
