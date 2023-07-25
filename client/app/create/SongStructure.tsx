@@ -1,7 +1,9 @@
 import { DragDropContext, Droppable, Draggable, DropResult } from 'react-beautiful-dnd';
-import React from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faRedo } from '@fortawesome/free-solid-svg-icons';
+import { faRedo, faSpinner } from '@fortawesome/free-solid-svg-icons';
+
+
 
 type SongPart = {
   name: string;
@@ -26,8 +28,15 @@ export default function SongStructure({
   onRegeneratePart,
 }: SongStructureProps) {
 
+  const [currentlyGeneratingIndex, setCurrentlyGeneratingIndex] = useState<number | null>(null);
+
+
   const handleClick = (partName: string) => {
-    setStructure([...structure, { name: partName, lyrics: "" }]);
+    const newCard = { name: partName, lyrics: "" };
+    setStructure([...structure, newCard]);
+
+    // Store the index of the clicked button in currentlyGeneratingIndex
+    setCurrentlyGeneratingIndex(structure.length);
   };
 
   const handleDelete = (index: number) => {
@@ -36,15 +45,16 @@ export default function SongStructure({
     setStructure(updatedParts);
   };
 
+
   const handleLyricsChange = (event: React.ChangeEvent<HTMLTextAreaElement>, index: number) => {
     const updatedPart = { ...structure[index], lyrics: event.target.value };
     onLyricsChange(updatedPart, index);
     let updatedParts = [...structure];
     updatedParts[index].lyrics = event.target.value;
     setStructure(updatedParts);
+    setCurrentlyGeneratingIndex(null);
+  };
 
-
-  }
   const handleDragEnd = (result: DropResult) => {
     if (!result.destination) {
       return;
@@ -57,6 +67,14 @@ export default function SongStructure({
     console.log(items);
     setStructure(items);
   };
+
+
+
+  const handleRegeneratePart = (part: SongPart, index: number) => {
+    onRegeneratePart(part);
+    setCurrentlyGeneratingIndex(index);
+  };
+
 
   return (
     <DragDropContext onDragEnd={handleDragEnd}>
@@ -109,17 +127,19 @@ export default function SongStructure({
                     >
                     </button>
                     <div className="bottom-nav">
-                      <i className='fas fa-redo' ></i>
+                      <i className="fas fa-redo"></i>
                       <button
-
                         className="btn-regenerate"
                         type="button"
-                        onClick={() => onRegeneratePart(part)}
+                        onClick={() => handleRegeneratePart(part, index)}
                         disabled={isGenerating}
                       >
-                        <FontAwesomeIcon icon={faRedo} className="fa_custom" />
-
-                        {isGenerating ? "Regenerating..." : ""}
+                        {/* Conditionally render the FontAwesomeIcon or the loading spinner */}
+                        {index === currentlyGeneratingIndex && isGenerating ? (
+                          <span className="loading loading-ring loading-sm"></span>
+                        ) : (
+                          <FontAwesomeIcon icon={faRedo} className="fa_custom" />
+                        )}
                       </button>
                     </div>
                   </div>
