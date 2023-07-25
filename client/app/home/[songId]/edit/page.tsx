@@ -88,6 +88,7 @@ export default function EditPage(props: Props) {
                             lyrics: songPart.lyric,
                         })),
                     });
+                    setSongName(data.songName);
                 } else {
                     throw new Error("songList is undefined in the returned data");
                 }
@@ -350,7 +351,7 @@ export default function EditPage(props: Props) {
 
     return (
         <div className="create-flex-container">
-            <h2 className="text-3xl font-bold underline">Create</h2>
+            <h2 className="text-3xl font-bold underline">{songName}</h2>
             <form onSubmit={handleSubmit}>
                 <label>
                     <select
