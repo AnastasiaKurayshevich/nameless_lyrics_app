@@ -1,14 +1,17 @@
-import { DragDropContext, Droppable, Draggable, DropResult } from 'react-beautiful-dnd';
-import React, { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faRedo, faSpinner } from '@fortawesome/free-solid-svg-icons';
-
-
+import {
+  DragDropContext,
+  Droppable,
+  Draggable,
+  DropResult,
+} from "react-beautiful-dnd";
+import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRedo, faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 type SongPart = {
   name: string;
   lyrics: string;
-}
+};
 
 type SongStructureProps = {
   isVisible: boolean;
@@ -17,7 +20,7 @@ type SongStructureProps = {
   isGenerating: boolean;
   onLyricsChange: (updatedPart: SongPart, index: number) => void;
   onRegeneratePart: (part: SongPart) => void;
-}
+};
 
 export default function SongStructure({
   isVisible,
@@ -27,15 +30,13 @@ export default function SongStructure({
   onLyricsChange,
   onRegeneratePart,
 }: SongStructureProps) {
-
-  const [currentlyGeneratingIndex, setCurrentlyGeneratingIndex] = useState<number | null>(null);
-
+  const [currentlyGeneratingIndex, setCurrentlyGeneratingIndex] = useState<
+    number | null
+  >(null);
 
   const handleClick = (partName: string) => {
     const newCard = { name: partName, lyrics: "" };
     setStructure([...structure, newCard]);
-
-    // Store the index of the clicked button in currentlyGeneratingIndex
     setCurrentlyGeneratingIndex(structure.length);
   };
 
@@ -45,8 +46,10 @@ export default function SongStructure({
     setStructure(updatedParts);
   };
 
-
-  const handleLyricsChange = (event: React.ChangeEvent<HTMLTextAreaElement>, index: number) => {
+  const handleLyricsChange = (
+    event: React.ChangeEvent<HTMLTextAreaElement>,
+    index: number
+  ) => {
     const updatedPart = { ...structure[index], lyrics: event.target.value };
     onLyricsChange(updatedPart, index);
     let updatedParts = [...structure];
@@ -68,50 +71,99 @@ export default function SongStructure({
     setStructure(items);
   };
 
-
-
   const handleRegeneratePart = (part: SongPart, index: number) => {
     onRegeneratePart(part);
     setCurrentlyGeneratingIndex(index);
   };
 
-
   return (
     <DragDropContext onDragEnd={handleDragEnd}>
       {isVisible && (
-        <div className='add-song-part'>
-          <button className='customise-options btn btn-outline btn-success btn-sm' type="button" onClick={() => handleClick('Intro')}>Intro</button>
-          <button className='customise-options btn btn-outline btn-success btn-sm' type="button" onClick={() => handleClick('Verse')}>Verse</button>
-          <button className='customise-options btn btn-outline btn-success btn-sm' type="button" onClick={() => handleClick('Chorus')}>Chorus</button>
-          <button className='customise-options btn btn-outline btn-success btn-sm' type="button" onClick={() => handleClick('Pre-Chorus')}>Pre-Chorus</button>
-          <button className='customise-options btn btn-outline btn-success btn-sm' type="button" onClick={() => handleClick('Bridge')}>Bridge</button>
-          <button className='customise-options btn btn-outline btn-success btn-sm' type="button" onClick={() => handleClick('Outro')}>Outro</button>
+        <div className="add-song-part">
+          <button
+            className="customise-options btn btn-outline btn-success btn-sm"
+            type="button"
+            onClick={() => handleClick("Intro")}
+          >
+            Intro
+          </button>
+          <button
+            className="customise-options btn btn-outline btn-success btn-sm"
+            type="button"
+            onClick={() => handleClick("Verse")}
+          >
+            Verse
+          </button>
+          <button
+            className="customise-options btn btn-outline btn-success btn-sm"
+            type="button"
+            onClick={() => handleClick("Chorus")}
+          >
+            Chorus
+          </button>
+          <button
+            className="customise-options btn btn-outline btn-success btn-sm"
+            type="button"
+            onClick={() => handleClick("Pre-Chorus")}
+          >
+            Pre-Chorus
+          </button>
+          <button
+            className="customise-options btn btn-outline btn-success btn-sm"
+            type="button"
+            onClick={() => handleClick("Bridge")}
+          >
+            Bridge
+          </button>
+          <button
+            className="customise-options btn btn-outline btn-success btn-sm"
+            type="button"
+            onClick={() => handleClick("Outro")}
+          >
+            Outro
+          </button>
         </div>
       )}
       <Droppable droppableId="droppable">
         {(provided) => (
           <div ref={provided.innerRef} {...provided.droppableProps}>
             {structure.map((part: SongPart, index: number) => (
-              <Draggable key={index.toString()} draggableId={index.toString()} index={index}>
+              <Draggable
+                key={index.toString()}
+                draggableId={index.toString()}
+                index={index}
+              >
                 {(provided) => (
-
                   <div
-                    className='card card-draggable green'
+                    className="card card-draggable green"
                     key={index}
                     ref={provided.innerRef}
                     {...provided.draggableProps}
                   >
-                    <div className='nav' {...provided.dragHandleProps}>
+                    <div className="nav" {...provided.dragHandleProps}>
                       <h2 className="">{part.name}</h2>
                       <button
-                        className='material-icons-round'
+                        className="material-icons-round"
                         type="button"
                         onClick={() => handleDelete(index)}
                       >
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-6 w-6"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M6 18L18 6M6 6l12 12"
+                          />
+                        </svg>
                       </button>
                     </div>
-                    <div className='text'>
+                    <div className="text">
                       <textarea
                         className="textarea-auto"
                         cols={60}
@@ -121,11 +173,10 @@ export default function SongStructure({
                       />
                     </div>
                     <button
-                      className='material-icons-round'
+                      className="material-icons-round"
                       type="button"
                       onClick={() => handleDelete(index)}
-                    >
-                    </button>
+                    ></button>
                     <div className="bottom-nav">
                       <i className="fas fa-redo"></i>
                       <button
@@ -138,7 +189,10 @@ export default function SongStructure({
                         {index === currentlyGeneratingIndex && isGenerating ? (
                           <span className="loading loading-ring loading-sm"></span>
                         ) : (
-                          <FontAwesomeIcon icon={faRedo} className="fa_custom" />
+                          <FontAwesomeIcon
+                            icon={faRedo}
+                            className="fa_custom"
+                          />
                         )}
                       </button>
                     </div>
