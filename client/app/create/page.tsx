@@ -4,6 +4,65 @@ import React, { useEffect, useState } from "react";
 import SongStructure from "./SongStructure";
 import Link from "next/link";
 
+import Autocomplete from '@mui/material/Autocomplete';
+import TextField from '@mui/material/TextField';
+
+const genres = [
+  'Blues',
+  'Country',
+  'Electronic',
+  'Hip hop',
+  'Jazz',
+  'Metal',
+  'Pop',
+  'Punk',
+  'R&B',
+  'Rock',
+  'Classical',
+  'Funk',
+  'Reggae',
+  'Soul',
+  'Gospel',
+  'Folk',
+  'Alternative',
+  'Disco',
+  'Techno',
+  'Salsa',
+  'Ska',
+  'Fusion',
+  'Indie',
+  'Funk',
+  'Grunge',
+  'Samba',
+];
+
+const moods = [
+  'Angry',
+  'Anxious',
+  'Blissful',
+  'Calm',
+  'Cheerful',
+  'Depressed',
+  'Energetic',
+  'Grateful',
+  'Hopeful',
+  'Inspirational',
+  'Joyful',
+  'Melancholic',
+  'Optimistic',
+  'Peaceful',
+  'Reflective',
+  'Romantic',
+  'Silly',
+  'Thoughtful',
+  'Upbeat',
+  'Whimsical',
+];
+
+interface AutocompleteEvent extends React.KeyboardEvent<HTMLDivElement> {
+  key: string;
+}
+
 type SongPart = {
   name: string;
   lyrics: string;
@@ -346,38 +405,58 @@ const handleLyricsChange = (updatedPart: SongPart, index: number) => {
   return (
     <div className="create-flex-container">
       <h2 className="text-3xl font-bold underline">Create</h2>
-
-
-
-
-
-
       <form onSubmit={handleSubmit}>
-        <label>
-          <select
-            className="select select-accent w-full max-w-xs"
-            value={formData.genre}
-            onChange={handleGenreChange}
-          >
-            <option value="">Genre</option>
-            <option value="Pop">Pop</option>
-            <option value="Rock">Rock</option>
-            <option value="Blues">Blues</option>
-          </select>
-        </label>
-        <br />
-        <label>
-          <select
-            className="select select-accent w-full max-w-xs"
-            value={formData.mood}
-            onChange={handleMoodChange}
-          >
-            <option value="">Mood</option>
-            <option value="Happy">Happy</option>
-            <option value="Sad">Sad</option>
-            <option value="Angsty">Angsty</option>
-          </select>
-        </label>
+      <Autocomplete
+  options={genres}
+  value={formData.genre}
+  onChange={(event, newValue) => {
+    setFormData({ ...formData, genre: newValue || "" });
+  }}
+  renderInput={(params) => (
+    <TextField
+      {...params}
+      label="Genre"
+      onKeyDown={(event) => {
+        if (event.key === "Enter") {
+          event.preventDefault(); // Prevent form submission on Enter press
+          event.stopPropagation(); // Stop event from bubbling up
+          const enterEvent = event as any; // Cast to any to avoid TypeScript error
+          if (params.inputProps.onKeyDown) {
+            params.inputProps.onKeyDown(enterEvent);
+          }
+        }
+      }}
+    />
+  )}
+/>
+<br />
+<label>
+  <Autocomplete
+    options={moods}
+    value={formData.mood}
+    onChange={(event, newValue) => {
+      setFormData({ ...formData, mood: newValue || "" });
+    }}
+    renderInput={(params) => (
+      <TextField
+        {...params}
+        label="Mood"
+        onKeyDown={(event) => {
+          if (event.key === "Enter") {
+            event.preventDefault();
+            event.stopPropagation();
+            const enterEvent = event as any; // Cast to any to avoid TypeScript error
+            if (params.inputProps.onKeyDown) {
+              params.inputProps.onKeyDown(enterEvent);
+            }
+          }
+        }}
+      />
+    )}
+  />
+</label>
+
+
         <br />
         <label>
           <textarea
