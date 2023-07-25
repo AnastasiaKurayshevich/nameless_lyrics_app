@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import SongStructure from "./SongStructure";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 type SongPart = {
   name: string;
@@ -282,10 +283,17 @@ export default function Create() {
       body: JSON.stringify(songToSave),
     })
       .then((response) => response.json())
-      .then((data) => console.log(data))
+      .then((data) => 
+      {
+        console.log(data)
+        const songId = data.id;
+        console.log("this is song ID: " + songId);
+        window.location.href = `/home/${songId}`;
+      })
       .catch((error) => {
         console.log(error);
       });
+      
   }
 
 
@@ -346,12 +354,6 @@ const handleLyricsChange = (updatedPart: SongPart, index: number) => {
   return (
     <div className="create-flex-container">
       <h2 className="text-3xl font-bold underline">Create</h2>
-
-
-
-
-
-
       <form onSubmit={handleSubmit}>
         <label>
           <select
