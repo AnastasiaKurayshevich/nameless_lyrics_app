@@ -381,7 +381,7 @@ const handleLyricsChange = (updatedPart: SongPart, index: number) => {
         <br />
         <label>
           <textarea
-            className="textarea textarea-primary textarea-bordered textarea-md w-full max-w-xs"
+            className="textareaa"
             placeholder="Description"
             cols={50}
             rows={5}
