@@ -395,7 +395,7 @@ const handleLyricsChange = (updatedPart: SongPart, index: number) => {
           type="button"
           onClick={() => setIsVisible(!isVisible)}
         >
-          Customise
+          Customise song structure
         </button>
         <SongStructure
           isVisible={isVisible}
@@ -416,7 +416,7 @@ const handleLyricsChange = (updatedPart: SongPart, index: number) => {
             </button>
           </>
         ) : (
-          <button className="btn btn-outline btn-success btn-sm" type="submit" disabled={isGenerating}>
+          <button className="generate-btn btn btn-outline btn-success btn-sm" type="submit" disabled={isGenerating}>
             {isGenerating ? "Generating..." : "Generate"}
           </button>
         )}
