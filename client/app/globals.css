@@ -40,17 +40,9 @@ body {
   gap: 20px;
 }
 
-.btn-regenerate {
-  margin: 0px;
-  padding: 5px;
-  padding-left: 18px;
-  padding-right: 18px;
-  border-radius: 10px;
-}
 
-.btn-regenerate:hover {
-  background-color: rgb(209, 101, 0);
-}
+
+
 
 .customise-btn {
   margin: 10px 0px 20px 0px;
@@ -147,19 +139,8 @@ body {
 
 /* ------------- CARD CSS ----------------- */
 
-.fa_custom {
-  color: #FF8400;
-  padding-right: 1px;
-}
 
-.fa_custom:hover {
-  color: #3d3d3d;
-  padding-right: 1px;
-}
 
-.btn-regenerate:hover .fa_custom {
-  color: #3d3d3d;
-}
 
 .orange {
   background-color: #de8540 !important;
@@ -333,11 +314,35 @@ div {
 
 .loading {
   margin: -3px;
-  /* padding: -5px; */
+  color: #de8540;
 }
 
-.loading-ring {
-  background-color: #FF8400;
+.btn-regenerate {
+  margin: 0px;
+  padding: 5px;
+  padding-left: 18px;
+  padding-right: 18px;
+  border-radius: 10px;
+  transition: background-color 0.1s ease-in;
+}
 
-  
+.btn-regenerate:hover {
+
+  background-image: linear-gradient(to right, rgb(209, 101, 0), rgb(255, 150, 50));
+
+
+}
+
+.btn-regenerate[disabled]:hover {
+  background-color: initial;
+}
+
+.btn-regenerate:hover .fa_custom {
+  color: #3d3d3d;
+}
+
+.fa_custom {
+  color: #FF8400;
+  padding-right: 1px;
+  transition: color 0.1s ease-in;
 }
