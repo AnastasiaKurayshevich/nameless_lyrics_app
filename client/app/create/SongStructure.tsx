@@ -28,24 +28,6 @@ export default function SongStructure({
     setStructure([...structure, { name: partName, lyrics: "" }]);
   };
 
-  // const handleLyricsChange = (event: React.ChangeEvent<HTMLTextAreaElement>, index: number) => {
-  //   let updatedParts = [...structure];
-  //   updatedParts[index].lyrics = event.target.value;
-  //   setStructure(updatedParts);
-  // };
-
-
-
-
-
-
-
-
-
-
-
-
-
   const handleDelete = (index: number) => {
     let updatedParts = [...structure];
     updatedParts.splice(index, 1);
@@ -124,7 +106,6 @@ export default function SongStructure({
                       onClick={() => handleDelete(index)}
                     >
                     </button>
-
                     <div className="bottom-nav">
                       <button
                         className="btn btn-outline btn-error btn-xs"
@@ -134,53 +115,8 @@ export default function SongStructure({
                       >
                         {isGenerating ? "Regenerating..." : "Regenerate"}
                       </button>
-
                     </div>
                   </div>
-
-
-
-                  // ----------- OLD CARD DESIGN ----------
-                  // <div 
-                  // // className="songpart-card card w-auto bg-primary shadow-xl"
-                  // className='card card-draggable green'
-                  // ref={provided.innerRef} 
-                  //   {...provided.draggableProps} 
-                  //   {...provided.dragHandleProps} 
-                  //   key={index}
-                  // >
-                  //   <div>
-                  //     {/* <h2 className="card-title">{part.name}</h2> */}
-                  //     <h2 className="nav">{part.name}</h2>
-                  //     <div className='text'>
-                  //     <textarea
-                  //       className="textarea-auto"
-                  //       cols={60}
-                  //       rows={5}
-                  //       value={part.lyrics}
-                  //       onChange={(event) => handleLyricsChange(event, index)}
-                  //     />
-                  //     </div>
-                      // <button 
-                      //   // className='btn btn-circle btn-outline btn-xs' 
-                      //   className='material-icons-round' 
-                      //   type="button" 
-                      //   onClick={() => handleDelete(index)}
-                      // >
-                      //   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
-                      // </button>
-                  // <button
-                  //   className="btn btn-outline btn-error btn-xs"
-                  //   type="button"
-                  //   onClick={() => onRegeneratePart(part)} 
-                  //   disabled={isGenerating}
-                  // >
-                  //   {isGenerating ? "Regenerating..." : "Regenerate"}
-                  // </button>
-                  //   </div>
-                  // </div>
-
-
                 )}
               </Draggable>
             ))}
