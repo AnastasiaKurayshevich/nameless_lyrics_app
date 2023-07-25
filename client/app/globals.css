@@ -40,6 +40,22 @@ body {
   gap: 20px;
 }
 
+.btn-regenerate {
+
+  padding: 5px;
+  padding-left: 18px;
+  padding-right: 18px;
+  border-radius: 10px;
+}
+
+.btn-regenerate:hover {
+  background-color: rgb(209, 101, 0);
+}
+
+.customise-btn {
+  margin: 10px 0px 20px 0px;
+
+}
 
 .add-song-part {
   display: flex;
@@ -125,6 +141,20 @@ body {
 
 
 /* ------------- CARD CSS ----------------- */
+
+.fa_custom {
+  color: #FF8400;
+  padding-right: 1px;
+}
+
+.fa_custom:hover {
+  color: #3d3d3d;
+  padding-right: 1px;
+}
+
+.btn-regenerate:hover .fa_custom {
+  color: #3d3d3d;
+}
 
 .orange {
   background-color: #de8540 !important;
