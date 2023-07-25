@@ -310,7 +310,6 @@ const handleLyricsChange = (updatedPart: SongPart, index: number) => {
 };
   return (
     <div className="create-flex-container">
-      <h2 className="text-3xl font-bold underline">Create</h2>
       <form className="form-generate" onSubmit={handleSubmit}>
       <label>
   <select
@@ -405,13 +404,13 @@ const handleLyricsChange = (updatedPart: SongPart, index: number) => {
           onLyricsChange={handleLyricsChange} 
           isGenerating={isGeneratingPart}
         />
-        <div className="flex-container">
+        <div className="regenerate-buttons-buttom flex-container">
         {songData ? (
           <>
-            <button className="btn btn-outline btn-error btn-sm" type="button" onClick={handleRegenerate} disabled={isGenerating}>
+            <button className="buttons-buttom btn btn-outline btn-error btn-sm" type="button" onClick={handleRegenerate} disabled={isGenerating}>
               {isGenerating ? "Regenerating..." : "Regenerate all"}
             </button>
-            <button className="btn btn-active btn-neutral btn-sm" type="button" onClick={handleSave} disabled={isGenerating}>
+            <button className="buttons-buttom btn btn-active btn-neutral btn-sm" type="button" onClick={handleSave} disabled={isGenerating}>
               Save
             </button>
           </>
@@ -437,11 +436,13 @@ const handleLyricsChange = (updatedPart: SongPart, index: number) => {
           </div>
         </div>
       )}
+      <div className="navbar-fixed-bottom">
       <Link href="../home">
-          <button className="btn btn-outline btn-success btn-sm">
+          <button className="home-btn btn btn-outline btn-success btn-sm">
             Home
           </button>
         </Link>
+      </div>
     </div>
   );
 }

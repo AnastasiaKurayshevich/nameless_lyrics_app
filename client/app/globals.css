@@ -91,7 +91,7 @@ body {
 }
 /*Ana's changes */
 .form-generate {
-  max-width: 400px;
+  max-width: 390px;
   
 }
 /*Ana's changes */
@@ -106,11 +106,22 @@ body {
 }
 
 .customise-options {
- width: 30%;
+ width: 29%;
 }
 
 .generate-btn {
   width: 100%;
+  margin-bottom: 30px;
+}
+
+.regenerate-buttons-buttom {
+  max-width: 100%;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.buttons-buttom {
+  width: 47%;
 }
 
 
@@ -211,8 +222,9 @@ div {
   background-color: #407fde;
   width: 100%;
   height: 300px;
-  border-radius: 5px;
+  border-radius: 10px;
   box-shadow: 0px 0px 8px -3px rgba(0, 0, 0, 0.75), 0px 17px 22px -16px rgba(0, 0, 0, 0.75);
+  margin-bottom: 15px;
 
 
   resize: both;
@@ -284,6 +296,17 @@ div {
   padding: 0.5rem;
   color: #d0d0d0;
 }
+
+.nav {
+  justify-content: space-between;
+}
+
+.nav__song-part {
+  margin: auto;
+  padding-left: 20px;
+}
+
+
 .card .title, .card .text {
   display: flex;
   justify-content: center;
@@ -332,3 +355,20 @@ div {
   width: 100%;
 }
 
+@media (max-width: 750px) {
+.navbar-fixed-bottom {
+  margin-top: 20px;
+  bottom: 0;
+  position: fixed;
+  background-color: #252525;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.home-btn {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #3d3d3d;
+}
+}

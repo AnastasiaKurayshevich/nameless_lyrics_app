@@ -1,9 +1,7 @@
 import { DragDropContext, Droppable, Draggable, DropResult } from 'react-beautiful-dnd';
-import React, { useState } from 'react';
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faRedo, faSpinner } from '@fortawesome/free-solid-svg-icons';
-
-
+import { faRedo } from '@fortawesome/free-solid-svg-icons';
 
 type SongPart = {
   name: string;
@@ -28,15 +26,8 @@ export default function SongStructure({
   onRegeneratePart,
 }: SongStructureProps) {
 
-  const [currentlyGeneratingIndex, setCurrentlyGeneratingIndex] = useState<number | null>(null);
-
-
   const handleClick = (partName: string) => {
-    const newCard = { name: partName, lyrics: "" };
-    setStructure([...structure, newCard]);
-
-    // Store the index of the clicked button in currentlyGeneratingIndex
-    setCurrentlyGeneratingIndex(structure.length);
+    setStructure([...structure, { name: partName, lyrics: "" }]);
   };
 
   const handleDelete = (index: number) => {
@@ -45,16 +36,15 @@ export default function SongStructure({
     setStructure(updatedParts);
   };
 
-
   const handleLyricsChange = (event: React.ChangeEvent<HTMLTextAreaElement>, index: number) => {
     const updatedPart = { ...structure[index], lyrics: event.target.value };
     onLyricsChange(updatedPart, index);
     let updatedParts = [...structure];
     updatedParts[index].lyrics = event.target.value;
     setStructure(updatedParts);
-    setCurrentlyGeneratingIndex(null);
-  };
 
+
+  }
   const handleDragEnd = (result: DropResult) => {
     if (!result.destination) {
       return;
@@ -67,14 +57,6 @@ export default function SongStructure({
     console.log(items);
     setStructure(items);
   };
-
-
-
-  const handleRegeneratePart = (part: SongPart, index: number) => {
-    onRegeneratePart(part);
-    setCurrentlyGeneratingIndex(index);
-  };
-
 
   return (
     <DragDropContext onDragEnd={handleDragEnd}>
@@ -102,9 +84,9 @@ export default function SongStructure({
                     {...provided.draggableProps}
                   >
                     <div className='nav' {...provided.dragHandleProps}>
-                      <h2 className="">{part.name}</h2>
+                      <h2 className="nav__song-part">{part.name}</h2>
                       <button
-                        className='material-icons-round'
+                        className='nav__delete material-icons-round'
                         type="button"
                         onClick={() => handleDelete(index)}
                       >
@@ -114,8 +96,7 @@ export default function SongStructure({
                     <div className='text'>
                       <textarea
                         className="textarea-auto"
-                        cols={60}
-                        rows={5}
+                      
                         value={part.lyrics}
                         onChange={(event) => handleLyricsChange(event, index)}
                       />
@@ -127,19 +108,17 @@ export default function SongStructure({
                     >
                     </button>
                     <div className="bottom-nav">
-                      <i className="fas fa-redo"></i>
+                      <i className='fas fa-redo' ></i>
                       <button
+
                         className="btn-regenerate"
                         type="button"
-                        onClick={() => handleRegeneratePart(part, index)}
+                        onClick={() => onRegeneratePart(part)}
                         disabled={isGenerating}
                       >
-                        {/* Conditionally render the FontAwesomeIcon or the loading spinner */}
-                        {index === currentlyGeneratingIndex && isGenerating ? (
-                          <span className="loading loading-ring loading-sm"></span>
-                        ) : (
-                          <FontAwesomeIcon icon={faRedo} className="fa_custom" />
-                        )}
+                        <FontAwesomeIcon icon={faRedo} className="fa_custom" />
+
+                        {isGenerating ? "Regenerating..." : ""}
                       </button>
                     </div>
                   </div>
