@@ -314,7 +314,7 @@ export default function Create() {
         return response.json()
       })
       .then((data: APISongPart) => {
-        setIsGenerating(false);
+        setIsGeneratingPart(false);
         const updatedStructure = formData.structure!.map((item) =>
           item === part ? { ...item, lyrics: data.lyric } : item
         );
@@ -403,7 +403,7 @@ const handleLyricsChange = (updatedPart: SongPart, index: number) => {
           setStructure={setStructure}
           onRegeneratePart={handleRegeneratePart}
           onLyricsChange={handleLyricsChange} 
-          isGenerating={isGenerating}
+          isGenerating={isGeneratingPart}
         />
         <div className="flex-container">
         {songData ? (
