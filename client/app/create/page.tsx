@@ -311,10 +311,10 @@ const handleLyricsChange = (updatedPart: SongPart, index: number) => {
   return (
     <div className="create-flex-container">
       <h2 className="text-3xl font-bold underline">Create</h2>
-      <form onSubmit={handleSubmit}>
+      <form className="form-generate" onSubmit={handleSubmit}>
       <label>
   <select
-    className="select select-accent w-full max-w-xs"
+    className="select select-accent w-full"
     value={formData.genre}
     onChange={handleGenreChange}
   >
@@ -350,7 +350,7 @@ const handleLyricsChange = (updatedPart: SongPart, index: number) => {
 <br />
 <label>
   <select
-    className="select select-accent w-full max-w-xs"
+    className="select select-accent w-full"
     value={formData.mood}
     onChange={handleMoodChange}
   >

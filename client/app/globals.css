@@ -26,10 +26,12 @@ body {
     rgb(var(--background-start-rgb));
 } */
 
-
+/*Ana's changes */
 .create-flex-container {
-  /* margin: 20px; */
   padding: 30px;
+  display: flex; 
+  flex-direction: column;
+  align-items: center;
 }
 
 .flex-container {
@@ -38,18 +40,16 @@ body {
   gap: 20px;
 }
 
-.customise-btn {
-  margin: 10px 0px 20px 0px;
-
-}
 
 .add-song-part {
   display: flex;
   gap: 20px;
-}
+  flex-wrap: wrap;
 
+}
+/*Ana's changes */
 .select {
-  margin: 20px 0px;
+  margin: 0px 0px 15px;
 }
 
 .home-page {
@@ -72,6 +72,27 @@ body {
   margin: 20px;
   padding: 20px;
 }
+/*Ana's changes */
+.form-generate {
+  max-width: 400px;
+  
+}
+/*Ana's changes */
+.textareaa {
+  width: 100%;
+  border-radius: 8px;
+}
+/*Ana's changes */
+.customise-btn {
+  width: 100%;
+  margin: 10px 0px 20px 0px;
+}
+
+.customise-options {
+ width: 30%;
+}
+
+
 
 
 /* .textareaa {
