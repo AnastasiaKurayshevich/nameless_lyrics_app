@@ -97,16 +97,16 @@ export default function SongStructure({
           <button
             className="customise-options btn btn-outline btn-success btn-sm"
             type="button"
-            onClick={() => handleClick("Chorus")}
+            onClick={() => handleClick("Pre-Chorus")}
           >
-            Chorus
+            Pre-Chorus
           </button>
           <button
             className="customise-options btn btn-outline btn-success btn-sm"
             type="button"
-            onClick={() => handleClick("Pre-Chorus")}
+            onClick={() => handleClick("Chorus")}
           >
-            Pre-Chorus
+            Chorus
           </button>
           <button
             className="customise-options btn btn-outline btn-success btn-sm"
