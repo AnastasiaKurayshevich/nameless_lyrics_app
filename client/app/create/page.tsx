@@ -3,44 +3,8 @@
 import React, { useEffect, useState } from "react";
 import SongStructure from "./SongStructure";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { APISong, APISongPart, FormData, RegenerateData, SongPart, SongToSave } from "../Types";
 
-type SongPart = {
-  name: string;
-  lyrics: string;
-};
-
-type RegenerateData = {
-  genre: string;
-  mood: string;
-  description: string;
-  songPart: SongPart;
-};
-
-
-type APISongPart = {
-  lyricTitle: string;
-  lyric: string;
-};
-
-type APISong = {
-  songList: APISongPart[];
-};
-
-type SongToSave = {
-  songName: string;
-  genre?: string;
-  mood?: string;
-  description?: string;
-  songList: APISongPart[] | undefined;
-};
-
-type FormData = {
-  genre?: string;
-  mood?: string;
-  description?: string;
-  structure: SongPart[];
-};
 
 export default function Create() {
   const [formData, setFormData] = useState<FormData>({
@@ -292,11 +256,8 @@ export default function Create() {
       })
       .catch((error) => {
         console.log(error);
-      });
-      
+      });   
   }
-
-
   const handleRegeneratePart = (part: SongPart) => {
     setIsGeneratingPart(true);
 
@@ -333,8 +294,6 @@ export default function Create() {
         setIsGeneratingPart(false);
       });
   };
-
-
 const handleLyricsChange = (updatedPart: SongPart, index: number) => {
   const updatedStructure = formData.structure.map((part, i) =>
     i === index ? updatedPart : part
@@ -349,17 +308,9 @@ const handleLyricsChange = (updatedPart: SongPart, index: number) => {
     setSongData(updatedSongData);
   }
 };
-  
-
   return (
     <div className="create-flex-container">
       <h2 className="text-3xl font-bold underline">Create</h2>
-
-
-
-
-
-
       <form onSubmit={handleSubmit}>
         <label>
           <select
@@ -445,7 +396,6 @@ const handleLyricsChange = (updatedPart: SongPart, index: number) => {
           </div>
         </div>
       )}
-
       <Link href="../home">
           <button className="btn btn-outline btn-success btn-sm">
             Home
