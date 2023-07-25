@@ -220,7 +220,7 @@ div {
 .bottom-nav {
   position: sticky;
   bottom: 0;
-  /* background-color: rgba(0, 0, 0, 0.2); */
+  background-color: rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: center;
   /* padding: 0.5rem; */
