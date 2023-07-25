@@ -72,3 +72,204 @@ body {
   margin: 20px;
   padding: 20px;
 }
+
+
+/* .textareaa {
+  background-color: #dddddd;
+  color: #666666;
+  padding: 1em;
+  border-radius: 5px;
+  border: 2px solid transparent;
+  outline: none;
+  font-family: "Heebo", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.4;
+  width: 200px;
+  height: 100px;
+  transition: all 0.2s;
+}
+
+.textareaa:hover {
+  cursor: pointer;
+  background-color: #eeeeee;
+}
+
+.textareaa:focus {
+  cursor: text;
+  color: #333333;
+  background-color: white;
+  border-color: #333333;
+} */
+
+
+/* ------------- CARD CSS ----------------- */
+
+.orange {
+  background-color: #de8540 !important;
+}
+
+.blue {
+  background-color: #407fde !important;
+}
+
+.pink {
+  background-color: #d4195e !important;
+}
+
+.green {
+  background-color: #409147 !important;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 18px;
+}
+
+div {
+  position: relative;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.material-icons-round {
+  font-size: 2rem;
+  user-select: none;
+}
+
+.cont {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.card {
+  background-color: #fff;
+  overflow: hidden;
+  color: #fff;
+  background-color: #407fde;
+  width: 450px;
+  height: 300px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 8px -3px rgba(0, 0, 0, 0.75), 0px 17px 22px -16px rgba(0, 0, 0, 0.75);
+  margin: 0.5rem;
+
+
+  resize: both;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.bottom-nav {
+  position: sticky;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+}
+
+.bottom-nav-button {
+  padding: 8px 16px;
+  border: none;
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+}
+
+.card .nav, .card .title {
+  flex: 0 0 auto; /* This means they will not grow or shrink, but will stay at their auto height */
+}
+
+.text {
+  flex: 1 1 auto; /* This means it will grow and shrink as needed, and its basis is auto */
+  display: flex; /* Add this to use flexbox */
+  flex-direction: column; /* Add this to make the textarea and buttons stack vertically */
+}
+
+.textarea-auto {
+  flex: 1; /* Make the textarea take the remaining vertical space */
+  resize: none;
+  width: 100%;
+  background: none;
+  font: inherit;
+  color: inherit;
+  min-height: 120px; /* Set a minimum height for the textarea */
+  overflow-y: auto; /* Add a vertical scrollbar when content overflows */
+  border: none;
+  padding: none;
+}
+
+.card .text {
+  flex: 1 1 auto; /* This means it will grow and shrink as needed, and its basis is auto */
+  padding: 0.3rem 1rem 1rem 1rem;
+}
+
+.resizer {
+  width: 15px;
+  height: 15px;
+  background: white;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  cursor: nw-resize;
+  border: 1px solid #000;
+}
+
+.card .nav {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 0.5rem;
+}
+.card .title, .card .text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card .title > textarea, .card .text > textarea {
+  resize: none;
+  width: 100%;
+  background: none;
+  font: inherit;
+  color: inherit;
+  height: 100%;
+  overflow: hidden;
+  border: none;
+  padding: none;
+}
+.card .title > textarea::placeholder, .card .text > textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+.card .title > textarea:focus, .card .text > textarea:focus {
+  border: none;
+  outline: none;
+}
+.card .title {
+  font-weight: bold;
+  font-size: 1.4rem;
+  padding: 0.5rem 1rem 0.3rem 1rem;
+}
+.card .title > textarea {
+  text-transform: uppercase;
+  height: 1.5em;
+}
+.card .text {
+  padding: 0.3rem 1rem 1rem 1rem;
+}
+.card .text > textarea {
+  min-height: 120px;
+
+  height: 150px; /* Set a fixed height for the textarea */
+  overflow: auto; /* Enable scrolling when the content overflows the fixed height */
+}
+
+.card-draggable {
+  min-height: 200px;
+  max-height: 500px;
+}
