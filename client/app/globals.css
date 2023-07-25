@@ -227,11 +227,10 @@ div {
   background-color: rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: center;
-  /* padding: 0.5rem; */
 }
 
 .bottom-nav-button {
-  padding: 8px 16px;
+
   border: none;
   background-color: transparent;
   color: white;
@@ -239,13 +238,13 @@ div {
 }
 
 .card .nav, .card .title {
-  flex: 0 0 auto; /* This means they will not grow or shrink, but will stay at their auto height */
+  flex: 0 0 auto; 
 }
 
 .text {
-  flex: 1 1 auto; /* This means it will grow and shrink as needed, and its basis is auto */
-  display: flex; /* Add this to use flexbox */
-  flex-direction: column; /* Add this to make the textarea and buttons stack vertically */
+  flex: 1 1 auto; 
+  display: flex; 
+  flex-direction: column; 
 }
 
 .textarea-auto {
@@ -332,3 +331,13 @@ div {
   width: 100%;
 }
 
+.loading {
+  margin: -3px;
+  /* padding: -5px; */
+}
+
+.loading-ring {
+  background-color: #FF8400;
+
+  
+}
