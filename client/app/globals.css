@@ -41,7 +41,7 @@ body {
 }
 
 .btn-regenerate {
-
+  margin: 0px;
   padding: 5px;
   padding-left: 18px;
   padding-right: 18px;
@@ -220,10 +220,10 @@ div {
 .bottom-nav {
   position: sticky;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.2);
+  /* background-color: rgba(0, 0, 0, 0.2); */
   display: flex;
   justify-content: center;
-  padding: 0.5rem;
+  /* padding: 0.5rem; */
 }
 
 .bottom-nav-button {
