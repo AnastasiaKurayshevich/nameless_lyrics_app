@@ -312,31 +312,72 @@ const handleLyricsChange = (updatedPart: SongPart, index: number) => {
     <div className="create-flex-container">
       <h2 className="text-3xl font-bold underline">Create</h2>
       <form onSubmit={handleSubmit}>
-        <label>
-          <select
-            className="select select-accent w-full max-w-xs"
-            value={formData.genre}
-            onChange={handleGenreChange}
-          >
-            <option value="">Genre</option>
-            <option value="Pop">Pop</option>
-            <option value="Rock">Rock</option>
-            <option value="Blues">Blues</option>
-          </select>
-        </label>
-        <br />
-        <label>
-          <select
-            className="select select-accent w-full max-w-xs"
-            value={formData.mood}
-            onChange={handleMoodChange}
-          >
-            <option value="">Mood</option>
-            <option value="Happy">Happy</option>
-            <option value="Sad">Sad</option>
-            <option value="Angsty">Angsty</option>
-          </select>
-        </label>
+      <label>
+  <select
+    className="select select-accent w-full max-w-xs"
+    value={formData.genre}
+    onChange={handleGenreChange}
+  >
+    <option value="">Genre</option>
+    <option value="Alternative">Alternative</option>
+    <option value="Blues">Blues</option>
+    <option value="Classical">Classical</option>
+    <option value="Country">Country</option>
+    <option value="Disco">Disco</option>
+    <option value="Electronic">Electronic</option>
+    <option value="Folk">Folk</option>
+    <option value="Funk">Funk</option>
+    <option value="Fusion">Fusion</option>
+    <option value="Gospel">Gospel</option>
+    <option value="Grindcore">Grindcore</option>
+    <option value="Grunge">Grunge</option>
+    <option value="Hip hop">Hip hop</option>
+    <option value="Indie">Indie</option>
+    <option value="Jazz">Jazz</option>
+    <option value="Metal">Metal</option>
+    <option value="Pop">Pop</option>
+    <option value="Punk">Punk</option>
+    <option value="R&B">R&B</option>
+    <option value="Reggae">Reggae</option>
+    <option value="Rock">Rock</option>
+    <option value="Salsa">Salsa</option>
+    <option value="Samba">Samba</option>
+    <option value="Ska">Ska</option>
+    <option value="Soul">Soul</option>
+    <option value="Techno">Techno</option>
+  </select>
+</label>
+<br />
+<label>
+  <select
+    className="select select-accent w-full max-w-xs"
+    value={formData.mood}
+    onChange={handleMoodChange}
+  >
+    <option value="">Mood</option>
+    <option value="Angry">Angry</option>
+    <option value="Anxious">Anxious</option>
+    <option value="Blissful">Blissful</option>
+    <option value="Calm">Calm</option>
+    <option value="Cheerful">Cheerful</option>
+    <option value="Depressed">Depressed</option>
+    <option value="Energetic">Energetic</option>
+    <option value="Grateful">Grateful</option>
+    <option value="Hopeful">Hopeful</option>
+    <option value="Inspirational">Inspirational</option>
+    <option value="Joyful">Joyful</option>
+    <option value="Melancholic">Melancholic</option>
+    <option value="Optimistic">Optimistic</option>
+    <option value="Peaceful">Peaceful</option>
+    <option value="Reflective">Reflective</option>
+    <option value="Romantic">Romantic</option>
+    <option value="Silly">Silly</option>
+    <option value="Thoughtful">Thoughtful</option>
+    <option value="Upbeat">Upbeat</option>
+    <option value="Whimsical">Whimsical</option>
+  </select>
+</label>
+
         <br />
         <label>
           <textarea
