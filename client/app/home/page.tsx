@@ -30,6 +30,23 @@ export default function Home() {
     song.songName.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  const handleDelete = async (id: number) => {
+    try {
+      const response = await fetch(`http://localhost:8080/api/songs/${id}`, {
+        method: 'DELETE',
+      });
+
+      if (response.ok) {
+        const updatedSongs = songs.filter((song) => song.id !== id);
+        setSongs(updatedSongs);
+      } else {
+        console.error('Failed to delete the song.');
+      }
+    } catch (error) {
+      console.error('An error occurred while trying to delete the song:', error);
+    }
+  };
+
   return (
     <main className="home-page flex min-h-screen flex-col items-center justify-center p-24">
       <h2 className="text-5xl text-center">Your Lyrics</h2>
@@ -44,6 +61,15 @@ export default function Home() {
         {filteredSongs.map((song: Song) => (
           <li key={song.id}>
             <Link href={`/home/${song.id}`}>{song.songName}</Link>
+            <div>
+              <Link href={`/home/${song.id}/edit`}>
+                <button className='btn btn-info btn-sm'>Edit</button>
+              </Link>
+              
+              <button className='btn btn-error btn-sm' onClick={() => handleDelete(song.id)}>
+                Delete
+              </button>
+            </div>
           </li>
         ))}
       </ul>
