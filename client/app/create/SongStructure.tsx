@@ -1,5 +1,7 @@
 import { DragDropContext, Droppable, Draggable, DropResult } from 'react-beautiful-dnd';
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faRedo } from '@fortawesome/free-solid-svg-icons';
 
 type SongPart = {
   name: string;
@@ -74,7 +76,7 @@ export default function SongStructure({
             {structure.map((part: SongPart, index: number) => (
               <Draggable key={index.toString()} draggableId={index.toString()} index={index}>
                 {(provided) => (
-                  
+
                   <div
                     className='card card-draggable green'
                     key={index}
@@ -83,9 +85,9 @@ export default function SongStructure({
                   >
                     <div className='nav' {...provided.dragHandleProps}>
                       <h2 className="">{part.name}</h2>
-                      <button 
-                        className='material-icons-round' 
-                        type="button" 
+                      <button
+                        className='material-icons-round'
+                        type="button"
                         onClick={() => handleDelete(index)}
                       >
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
@@ -107,14 +109,17 @@ export default function SongStructure({
                     >
                     </button>
                     <div className="bottom-nav">
-                    <i className='fas fa-redo' ></i>
+                      <i className='fas fa-redo' ></i>
                       <button
-                        className="btn btn-outline btn-xs"
+
+                        className="btn-regenerate"
                         type="button"
                         onClick={() => onRegeneratePart(part)}
                         disabled={isGenerating}
                       >
-                        {isGenerating ? "Regenerating..." : "Regenerate"}
+                        <FontAwesomeIcon icon={faRedo} className="fa_custom" />
+
+                        {isGenerating ? "Regenerating..." : ""}
                       </button>
                     </div>
                   </div>
