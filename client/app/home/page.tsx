@@ -2,6 +2,8 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import ConfirmationModal from "./[songId]/ConfirmationModal";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 type Song = {
   id: number;
@@ -85,14 +87,16 @@ export default function Home() {
             <Link className="card-body text-center" href={`/home/${song.id}`}>{song.songName}</Link>
             <div className="m-5">
               <Link href={`/home/${song.id}/edit`}>
-                <button className="btn btn-info btn-sm mr-5">Edit</button>
+                <button className="btn btn-info btn-sm mr-5">
+                <FontAwesomeIcon icon={faEdit} />
+                </button>
               </Link>
 
               <button
                 className="btn btn-error btn-sm"
                 onClick={() => handleDelete(song.id)}
               >
-                Delete
+                <FontAwesomeIcon icon={faTrash} />
               </button>
             </div>
           </li>
