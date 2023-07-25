@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import SongStructure from "./SongStructure";
 import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   APISong,
   APISongPart,
@@ -11,6 +12,8 @@ import {
   SongPart,
   SongToSave,
 } from "../Types";
+import { faHome } from "@fortawesome/free-solid-svg-icons";
+
 
 export default function Create() {
   const [formData, setFormData] = useState<FormData>({
@@ -442,7 +445,8 @@ export default function Create() {
       <div className="navbar-fixed-bottom">
       <Link href="../home">
           <button className="home-btn btn btn-outline btn-success btn-sm">
-            Home
+            <FontAwesomeIcon icon={faHome} className="fa fa-home" />
+      
           </button>
         </Link>
       </div>
