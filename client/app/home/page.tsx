@@ -78,13 +78,14 @@ export default function Home() {
         onChange={(e) => setSearchTerm(e.target.value)}
         placeholder="Search"
       />
-      <ul className="menu bg-base-200 w-56 rounded-box">
+      <div className="">
+      <ul className="flex flex-col justify-center ">
         {filteredSongs.map((song: Song) => (
-          <li key={song.id}>
-            <Link href={`/home/${song.id}`}>{song.songName}</Link>
-            <div>
+          <li key={song.id} className="bg-primary mb-5 rounded-lg">
+            <Link className="card-body text-center" href={`/home/${song.id}`}>{song.songName}</Link>
+            <div className="m-5">
               <Link href={`/home/${song.id}/edit`}>
-                <button className="btn btn-info btn-sm">Edit</button>
+                <button className="btn btn-info btn-sm mr-5">Edit</button>
               </Link>
 
               <button
@@ -97,6 +98,7 @@ export default function Home() {
           </li>
         ))}
       </ul>
+      </div>
       {showConfirmation && (
         <ConfirmationModal
           message="Are you Sure!"
