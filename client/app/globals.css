@@ -328,8 +328,7 @@ div {
 
 .btn-regenerate:hover {
 
-  background-image: linear-gradient(to right, rgb(209, 101, 0), rgb(255, 150, 50));
-
+  background-color: rgb(209, 101, 0);
 
 }
 
