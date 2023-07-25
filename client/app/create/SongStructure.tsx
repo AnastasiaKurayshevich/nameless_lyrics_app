@@ -107,8 +107,9 @@ export default function SongStructure({
                     >
                     </button>
                     <div className="bottom-nav">
+                    <i className='fas fa-redo' ></i>
                       <button
-                        className="btn btn-outline btn-error btn-xs"
+                        className="btn btn-outline btn-xs"
                         type="button"
                         onClick={() => onRegeneratePart(part)}
                         disabled={isGenerating}
