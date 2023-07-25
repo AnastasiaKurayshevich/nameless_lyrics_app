@@ -59,7 +59,7 @@ public class SongService {
     }
 
     public static List<LyricPart> parseSong(String songString) {
-        String processedSongString = songString.replace("---STOP---", "").replaceAll("(?m)\\s*\\r?\\n", "");
+        String processedSongString = songString.replace("---STOP---", "");
         List<LyricPart> song = new ArrayList<>();
         Pattern pattern = Pattern.compile("\\*(.*?)\\*\\s*([\\s\\S]*?)(?=\\*|$)");
 
