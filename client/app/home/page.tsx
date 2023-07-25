@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import ConfirmationModal from "./[songId]/ConfirmationModal";
@@ -45,18 +45,21 @@ export default function Home() {
 
     if (songToDelete !== null) {
       try {
-        const response = await fetch(`http://localhost:8080/api/songs/${songToDelete}`, {
-          method: 'DELETE',
-        });
+        const response = await fetch(
+          `http://localhost:8080/api/songs/${songToDelete}`,
+          {
+            method: "DELETE",
+          }
+        );
 
         if (response.ok) {
           const updatedSongs = songs.filter((song) => song.id !== songToDelete);
           setSongs(updatedSongs);
         } else {
-          console.error('Failed to delete the song.');
+          console.error("Failed to delete the song.");
         }
       } catch (error) {
-        console.error('An error occurred trying to delete song:', error);
+        console.error("An error occurred trying to delete song:", error);
       }
     }
   };
@@ -81,10 +84,13 @@ export default function Home() {
             <Link href={`/home/${song.id}`}>{song.songName}</Link>
             <div>
               <Link href={`/home/${song.id}/edit`}>
-                <button className='btn btn-info btn-sm'>Edit</button>
+                <button className="btn btn-info btn-sm">Edit</button>
               </Link>
-              
-              <button className='btn btn-error btn-sm' onClick={() => handleDelete(song.id)}>
+
+              <button
+                className="btn btn-error btn-sm"
+                onClick={() => handleDelete(song.id)}
+              >
                 Delete
               </button>
             </div>
@@ -93,13 +99,15 @@ export default function Home() {
       </ul>
       {showConfirmation && (
         <ConfirmationModal
-        message="Are you Sure!"
-        onConfirm={handleConfirmDelete}
-        onCancel={handleCancelDelete}
+          message="Are you Sure!"
+          onConfirm={handleConfirmDelete}
+          onCancel={handleCancelDelete}
         />
       )}
       <Link href="/create">
-        <button className="add-new-home btn btn-success">Create new song</button>
+        <button className="add-new-home btn btn-success">
+          Create new song
+        </button>
       </Link>
     </main>
   );

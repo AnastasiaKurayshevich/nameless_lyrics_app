@@ -10,10 +10,10 @@ export default function Start() {
           <h2 className="text-5xl font-bold">Welcome to <span className="text-accent-focus">Lyrigator</span></h2>
           <p className="py-6">An AI powered lyric generator.</p>
           <Link href="/home">
-            <button className="btn btn-primary">Your Lyrics</button>
+            <button className="btn btn-secondary mr-10">Your Lyrics</button>
           </Link>
           <Link href="/create">
-            <button className="btn btn-secondary">New lyrics</button>
+            <button className="btn btn-primary">New lyrics</button>
           </Link>
         </div>
       </div>

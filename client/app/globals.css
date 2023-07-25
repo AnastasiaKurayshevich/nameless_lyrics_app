@@ -40,17 +40,9 @@ body {
   gap: 20px;
 }
 
-.btn-regenerate {
-  margin: 0px;
-  padding: 5px;
-  padding-left: 18px;
-  padding-right: 18px;
-  border-radius: 10px;
-}
 
-.btn-regenerate:hover {
-  background-color: rgb(209, 101, 0);
-}
+
+
 
 .customise-btn {
   margin: 10px 0px 20px 0px;
@@ -158,19 +150,8 @@ body {
 
 /* ------------- CARD CSS ----------------- */
 
-.fa_custom {
-  color: #FF8400;
-  padding-right: 1px;
-}
 
-.fa_custom:hover {
-  color: #3d3d3d;
-  padding-right: 1px;
-}
 
-.btn-regenerate:hover .fa_custom {
-  color: #3d3d3d;
-}
 
 .orange {
   background-color: #de8540 !important;
@@ -239,11 +220,10 @@ div {
   background-color: rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: center;
-  /* padding: 0.5rem; */
 }
 
 .bottom-nav-button {
-  padding: 8px 16px;
+
   border: none;
   background-color: transparent;
   color: white;
@@ -251,13 +231,13 @@ div {
 }
 
 .card .nav, .card .title {
-  flex: 0 0 auto; /* This means they will not grow or shrink, but will stay at their auto height */
+  flex: 0 0 auto; 
 }
 
 .text {
-  flex: 1 1 auto; /* This means it will grow and shrink as needed, and its basis is auto */
-  display: flex; /* Add this to use flexbox */
-  flex-direction: column; /* Add this to make the textarea and buttons stack vertically */
+  flex: 1 1 auto; 
+  display: flex; 
+  flex-direction: column; 
 }
 
 .textarea-auto {
@@ -371,4 +351,37 @@ div {
   margin-bottom: 10px;
   background-color: #3d3d3d;
 }
+}
+.loading {
+  margin: -3px;
+  color: #de8540;
+}
+
+.btn-regenerate {
+  margin: 0px;
+  padding: 5px;
+  padding-left: 18px;
+  padding-right: 18px;
+  border-radius: 10px;
+  transition: background-color 0.1s ease-in;
+}
+
+.btn-regenerate:hover {
+
+  background-color: rgb(209, 101, 0);
+
+}
+
+.btn-regenerate[disabled]:hover {
+  background-color: initial;
+}
+
+.btn-regenerate:hover .fa_custom {
+  color: #3d3d3d;
+}
+
+.fa_custom {
+  color: #FF8400;
+  padding-right: 1px;
+  transition: color 0.1s ease-in;
 }
