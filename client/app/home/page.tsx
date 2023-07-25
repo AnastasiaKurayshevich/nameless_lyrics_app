@@ -1,6 +1,7 @@
 "use client"
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import ConfirmationModal from "./[songId]/ConfirmationModal";
 
 type Song = {
   id: number;
@@ -17,6 +18,9 @@ export default function Home() {
   const [songs, setSongs] = useState<Song[]>([]);
   const [searchTerm, setSearchTerm] = useState<string>("");
 
+  const [showConfirmation, setShowConfirmation] = useState<boolean>(false);
+  const [songToDelete, setSongToDelete] = useState<number | null>(null);
+
   useEffect(() => {
     const getSongs = async () => {
       const response = await fetch(`http://localhost:8080/api/songs`);
@@ -31,20 +35,34 @@ export default function Home() {
   );
 
   const handleDelete = async (id: number) => {
-    try {
-      const response = await fetch(`http://localhost:8080/api/songs/${id}`, {
-        method: 'DELETE',
-      });
+    console.log("handleDelete called");
+    setSongToDelete(id);
+    setShowConfirmation(true);
+  };
 
-      if (response.ok) {
-        const updatedSongs = songs.filter((song) => song.id !== id);
-        setSongs(updatedSongs);
-      } else {
-        console.error('Failed to delete the song.');
+  const handleConfirmDelete = async () => {
+    setShowConfirmation(false);
+
+    if (songToDelete !== null) {
+      try {
+        const response = await fetch(`http://localhost:8080/api/songs/${songToDelete}`, {
+          method: 'DELETE',
+        });
+
+        if (response.ok) {
+          const updatedSongs = songs.filter((song) => song.id !== songToDelete);
+          setSongs(updatedSongs);
+        } else {
+          console.error('Failed to delete the song.');
+        }
+      } catch (error) {
+        console.error('An error occurred trying to delete song:', error);
       }
-    } catch (error) {
-      console.error('An error occurred while trying to delete the song:', error);
     }
+  };
+
+  const handleCancelDelete = () => {
+    setShowConfirmation(false);
   };
 
   return (
@@ -73,7 +91,13 @@ export default function Home() {
           </li>
         ))}
       </ul>
-      
+      {showConfirmation && (
+        <ConfirmationModal
+        message="Are you Sure!"
+        onConfirm={handleConfirmDelete}
+        onCancel={handleCancelDelete}
+        />
+      )}
       <Link href="/create">
         <button className="add-new-home btn btn-success">Create new song</button>
       </Link>
