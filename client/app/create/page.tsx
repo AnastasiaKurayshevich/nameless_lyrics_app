@@ -346,6 +346,12 @@ const handleLyricsChange = (updatedPart: SongPart, index: number) => {
   return (
     <div className="create-flex-container">
       <h2 className="text-3xl font-bold underline">Create</h2>
+
+
+
+
+
+
       <form onSubmit={handleSubmit}>
         <label>
           <select
@@ -375,7 +381,7 @@ const handleLyricsChange = (updatedPart: SongPart, index: number) => {
         <br />
         <label>
           <textarea
-            className="textarea textarea-success"
+            className="textareaa"
             placeholder="Description"
             cols={50}
             rows={5}

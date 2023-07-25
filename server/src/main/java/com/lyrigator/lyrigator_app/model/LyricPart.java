@@ -12,7 +12,7 @@ public class LyricPart {
     private int id;
 
     private String lyricTitle;
-
+    @Column(length = 1000)
     private String lyric;
 
     @ManyToOne

@@ -10,20 +10,20 @@ type SongStructureProps = {
   isVisible: boolean;
   structure: SongPart[];
   setStructure: (parts: SongPart[]) => void;
-  isGenerating: boolean; 
+  isGenerating: boolean;
   onLyricsChange: (updatedPart: SongPart, index: number) => void;
-  onRegeneratePart: (part: SongPart) => void; 
+  onRegeneratePart: (part: SongPart) => void;
 }
 
-export default function SongStructure({ 
-  isVisible, 
-  structure, 
+export default function SongStructure({
+  isVisible,
+  structure,
   setStructure,
   isGenerating,
   onLyricsChange,
   onRegeneratePart,
-} : SongStructureProps) {
-  
+}: SongStructureProps) {
+
   const handleClick = (partName: string) => {
     setStructure([...structure, { name: partName, lyrics: "" }]);
   };
@@ -34,6 +34,18 @@ export default function SongStructure({
   //   setStructure(updatedParts);
   // };
 
+
+
+
+
+
+
+
+
+
+
+
+
   const handleDelete = (index: number) => {
     let updatedParts = [...structure];
     updatedParts.splice(index, 1);
@@ -42,12 +54,12 @@ export default function SongStructure({
 
   const handleLyricsChange = (event: React.ChangeEvent<HTMLTextAreaElement>, index: number) => {
     const updatedPart = { ...structure[index], lyrics: event.target.value };
-    onLyricsChange(updatedPart, index); 
+    onLyricsChange(updatedPart, index);
     let updatedParts = [...structure];
     updatedParts[index].lyrics = event.target.value;
     setStructure(updatedParts);
-  
-    
+
+
   }
   const handleDragEnd = (result: DropResult) => {
     if (!result.destination) {
@@ -80,39 +92,95 @@ export default function SongStructure({
             {structure.map((part: SongPart, index: number) => (
               <Draggable key={index.toString()} draggableId={index.toString()} index={index}>
                 {(provided) => (
-                  <div 
-                  className="songpart-card card w-auto bg-primary shadow-xl"
-                  ref={provided.innerRef} 
-                    {...provided.draggableProps} 
-                    {...provided.dragHandleProps} 
+                  
+                  <div
+                    className='card card-draggable green'
                     key={index}
+                    ref={provided.innerRef}
+                    {...provided.draggableProps}
                   >
-                    <div>
-                      <h2 className="card-title">{part.name}</h2>
-                      <textarea
-                        className="textarea textarea-success"
-                        cols={60}
-                        rows={5}
-                        value={part.lyrics}
-                        onChange={(event) => handleLyricsChange(event, index)}
-                      />
+                    <div className='nav' {...provided.dragHandleProps}>
+                      <h2 className="">{part.name}</h2>
                       <button 
-                        className='btn btn-circle btn-outline btn-xs' 
+                        className='material-icons-round' 
                         type="button" 
                         onClick={() => handleDelete(index)}
                       >
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
                       </button>
+                    </div>
+                    <div className='text'>
+                      <textarea
+                        className="textarea-auto"
+                        cols={60}
+                        rows={5}
+                        value={part.lyrics}
+                        onChange={(event) => handleLyricsChange(event, index)}
+                      />
+                    </div>
+                    <button
+                      className='material-icons-round'
+                      type="button"
+                      onClick={() => handleDelete(index)}
+                    >
+                    </button>
+
+                    <div className="bottom-nav">
                       <button
                         className="btn btn-outline btn-error btn-xs"
                         type="button"
-                        onClick={() => onRegeneratePart(part)} 
+                        onClick={() => onRegeneratePart(part)}
                         disabled={isGenerating}
                       >
                         {isGenerating ? "Regenerating..." : "Regenerate"}
                       </button>
+
                     </div>
                   </div>
+
+
+
+                  // ----------- OLD CARD DESIGN ----------
+                  // <div 
+                  // // className="songpart-card card w-auto bg-primary shadow-xl"
+                  // className='card card-draggable green'
+                  // ref={provided.innerRef} 
+                  //   {...provided.draggableProps} 
+                  //   {...provided.dragHandleProps} 
+                  //   key={index}
+                  // >
+                  //   <div>
+                  //     {/* <h2 className="card-title">{part.name}</h2> */}
+                  //     <h2 className="nav">{part.name}</h2>
+                  //     <div className='text'>
+                  //     <textarea
+                  //       className="textarea-auto"
+                  //       cols={60}
+                  //       rows={5}
+                  //       value={part.lyrics}
+                  //       onChange={(event) => handleLyricsChange(event, index)}
+                  //     />
+                  //     </div>
+                      // <button 
+                      //   // className='btn btn-circle btn-outline btn-xs' 
+                      //   className='material-icons-round' 
+                      //   type="button" 
+                      //   onClick={() => handleDelete(index)}
+                      // >
+                      //   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                      // </button>
+                  // <button
+                  //   className="btn btn-outline btn-error btn-xs"
+                  //   type="button"
+                  //   onClick={() => onRegeneratePart(part)} 
+                  //   disabled={isGenerating}
+                  // >
+                  //   {isGenerating ? "Regenerating..." : "Regenerate"}
+                  // </button>
+                  //   </div>
+                  // </div>
+
+
                 )}
               </Draggable>
             ))}
