@@ -1,38 +1,44 @@
-import { DragDropContext, Droppable, Draggable, DropResult } from 'react-beautiful-dnd';
-import React from 'react';
+import {
+  DragDropContext,
+  Droppable,
+  Draggable,
+  DropResult,
+} from "react-beautiful-dnd";
+import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRedo, faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 type SongPart = {
   name: string;
   lyrics: string;
-}
+};
 
 type SongStructureProps = {
   isVisible: boolean;
   structure: SongPart[];
   setStructure: (parts: SongPart[]) => void;
-  isGenerating: boolean; 
+  isGenerating: boolean;
   onLyricsChange: (updatedPart: SongPart, index: number) => void;
-  onRegeneratePart: (part: SongPart) => void; 
-}
+  onRegeneratePart: (part: SongPart) => void;
+};
 
-export default function SongStructure({ 
-  isVisible, 
-  structure, 
+export default function SongStructure({
+  isVisible,
+  structure,
   setStructure,
   isGenerating,
   onLyricsChange,
   onRegeneratePart,
-} : SongStructureProps) {
-  
-  const handleClick = (partName: string) => {
-    setStructure([...structure, { name: partName, lyrics: "" }]);
-  };
+}: SongStructureProps) {
+  const [currentlyGeneratingIndex, setCurrentlyGeneratingIndex] = useState<
+    number | null
+  >(null);
 
-  // const handleLyricsChange = (event: React.ChangeEvent<HTMLTextAreaElement>, index: number) => {
-  //   let updatedParts = [...structure];
-  //   updatedParts[index].lyrics = event.target.value;
-  //   setStructure(updatedParts);
-  // };
+  const handleClick = (partName: string) => {
+    const newCard = { name: partName, lyrics: "" };
+    setStructure([...structure, newCard]);
+    setCurrentlyGeneratingIndex(structure.length);
+  };
 
   const handleDelete = (index: number) => {
     let updatedParts = [...structure];
@@ -40,14 +46,17 @@ export default function SongStructure({
     setStructure(updatedParts);
   };
 
-  const handleLyricsChange = (event: React.ChangeEvent<HTMLTextAreaElement>, index: number) => {
+  const handleLyricsChange = (
+    event: React.ChangeEvent<HTMLTextAreaElement>,
+    index: number
+  ) => {
     const updatedPart = { ...structure[index], lyrics: event.target.value };
-    onLyricsChange(updatedPart, index); 
+    onLyricsChange(updatedPart, index);
     let updatedParts = [...structure];
     updatedParts[index].lyrics = event.target.value;
     setStructure(updatedParts);
-  
-    
+
+
   }
   const handleDragEnd = (result: DropResult) => {
     if (!result.destination) {
@@ -62,54 +71,124 @@ export default function SongStructure({
     setStructure(items);
   };
 
+  const handleRegeneratePart = (part: SongPart, index: number) => {
+    onRegeneratePart(part);
+    setCurrentlyGeneratingIndex(index);
+  };
+
   return (
     <DragDropContext onDragEnd={handleDragEnd}>
       {isVisible && (
-        <div className='add-song-part'>
-          <button className='btn btn-outline btn-success btn-sm' type="button" onClick={() => handleClick('Intro')}>Intro</button>
-          <button className='btn btn-outline btn-success btn-sm' type="button" onClick={() => handleClick('Verse')}>Verse</button>
-          <button className='btn btn-outline btn-success btn-sm' type="button" onClick={() => handleClick('Chorus')}>Chorus</button>
-          <button className='btn btn-outline btn-success btn-sm' type="button" onClick={() => handleClick('Pre-Chorus')}>Pre-Chorus</button>
-          <button className='btn btn-outline btn-success btn-sm' type="button" onClick={() => handleClick('Bridge')}>Bridge</button>
-          <button className='btn btn-outline btn-success btn-sm' type="button" onClick={() => handleClick('Outro')}>Outro</button>
+        <div className="add-song-part">
+          <button
+            className="customise-options btn btn-outline btn-accent btn-sm"
+            type="button"
+            onClick={() => handleClick("INTRO")}
+          >
+            Intro
+          </button>
+          <button
+            className="customise-options btn btn-outline btn-accent btn-sm"
+            type="button"
+            onClick={() => handleClick("VERSE")}
+          >
+            Verse
+          </button>
+          <button
+            className="customise-options btn btn-outline btn-accent btn-sm"
+            type="button"
+            onClick={() => handleClick("PRE-CHORUS")}
+          >
+            Pre-Chorus
+          </button>
+          <button
+            className="customise-options btn btn-outline btn-accent btn-sm"
+            type="button"
+            onClick={() => handleClick("CHORUS")}
+          >
+            Chorus
+          </button>
+          <button
+            className="customise-options btn btn-outline btn-accent btn-sm"
+            type="button"
+            onClick={() => handleClick("BRIDGE")}
+          >
+            Bridge
+          </button>
+          <button
+            className="customise-options btn btn-outline btn-accent btn-sm"
+            type="button"
+            onClick={() => handleClick("OUTRO")}
+          >
+            Outro
+          </button>
         </div>
       )}
       <Droppable droppableId="droppable">
         {(provided) => (
           <div ref={provided.innerRef} {...provided.droppableProps}>
             {structure.map((part: SongPart, index: number) => (
-              <Draggable key={index.toString()} draggableId={index.toString()} index={index}>
+              <Draggable
+                key={index.toString()}
+                draggableId={index.toString()}
+                index={index}
+              >
                 {(provided) => (
-                  <div 
-                  className="songpart-card card w-auto bg-primary shadow-xl"
-                  ref={provided.innerRef} 
-                    {...provided.draggableProps} 
-                    {...provided.dragHandleProps} 
+                  <div
+                    className="card card-draggable green"
                     key={index}
+                    ref={provided.innerRef}
+                    {...provided.draggableProps}
                   >
-                    <div>
-                      <h2 className="card-title">{part.name}</h2>
+                    <div className='nav' {...provided.dragHandleProps}>
+                      <h2 className="nav__song-part">{part.name}</h2>
+                      <button
+                        className='nav__delete material-icons-round'
+                        type="button"
+                        onClick={() => handleDelete(index)}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-6 w-6"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M6 18L18 6M6 6l12 12"
+                          />
+                        </svg>
+                      </button>
+                    </div>
+                    <div className="text">
                       <textarea
-                        className="textarea textarea-success"
-                        cols={60}
-                        rows={5}
+                        className="textarea-auto"
+
                         value={part.lyrics}
                         onChange={(event) => handleLyricsChange(event, index)}
                       />
-                      <button 
-                        className='btn btn-circle btn-outline btn-xs' 
-                        type="button" 
-                        onClick={() => handleDelete(index)}
-                      >
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
-                      </button>
+                    </div>
+                    <button
+                      className="material-icons-round"
+                      type="button"
+                      onClick={() => handleDelete(index)}
+                    ></button>
+                    <div className="bottom-nav">
+                      <i className='fas fa-redo' ></i>
                       <button
-                        className="btn btn-outline btn-error btn-xs"
+                        className="btn-regenerate"
                         type="button"
-                        onClick={() => onRegeneratePart(part)} 
+                        onClick={() => handleRegeneratePart(part, index)}
                         disabled={isGenerating}
                       >
-                        {isGenerating ? "Regenerating..." : "Regenerate"}
+                        {index === currentlyGeneratingIndex && isGenerating ? (
+                          <span className="loading loading-ring loading-sm"></span>
+                        ) : (
+                          <FontAwesomeIcon icon={faRedo} className="fa_custom" />
+                        )}
                       </button>
                     </div>
                   </div>

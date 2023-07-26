@@ -26,10 +26,12 @@ body {
     rgb(var(--background-start-rgb));
 } */
 
-
+/*Ana's changes */
 .create-flex-container {
-  margin: 20px;
   padding: 30px;
+  display: flex; 
+  flex-direction: column;
+  align-items: center;
 }
 
 .flex-container {
@@ -46,10 +48,15 @@ body {
 .add-song-part {
   display: flex;
   gap: 20px;
-}
+  flex-wrap: wrap;
+  margin-bottom: 20px;
 
+}
+/*Ana's changes */
 .select {
-  margin: 20px 0px;
+  margin: 0px 0px 15px;
+  min-height: 2rem !important;
+  height: 2rem !important;
 }
 
 .home-page {
@@ -57,18 +64,476 @@ body {
 }
 
  .add-new-home {
-  margin-top: 200px;
+  margin: 10px;
+}
+
+.song-name {
+  font-size: 31px;
+  font-weight: 600;
 }
 
 .song-title-done {
   font-weight: bold;
 }
 .song-lyric-done {
-  margin-bottom: 15px;
+  margin-bottom: 25px;
   white-space: pre-line;
 }
 
 .songpart-card {
   margin: 20px;
   padding: 20px;
+}
+/*Ana's changes */
+.form-generate {
+  max-width: 390px;
+  
+}
+/*Ana's changes */
+.textareaa {
+  width: 100%;
+  border-radius: 8px;
+  background-color: #3d3d3d;
+  color: #d0d0d0;
+  padding: 10px 15px;
+  
+}
+/*Ana's changes */
+.customise-btn {
+  width: 100%;
+  margin: 10px 0px 20px 0px;
+}
+
+.customise-options {
+ width: 29%;
+}
+
+.generate-btn {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.regenerate-buttons-buttom {
+  max-width: 100%;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.buttons-buttom {
+  width: 47%;
+}
+
+.modal-container {
+  height: 200px;
+  width: 300px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  background-color: #252525;
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  
+  
+}
+
+.modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9998;
+  
+}
+
+.modal-input {
+  width: 100%; 
+  margin: 25px 5px 30px;
+  background-color: #3d3d3d;
+  color: #d0d0d0;
+}
+
+.modal-buttons-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.modal-button {
+  width: 40%; 
+ 
+}
+
+.modal-header {
+  text-align: center;
+}
+
+
+
+/* .textareaa {
+  background-color: #dddddd;
+  color: #666666;
+  padding: 1em;
+  border-radius: 5px;
+  border: 2px solid transparent;
+  outline: none;
+  font-family: "Heebo", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.4;
+  width: 200px;
+  height: 100px;
+  transition: all 0.2s;
+}
+
+.textareaa:hover {
+  cursor: pointer;
+  background-color: #eeeeee;
+}
+
+.textareaa:focus {
+  cursor: text;
+  color: #333333;
+  background-color: white;
+  border-color: #333333;
+} */
+
+
+/* ------------- CARD CSS ----------------- */
+
+
+
+
+/* .orange {
+  background-color: #de8540 !important;
+} */
+
+/* .blue {
+  background-color: #407fde !important;
+} */
+
+/* .pink {
+  background-color: #d4195e !important;
+} */
+
+.green {
+  background-color: #3d3d3d !important;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  /* font-family: 'Quicksand', sans-serif; */
+  font-size: 18px;
+  background-color: #252525 !important;
+}
+
+div {
+  position: relative;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+.material-icons-round {
+  font-size: 2rem;
+  user-select: none;
+}
+
+.cont {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.card {
+  background-color: #fff;
+  overflow: hidden;
+  color: #fff;
+  background-color: #407fde;
+  width: 100%;
+  height: 300px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 8px -3px rgba(0, 0, 0, 0.75), 0px 17px 22px -16px rgba(0, 0, 0, 0.75);
+  margin-bottom: 15px;
+
+
+  resize: both;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.bottom-nav {
+  position: sticky;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+}
+
+.bottom-nav-button {
+
+  border: none;
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+}
+
+.card .nav, .card .title {
+  flex: 0 0 auto; 
+}
+
+.text {
+  flex: 1 1 auto; 
+  display: flex; 
+  flex-direction: column; 
+}
+
+.textarea-auto {
+  flex: 1; /* Make the textarea take the remaining vertical space */
+  resize: none;
+  width: 100%;
+  background: none;
+  font: inherit;
+  color: inherit;
+  min-height: 120px; /* Set a minimum height for the textarea */
+  overflow-y: auto; /* Add a vertical scrollbar when content overflows */
+  border: none;
+  padding: none;
+}
+
+.card .text {
+  flex: 1 1 auto; /* This means it will grow and shrink as needed, and its basis is auto */
+  padding: 0.3rem 1rem 1rem 1rem;
+}
+
+.resizer {
+  width: 15px;
+  height: 15px;
+  background: white;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  cursor: nw-resize;
+  border: 1px solid #000;
+}
+
+.card .nav {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 0.5rem;
+  color: #d0d0d0;
+}
+
+.nav {
+  justify-content: space-between;
+}
+
+.nav__song-part {
+  margin: auto;
+  padding-left: 20px;
+}
+
+
+.card .title, .card .text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card .title > textarea, .card .text > textarea {
+  resize: none;
+  width: 100%;
+  background: none;
+  font: inherit;
+  color: inherit;
+  height: 100%;
+  overflow: hidden;
+  border: none;
+  padding: none;
+}
+.card .title > textarea::placeholder, .card .text > textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+.card .title > textarea:focus, .card .text > textarea:focus {
+  border: none;
+  outline: none;
+}
+.card .title {
+  font-weight: bold;
+  font-size: 1.4rem;
+  padding: 0.5rem 1rem 0.3rem 1rem;
+}
+.card .title > textarea {
+  text-transform: uppercase;
+  height: 1.5em;
+}
+.card .text {
+  padding: 0.3rem 1rem 1rem 1rem;
+}
+.card .text > textarea {
+  min-height: 120px;
+
+  height: 150px; /* Set a fixed height for the textarea */
+  overflow: auto; /* Enable scrolling when the content overflows the fixed height */
+}
+
+.card-draggable {
+  min-height: 200px;
+  max-height: 500px;
+  width: 100%;
+}
+
+.song-card {
+  margin: 10px;
+  margin-bottom: 40px;  
+}
+
+.loading {
+  margin: -3px;
+  color: #de8540;
+}
+
+.btn-regenerate {
+  margin: 0px;
+  padding: 5px;
+  padding-left: 18px;
+  padding-right: 18px;
+  border-radius: 10px;
+  transition: background-color 0.1s ease-in;
+}
+
+.btn-regenerate:hover {
+
+  background-color: rgb(209, 101, 0);
+
+}
+
+.btn-regenerate[disabled]:hover {
+  background-color: initial;
+}
+
+.btn-regenerate:hover .fa_custom {
+  color: #3d3d3d;
+}
+
+.fa_custom {
+  color: #FF8400;
+  padding-right: 1px;
+  transition: color 0.1s ease-in;
+}
+.card-body {
+  padding: var(--padding-card, 0.1rem);
+}
+
+.lyrigator-image {
+  max-width: 300px;
+  margin-bottom: 10px;
+}
+
+.text-warning-focus {
+  color: #FF8400;
+}
+
+.welcome-message {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.welcome-message h2 {
+  font-size: 3.5rem;
+  font-weight: 600;
+
+}
+
+.welcome-message p {
+  padding: 5px 0 15px 0;
+  font-size: 22px;
+  font-weight: 300;
+}
+
+.your-songs-title {
+  margin-top: 1rem;
+  font-size: xx-large;
+}
+
+.input-section-your-songs {
+  background-color: #252525;
+  display: flex;
+}
+
+
+.description-input {
+  margin: 0px 0px 15px 0px;
+  font-size: larger;
+  font-weight: 500;
+  border-radius: 5px;
+}
+
+@media (max-width: 750px) {
+  .navbar-fixed-bottom {
+    margin-top: 20px;
+    bottom: 0;
+    position: fixed;
+    background-color: #3d3d3d;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  /* ---------- new button design ------------ */
+  
+  .home-btn, .edit-btn, .delete-btn {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #3d3d3d;
+  }
+  }
+
+  .home-btn:hover {
+    background-color: rgb(209, 101, 0);
+    border-radius: 10px;
+  }
+
+  .home-btn svg {
+    fill: #d0d0d0;
+  }
+  
+  .home-btn:hover svg {
+    fill: black;
+  }
+  /* ---------- end ------------ */
+.your-song-loading {
+  margin-top: 230px;
+  font-size: 200;
+}
+
+.btn-edit:hover{
+  background-color: #505050;
+  border-radius: 10px;
+}
+
+.btn-delete:hover{
+  background-color: rgb(209, 101, 0);
+  border-radius: 10px;
+}
+
+.btn-new-song {
+  fill: #1fb2a6;
+  height: 2em;
+  margin: 10px;
+}
+
+.btn-new-song:hover {
+  fill: #28e2d3;
 }

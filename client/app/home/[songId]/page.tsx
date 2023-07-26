@@ -1,6 +1,8 @@
-"use client"
-import React, { useEffect, useState } from 'react'
-import Link from 'next/link'; 
+"use client";
+import React, { useEffect, useState } from "react";
+import Link from "next/link";
+import { faHome, faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 type Song = {
   id: number;
@@ -12,20 +14,22 @@ type LyricPart = {
   id: number;
   lyricTitle: string;
   lyric: string;
-}
+};
 
 type Props = {
   params: {
     songId: string;
-  }
-}
+  };
+};
 
 export default function Song(props: Props) {
   const [song, setSong] = useState<Song>();
 
   useEffect(() => {
     const getSongs = async () => {
-      const response = await fetch(`http://localhost:8080/api/songs/${props.params.songId}`);
+      const response = await fetch(
+        `http://localhost:8080/api/songs/${props.params.songId}`
+      );
       const data = await response.json();
       console.log(data);
       setSong(data);
@@ -35,101 +39,58 @@ export default function Song(props: Props) {
 
   const handleDelete = async () => {
     try {
-      const response = await fetch(`http://localhost:8080/api/songs/${props.params.songId}`, {
-        method: 'DELETE',
-      });
+      const response = await fetch(
+        `http://localhost:8080/api/songs/${props.params.songId}`,
+        {
+          method: "DELETE",
+        }
+      );
 
       if (response.ok) {
-        window.location.href = '/home'; 
+        window.location.href = "/home";
       } else {
-        console.error('Failed to delete the song.');
+        console.error("Failed to delete the song.");
       }
     } catch (error) {
-      console.error('An error occurred while trying to delete the song:', error);
+      console.error(
+        "An error occurred while trying to delete the song:",
+        error
+      );
     }
   };
 
   return (
-    <div className='flex min-h-screen flex-col items-center justify-center p-24'>
+    <div className="flex flex-col items-center justify-center">
+      <h1 className="song-name">
       {song?.songName}
+      </h1>
       {song?.songList ? (
-        <ul className='card w-96 bg-base-100 shadow-xl'>
+        <ul className="song-card">
           {song?.songList.map((lyricPart: LyricPart, index: number) => (
             <li key={index}>
-              <h3 className='song-title-done'>{lyricPart.lyricTitle}</h3>
-              <p className='song-lyric-done'>{lyricPart.lyric}</p>
+              <h3 className="song-title-done">{lyricPart.lyricTitle}</h3>
+              <p className="song-lyric-done">{lyricPart.lyric}</p>
             </li>
           ))}
         </ul>
       ) : (
-        <p className='loading loading-ring loading-lg'></p>
+        <p className="loading loading-ring loading-lg"></p>
       )}
-      <button className='btn btn-error btn-sm' onClick={handleDelete}>
-        Delete Song
-      </button>
-      <Link href={`/home/${song?.id}/edit`}><button className='btn btn-info'>Edit</button></Link>
-      <Link href="/home"><button className='btn btn-info'>Go to Home</button></Link>
+      <div className="navbar-fixed-bottom">
+        <button className="delete-btn btn btn-outline btn-success btn-sm" onClick={handleDelete}>
+            <FontAwesomeIcon icon={faTrash} />
+        </button>
+        <Link href="/home">
+          <button className="home-btn btn btn-outline btn-success btn-sm">
+            <FontAwesomeIcon icon={faHome} className="fa fa-home" />
+          </button>
+        </Link>
+        <Link href={`/home/${song?.id}/edit`}>
+        <button className="edit-btn btn btn-outline btn-success btn-sm">
+               <FontAwesomeIcon icon={faEdit} />
+            </button>
+        </Link>
+      </div>
     </div>
-  )
+  );
 }
-
-
-
-// "use client"
-// import React, { useEffect, useState } from 'react'
-// import Link from 'next/link'; 
-
-// type Song = {
-//   id: number;
-//   songName: string;
-//   songList: LyricPart[];
-// };
-
-// type LyricPart = {
-//   id: number;
-//   lyricTitle: string;
-//   lyric: string;
-// }
-
-// type Props = {
-//   params: {
-//     songId: string;
-//   }
-// }
-
-// export default function Song(props: Props) {
-//   const [song, setSong] = useState<Song>();
-
-
-//   useEffect(() => {
-//     const getSongs = async () => {
-//       const response = await fetch(`http://localhost:8080/api/songs/${props.params.songId}`);
-//       const data = await response.json();
-//       console.log(data);
-//       setSong(data);
-//     };
-//     getSongs();
-//   }, []);
-
-
-//   return (
-//     <div className='flex min-h-screen flex-col items-center justify-center p-24'>
-//       {song?.songName}
-//       {song?.songList ? (
-//         <ul className='card w-96 bg-base-100 shadow-xl'>
-//           {song?.songList.map((lyricPart: LyricPart, index: number) => (
-//             <li key={index}>
-//               <h3 className='song-title-done'>{lyricPart.lyricTitle}</h3>
-//               <h4 className='song-lyric-done'>{lyricPart.lyric}</h4>
-//               <h4>{lyricPart.id}</h4>
-//             </li>
-//           ))}
-//         </ul>
-//       ) : (
-//         <p className='loading loading-ring loading-lg'></p>
-//       )}
-//       {/* create link to edit page here */}
-//       <Link href="/home"><button className='btn btn-info'>Go to Home</button></Link>
-//     </div>
-//   )
-// }
