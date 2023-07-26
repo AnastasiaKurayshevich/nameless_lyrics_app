@@ -553,9 +553,16 @@ div {
   border-radius: 10px;
 }
 
+/* .btn-delete {
+  padding-left: 0px;
+  margin-right: 5px;
+} */
+
 .btn-delete:hover{
+  /* margin-right: 5px; */
   background-color: rgb(209, 101, 0);
   border-radius: 10px;
+
 }
 
 .btn-new-song {
@@ -566,4 +573,25 @@ div {
 
 .btn-new-song:hover {
   fill: #28e2d3;
+}
+
+.song-list-card {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.song-list {
+  width: 320px;
+  margin-bottom: 45px;
+}
+
+.card-list-text {
+  margin-left: 12px;
+}
+
+.delete-list {
+  margin-right: 3px;
+}
+
+.edit-list {
+  margin-right: 8px
 }
