@@ -490,6 +490,8 @@ div {
     display: flex;
     justify-content: space-around;
   }
+
+  /* ---------- new button design ------------ */
   
   .home-btn, .edit-btn, .delete-btn {
     margin-top: 10px;
@@ -498,6 +500,19 @@ div {
   }
   }
 
+  .home-btn:hover {
+    background-color: rgb(209, 101, 0);
+    border-radius: 10px;
+  }
+
+  .home-btn svg {
+    fill: #d0d0d0;
+  }
+  
+  .home-btn:hover svg {
+    fill: black;
+  }
+  /* ---------- end ------------ */
 .your-song-loading {
   margin-top: 230px;
   font-size: 200;
