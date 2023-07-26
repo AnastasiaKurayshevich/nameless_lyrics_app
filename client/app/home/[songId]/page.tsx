@@ -1,6 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { faHome, faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 type Song = {
   id: number;
@@ -58,10 +60,10 @@ export default function Song(props: Props) {
   };
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center p-24">
+    <div className="flex flex-col items-center justify-center">
       {song?.songName}
       {song?.songList ? (
-        <ul className="card w-96 bg-base-100 shadow-xl">
+        <ul className="song-card card shadow-xl">
           {song?.songList.map((lyricPart: LyricPart, index: number) => (
             <li key={index}>
               <h3 className="song-title-done">{lyricPart.lyricTitle}</h3>
@@ -72,15 +74,21 @@ export default function Song(props: Props) {
       ) : (
         <p className="loading loading-ring loading-lg"></p>
       )}
-      <button className="btn btn-error btn-sm" onClick={handleDelete}>
-        Delete Song
-      </button>
-      <Link href={`/home/${song?.id}/edit`}>
-        <button className="btn btn-info">Edit</button>
-      </Link>
-      <Link href="/home">
-        <button className="btn btn-info">Go to Home</button>
-      </Link>
+      <div className="navbar-fixed-bottom">
+        <button className="delete-btn btn btn-outline btn-success btn-sm" onClick={handleDelete}>
+            <FontAwesomeIcon icon={faTrash} />
+        </button>
+        <Link href="/home">
+          <button className="home-btn btn btn-outline btn-success btn-sm">
+            <FontAwesomeIcon icon={faHome} className="fa fa-home" />
+          </button>
+        </Link>
+        <Link href={`/home/${song?.id}/edit`}>
+        <button className="edit-btn btn btn-outline btn-success btn-sm">
+               <FontAwesomeIcon icon={faEdit} />
+            </button>
+        </Link>
+      </div>
     </div>
   );
 }

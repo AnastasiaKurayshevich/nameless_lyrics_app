@@ -446,7 +446,7 @@ export default function Create() {
         </div>
       )}
       <div className="navbar-fixed-bottom">
-      <Link href="../home">
+        <Link href="../home">
           <button className="home-btn btn btn-outline btn-success btn-sm">
             <FontAwesomeIcon icon={faHome} className="fa fa-home" />
           </button>

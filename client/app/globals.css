@@ -395,10 +395,10 @@ div {
   background-color: #252525;
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
 }
 
-.home-btn {
+.home-btn, .edit-btn, .delete-btn {
   margin-top: 10px;
   margin-bottom: 10px;
   background-color: #3d3d3d;
