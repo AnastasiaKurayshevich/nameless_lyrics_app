@@ -449,7 +449,6 @@ export default function Create() {
       <Link href="../home">
           <button className="home-btn btn btn-outline btn-success btn-sm">
             <FontAwesomeIcon icon={faHome} className="fa fa-home" />
-      
           </button>
         </Link>
       </div>
