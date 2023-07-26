@@ -59,6 +59,8 @@ body {
 /*Ana's changes */
 .select {
   margin: 0px 0px 15px;
+  min-height: 2rem !important;
+  height: 2rem !important;
 }
 
 .home-page {
@@ -90,6 +92,10 @@ body {
 .textareaa {
   width: 100%;
   border-radius: 8px;
+  background-color: #3d3d3d;
+  color: #d0d0d0;
+  padding: 10px 15px;
+  
 }
 /*Ana's changes */
 .customise-btn {
@@ -116,6 +122,52 @@ body {
   width: 47%;
 }
 
+.modal-container {
+  height: 200px;
+  width: 300px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9998;
+  
+}
+
+.modal-input {
+  width: 100%; 
+  margin: 20px 5px;
+}
+
+.modal-buttons-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-button {
+  width: 45%; 
+  margin-top: 30px;
+}
+
+.modal-header {
+  text-align: center;
+}
 
 
 

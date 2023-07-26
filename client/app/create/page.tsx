@@ -320,7 +320,7 @@ export default function Create() {
             value={formData.genre}
             onChange={handleGenreChange}
           >
-            <option value="">Genre</option>
+            <option value="">GENRE</option>
             <option value="Alternative">Alternative</option>
             <option value="Blues">Blues</option>
             <option value="Classical">Classical</option>
@@ -356,7 +356,7 @@ export default function Create() {
             value={formData.mood}
             onChange={handleMoodChange}
           >
-            <option value="">Mood</option>
+            <option value="">MOOD</option>
             <option value="Angry">Angry</option>
             <option value="Anxious">Anxious</option>
             <option value="Blissful">Blissful</option>
@@ -383,7 +383,7 @@ export default function Create() {
         <label>
           <textarea
             className="textareaa"
-            placeholder="Description"
+            placeholder="Description..."
             cols={50}
             rows={5}
             value={formData.description}
@@ -424,21 +424,24 @@ export default function Create() {
        </div>
       </form>
       {isSaveModalVisible && (
-        <div>
-          <div>
-            <h3>Save Song</h3>
+        <div className="modal-background">
+          <div className="modal-container">
+            <h3 className="modal-header">Save lyrics</h3>
             <input
+              className="modal-input btn btn-outline btn-success btn-sm"
               type="text"
               value={songName}
               onChange={(e) => setSongName(e.target.value)}
               placeholder="Enter song name"
             />
-            <button type="button" onClick={handleModalSave}>
+             <div className="modal-buttons-container">
+            <button className="modal-button btn btn-outline btn-success btn-sm" type="button" onClick={handleModalSave}>
               Save
             </button>
-            <button type="button" onClick={handleModalCancel}>
+            <button className="modal-button btn btn-outline btn-success btn-sm" type="button" onClick={handleModalCancel}>
               Cancel
             </button>
+            </div>
           </div>
         </div>
       )}
