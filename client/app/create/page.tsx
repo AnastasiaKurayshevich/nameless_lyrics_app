@@ -428,7 +428,7 @@ export default function Create() {
           <div className="modal-container">
             <h3 className="modal-header">Save lyrics</h3>
             <input
-              className="modal-input btn btn-outline btn-success btn-sm"
+              className="modal-input btn-success btn-sm"
               type="text"
               value={songName}
               onChange={(e) => setSongName(e.target.value)}
