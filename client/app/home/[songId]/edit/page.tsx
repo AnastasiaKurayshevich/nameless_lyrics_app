@@ -6,8 +6,6 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 
-
-
 type SongPart = {
   name: string;
   lyrics: string;
@@ -342,7 +340,7 @@ export default function EditPage(props: Props) {
     <div className="create-flex-container">
       <input
         type="text"
-        className="input input-bordered input-accent w-full max-w-xs"
+        className="description-input input input-sm w-full max-w-xs"
         value={songName}
         onChange={(e) => setSongName(e.target.value)}
       />{" "}
@@ -429,7 +427,7 @@ export default function EditPage(props: Props) {
           type="button"
           onClick={() => setIsVisible(!isVisible)}
         >
-          Customise
+          Customise song structure
         </button>
         <SongStructure
           isVisible={isVisible}
@@ -451,7 +449,7 @@ export default function EditPage(props: Props) {
                 {isGenerating ? "Regenerating..." : "Regenerate all"}
               </button>
               <button
-                className="buttons-buttom btn btn-active btn-primary btn-sm"
+                className="buttons-buttom btn btn-outline btn-accent btn-sm"
                 type="button"
                 onClick={handleModalSave}
                 disabled={isGenerating}
@@ -471,11 +469,11 @@ export default function EditPage(props: Props) {
         </div>
       </form>
       <div className="navbar-fixed-bottom">
-      <Link href="/home">
-      <button className="home-btn btn btn-outline btn-success btn-sm">
+        <Link href="/home">
+          <button className="home-btn btn btn-outline btn-success btn-sm">
             <FontAwesomeIcon icon={faHome} className="fa fa-home" />
           </button>
-      </Link>
+        </Link>
       </div>
     </div>
   );

@@ -81,44 +81,44 @@ export default function SongStructure({
       {isVisible && (
         <div className="add-song-part">
           <button
-            className="customise-options btn btn-outline btn-success btn-sm"
+            className="customise-options btn btn-outline btn-accent btn-sm"
             type="button"
-            onClick={() => handleClick("Intro")}
+            onClick={() => handleClick("INTRO")}
           >
             Intro
           </button>
           <button
-            className="customise-options btn btn-outline btn-success btn-sm"
+            className="customise-options btn btn-outline btn-accent btn-sm"
             type="button"
-            onClick={() => handleClick("Verse")}
+            onClick={() => handleClick("VERSE")}
           >
             Verse
           </button>
           <button
-            className="customise-options btn btn-outline btn-success btn-sm"
+            className="customise-options btn btn-outline btn-accent btn-sm"
             type="button"
-            onClick={() => handleClick("Pre-Chorus")}
+            onClick={() => handleClick("PRE-CHORUS")}
           >
             Pre-Chorus
           </button>
           <button
-            className="customise-options btn btn-outline btn-success btn-sm"
+            className="customise-options btn btn-outline btn-accent btn-sm"
             type="button"
-            onClick={() => handleClick("Chorus")}
+            onClick={() => handleClick("CHORUS")}
           >
             Chorus
           </button>
           <button
-            className="customise-options btn btn-outline btn-success btn-sm"
+            className="customise-options btn btn-outline btn-accent btn-sm"
             type="button"
-            onClick={() => handleClick("Bridge")}
+            onClick={() => handleClick("BRIDGE")}
           >
             Bridge
           </button>
           <button
-            className="customise-options btn btn-outline btn-success btn-sm"
+            className="customise-options btn btn-outline btn-accent btn-sm"
             type="button"
-            onClick={() => handleClick("Outro")}
+            onClick={() => handleClick("OUTRO")}
           >
             Outro
           </button>

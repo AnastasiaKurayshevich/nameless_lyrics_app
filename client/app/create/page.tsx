@@ -14,7 +14,6 @@ import {
 } from "../Types";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 
-
 export default function Create() {
   const [formData, setFormData] = useState<FormData>({
     genre: "",
@@ -392,7 +391,7 @@ export default function Create() {
         </label>
         <br />
         <button
-          className="customise-btn btn btn-outline btn-success btn-sm"
+          className="customise-btn btn btn-outline btn-accent btn-sm"
           type="button"
           onClick={() => setIsVisible(!isVisible)}
         >
@@ -407,21 +406,35 @@ export default function Create() {
           isGenerating={isGeneratingPart}
         />
         <div className="regenerate-buttons-buttom flex-container">
-        {songData ? (
-          <>
-            <button className="buttons-buttom btn btn-outline btn-error btn-sm" type="button" onClick={handleRegenerate} disabled={isGenerating}>
-              {isGenerating ? "Regenerating..." : "Regenerate all"}
+          {songData ? (
+            <>
+              <button
+                className="buttons-buttom btn btn-outline btn-warning btn-sm"
+                type="button"
+                onClick={handleRegenerate}
+                disabled={isGenerating}
+              >
+                {isGenerating ? "Regenerating..." : "Regenerate all"}
+              </button>
+              <button
+                className="buttons-buttom btn btn-outline btn-accent btn-sm"
+                type="button"
+                onClick={handleSave}
+                disabled={isGenerating}
+              >
+                Save
+              </button>
+            </>
+          ) : (
+            <button
+              className="generate-btn btn btn-outline btn-accent btn-sm"
+              type="submit"
+              disabled={isGenerating}
+            >
+              {isGenerating ? "Generating..." : "Generate"}
             </button>
-            <button className="buttons-buttom btn btn-active btn-neutral btn-sm" type="button" onClick={handleSave} disabled={isGenerating}>
-              Save
-            </button>
-          </>
-        ) : (
-          <button className="generate-btn btn btn-outline btn-success btn-sm" type="submit" disabled={isGenerating}>
-            {isGenerating ? "Generating..." : "Generate"}
-          </button>
-        )}
-       </div>
+          )}
+        </div>
       </form>
       {isSaveModalVisible && (
         <div className="modal-background">
@@ -434,13 +447,21 @@ export default function Create() {
               onChange={(e) => setSongName(e.target.value)}
               placeholder="Enter song name"
             />
-             <div className="modal-buttons-container">
-            <button className="modal-button btn btn-outline btn-success btn-sm" type="button" onClick={handleModalSave}>
-              Save
-            </button>
-            <button className="modal-button btn btn-outline btn-success btn-sm" type="button" onClick={handleModalCancel}>
-              Cancel
-            </button>
+            <div className="modal-buttons-container">
+              <button
+                className="modal-button btn btn-outline btn-success btn-sm"
+                type="button"
+                onClick={handleModalSave}
+              >
+                Save
+              </button>
+              <button
+                className="modal-button btn btn-outline btn-success btn-sm"
+                type="button"
+                onClick={handleModalCancel}
+              >
+                Cancel
+              </button>
             </div>
           </div>
         </div>
