@@ -81,42 +81,42 @@ export default function SongStructure({
       {isVisible && (
         <div className="add-song-part">
           <button
-            className="customise-options btn btn-outline btn-success btn-sm"
+            className="customise-options btn btn-outline btn-accent btn-sm"
             type="button"
             onClick={() => handleClick("Intro")}
           >
             Intro
           </button>
           <button
-            className="customise-options btn btn-outline btn-success btn-sm"
+            className="customise-options btn btn-outline btn-accent btn-sm"
             type="button"
             onClick={() => handleClick("Verse")}
           >
             Verse
           </button>
           <button
-            className="customise-options btn btn-outline btn-success btn-sm"
+            className="customise-options btn btn-outline btn-accent btn-sm"
             type="button"
             onClick={() => handleClick("Pre-Chorus")}
           >
             Pre-Chorus
           </button>
           <button
-            className="customise-options btn btn-outline btn-success btn-sm"
+            className="customise-options btn btn-outline btn-accent btn-sm"
             type="button"
             onClick={() => handleClick("Chorus")}
           >
             Chorus
           </button>
           <button
-            className="customise-options btn btn-outline btn-success btn-sm"
+            className="customise-options btn btn-outline btn-accent btn-sm"
             type="button"
             onClick={() => handleClick("Bridge")}
           >
             Bridge
           </button>
           <button
-            className="customise-options btn btn-outline btn-success btn-sm"
+            className="customise-options btn btn-outline btn-accent btn-sm"
             type="button"
             onClick={() => handleClick("Outro")}
           >

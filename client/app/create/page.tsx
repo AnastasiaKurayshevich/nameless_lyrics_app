@@ -392,7 +392,7 @@ export default function Create() {
         </label>
         <br />
         <button
-          className="customise-btn btn btn-outline btn-success btn-sm"
+          className="customise-btn btn btn-outline btn-accent btn-sm"
           type="button"
           onClick={() => setIsVisible(!isVisible)}
         >
@@ -409,15 +409,15 @@ export default function Create() {
         <div className="regenerate-buttons-buttom flex-container">
         {songData ? (
           <>
-            <button className="buttons-buttom btn btn-outline btn-error btn-sm" type="button" onClick={handleRegenerate} disabled={isGenerating}>
+            <button className="buttons-buttom btn btn-outline btn-warning btn-sm" type="button" onClick={handleRegenerate} disabled={isGenerating}>
               {isGenerating ? "Regenerating..." : "Regenerate all"}
             </button>
-            <button className="buttons-buttom btn btn-active btn-neutral btn-sm" type="button" onClick={handleSave} disabled={isGenerating}>
+            <button className="buttons-buttom btn btn-outline btn-accent btn-sm" type="button" onClick={handleSave} disabled={isGenerating}>
               Save
             </button>
           </>
         ) : (
-          <button className="generate-btn btn btn-outline btn-success btn-sm" type="submit" disabled={isGenerating}>
+          <button className="generate-btn btn btn-outline btn-accent btn-sm" type="submit" disabled={isGenerating}>
             {isGenerating ? "Generating..." : "Generate"}
           </button>
         )}
