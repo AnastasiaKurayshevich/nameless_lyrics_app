@@ -166,7 +166,7 @@ export default function SongStructure({
                     <div className="text">
                       <textarea
                         className="textarea-auto"
-                      
+
                         value={part.lyrics}
                         onChange={(event) => handleLyricsChange(event, index)}
                       />
@@ -179,17 +179,17 @@ export default function SongStructure({
                     <div className="bottom-nav">
                       <i className='fas fa-redo' ></i>
                       <button
-  className="btn-regenerate"
-  type="button"
-  onClick={() => handleRegeneratePart(part, index)}
-  disabled={isGenerating}
->
-  {index === currentlyGeneratingIndex && isGenerating ? (
-    <span className="loading loading-ring loading-sm"></span>
-  ) : (
-    <FontAwesomeIcon icon={faRedo} className="fa_custom" />
-  )}
-</button>
+                        className="btn-regenerate"
+                        type="button"
+                        onClick={() => handleRegeneratePart(part, index)}
+                        disabled={isGenerating}
+                      >
+                        {index === currentlyGeneratingIndex && isGenerating ? (
+                          <span className="loading loading-ring loading-sm"></span>
+                        ) : (
+                          <FontAwesomeIcon icon={faRedo} className="fa_custom" />
+                        )}
+                      </button>
                     </div>
                   </div>
                 )}

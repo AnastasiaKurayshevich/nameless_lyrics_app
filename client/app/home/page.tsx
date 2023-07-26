@@ -81,27 +81,28 @@ export default function Home() {
         placeholder="Search"
       />
       <div className="">
-      <ul className="flex flex-col justify-center ">
-        {filteredSongs.map((song: Song) => (
-          <li key={song.id} className="bg-primary mb-5 rounded-lg">
-            <Link className="card-body text-center" href={`/home/${song.id}`}>{song.songName}</Link>
-            <div className="m-5">
-              <Link href={`/home/${song.id}/edit`}>
-                <button className="btn btn-info btn-sm mr-5">
-                <FontAwesomeIcon icon={faEdit} />
-                </button>
-              </Link>
 
-              <button
-                className="btn btn-error btn-sm"
-                onClick={() => handleDelete(song.id)}
-              >
-                <FontAwesomeIcon icon={faTrash} />
-              </button>
-            </div>
-          </li>
-        ))}
-      </ul>
+        <ul className="flex flex-col justify-center ">
+          {[...filteredSongs].reverse().map((song: Song) => (
+            <li key={song.id} className="bg-primary mb-5 rounded-lg">
+              <Link className="card-body text-center" href={`/home/${song.id}`}>{song.songName}</Link>
+              <div className="m-5">
+                <Link href={`/home/${song.id}/edit`}>
+                  <button className="btn btn-info btn-sm mr-5">
+                    <FontAwesomeIcon icon={faEdit} />
+                  </button>
+                </Link>
+
+                <button
+                  className="btn btn-error btn-sm"
+                  onClick={() => handleDelete(song.id)}
+                >
+                  <FontAwesomeIcon icon={faTrash} />
+                </button>
+              </div>
+            </li>
+          ))}
+        </ul>
       </div>
       {showConfirmation && (
         <ConfirmationModal
