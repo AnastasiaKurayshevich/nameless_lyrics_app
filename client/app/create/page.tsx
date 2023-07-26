@@ -382,7 +382,7 @@ export default function Create() {
         <br />
         <label>
           <textarea
-            className="textareaa"
+            className="textareaa textarea textarea-accent"
             placeholder="Description..."
             cols={50}
             rows={5}

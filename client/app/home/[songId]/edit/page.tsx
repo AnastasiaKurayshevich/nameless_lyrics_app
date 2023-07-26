@@ -415,7 +415,7 @@ export default function EditPage(props: Props) {
         <br />
         <label>
           <textarea
-            className="textareaa"
+            className="textareaa textarea textarea-accent"
             placeholder="Description"
             cols={50}
             rows={5}
@@ -425,7 +425,7 @@ export default function EditPage(props: Props) {
         </label>
         <br />
         <button
-          className="customise-btn btn btn-outline btn-success btn-sm"
+          className="customise-btn btn btn-outline btn-accent btn-sm"
           type="button"
           onClick={() => setIsVisible(!isVisible)}
         >
@@ -443,7 +443,7 @@ export default function EditPage(props: Props) {
           {songData ? (
             <>
               <button
-                className="buttons-buttom btn btn-outline btn-error btn-sm"
+                className="buttons-buttom btn btn-outline btn-warning btn-sm"
                 type="button"
                 onClick={handleRegenerate}
                 disabled={isGenerating}
@@ -451,7 +451,7 @@ export default function EditPage(props: Props) {
                 {isGenerating ? "Regenerating..." : "Regenerate all"}
               </button>
               <button
-                className="buttons-buttom btn btn-active btn-neutral btn-sm"
+                className="buttons-buttom btn btn-active btn-primary btn-sm"
                 type="button"
                 onClick={handleModalSave}
                 disabled={isGenerating}
