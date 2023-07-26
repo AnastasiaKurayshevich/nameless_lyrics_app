@@ -498,3 +498,15 @@ div {
   margin-top: 230px;
   font-size: 200;
 }
+
+.btn-edit:hover{
+  background-color: #505050;
+  border-radius: 10px;
+}
+
+.btn-delete:hover{
+  background-color: rgb(209, 101, 0);
+  border-radius: 10px;
+}
+
+

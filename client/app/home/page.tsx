@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import ConfirmationModal from "./[songId]/ConfirmationModal";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faTrash, faCirclePlus } from '@fortawesome/free-solid-svg-icons';
 
 type Song = {
   id: number;
@@ -109,13 +109,13 @@ export default function Home() {
 
                             <div className="flex-shrink-0 min-w-max">
                                 <Link href={`/home/${song.id}/edit`}>
-                                    <button className="btn btn-info btn-sm mr-5">
+                                    <button className=" btn-edit btn-sm mr-5">
                                         <FontAwesomeIcon icon={faEdit} />
                                     </button>
                                 </Link>
 
                                 <button
-                                    className="btn btn-error btn-sm"
+                                    className=" btn-delete btn-sm"
                                     onClick={() => handleDelete(song.id)}
                                 >
                                     <FontAwesomeIcon icon={faTrash} />
@@ -137,8 +137,11 @@ export default function Home() {
 
         <Link href="/create">
             <div className="navbar-fixed-bottom">
-                <button className="add-new-home btn btn-success">
-                    Create new song
+                <button className="fa-solid fa-circle-plus">
+                    {/* <FontAwesomeIcon icon={faCirclePlus} /> */}
+                    <svg className="btn-delete" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
+                    <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM232 344V280H168c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V168c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H280v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z"/></svg>
+                    {/* <FontAwesomeIcon icon="fa-solid fa-circle-plus" /> */}
                 </button>
             </div>
         </Link>
