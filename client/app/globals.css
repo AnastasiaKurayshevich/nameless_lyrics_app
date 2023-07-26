@@ -529,11 +529,11 @@ div {
 }
 
 .btn-new-song {
-  fill: #01bb42;
+  fill: #1fb2a6;
   height: 2em;
   margin: 10px;
 }
 
 .btn-new-song:hover {
-  fill: #00822d;
+  fill: #28e2d3;
 }
