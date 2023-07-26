@@ -89,7 +89,7 @@ export default function Home() {
         </div>
     </div>
 
-    <div className="w-full">
+    <div className="w-full pb-20">
     <ul className="flex flex-col justify-center ">
     {[...filteredSongs].reverse().map((song: Song) => (
         <li key={song.id} className="bg-neutral mb-5 rounded-lg">
