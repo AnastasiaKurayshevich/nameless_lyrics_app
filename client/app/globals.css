@@ -485,7 +485,7 @@ div {
     margin-top: 20px;
     bottom: 0;
     position: fixed;
-    background-color: #252525;
+    background-color: #3d3d3d;
     width: 100%;
     display: flex;
     justify-content: space-around;
@@ -513,4 +513,12 @@ div {
   border-radius: 10px;
 }
 
+.btn-new-song {
+  fill: #01bb42;
+  height: 2em;
+  margin: 10px;
+}
 
+.btn-new-song:hover {
+  fill: #00822d;
+}
