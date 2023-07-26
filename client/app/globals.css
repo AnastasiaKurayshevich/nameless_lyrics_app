@@ -388,3 +388,31 @@ div {
 .card-body {
   padding: var(--padding-card, 0.1rem);
 }
+
+.lyrigator-image {
+  max-width: 300px;
+  margin-bottom: 10px;
+}
+
+.text-warning-focus {
+  color: #FF8400;
+}
+
+.welcome-message {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.welcome-message h2 {
+  font-size: 3.5rem;
+  font-weight: 600;
+
+}
+
+.welcome-message p {
+  padding: 5px 0 15px 0;
+  font-size: 22px;
+  font-weight: 300;
+}
