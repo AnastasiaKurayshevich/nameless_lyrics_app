@@ -63,7 +63,7 @@ export default function Song(props: Props) {
     <div className="flex flex-col items-center justify-center">
       {song?.songName}
       {song?.songList ? (
-        <ul className="song-card card shadow-xl">
+        <ul className="song-card shadow-xl">
           {song?.songList.map((lyricPart: LyricPart, index: number) => (
             <li key={index}>
               <h3 className="song-title-done">{lyricPart.lyricTitle}</h3>

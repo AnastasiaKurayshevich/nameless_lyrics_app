@@ -387,23 +387,12 @@ div {
   width: 100%;
 }
 
-@media (max-width: 750px) {
-.navbar-fixed-bottom {
-  margin-top: 20px;
-  bottom: 0;
-  position: fixed;
-  background-color: #252525;
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
+.song-card {
+  background-color: #3d3d3d;
+  margin: 20px;
+  margin-bottom: 40px;  
 }
 
-.home-btn, .edit-btn, .delete-btn {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  background-color: #3d3d3d;
-}
-}
 .loading {
   margin: -3px;
   color: #de8540;
@@ -486,3 +475,21 @@ div {
   font-weight: 500;
   border-radius: 5px;
 }
+
+@media (max-width: 750px) {
+  .navbar-fixed-bottom {
+    margin-top: 20px;
+    bottom: 0;
+    position: fixed;
+    background-color: #252525;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .home-btn, .edit-btn, .delete-btn {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #3d3d3d;
+  }
+  }
