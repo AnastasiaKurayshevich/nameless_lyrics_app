@@ -485,4 +485,10 @@ div {
   font-size: larger;
   font-weight: 500;
   border-radius: 5px;
+  margin: 0px 70px 15px 0px;
+}
+
+.your-song-loading {
+  margin-top: 230px;
+  font-size: 200;
 }
