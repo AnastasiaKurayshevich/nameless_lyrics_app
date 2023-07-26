@@ -382,7 +382,7 @@ export default function Create() {
         <br />
         <label>
           <textarea
-            className="textareaa"
+            className="textareaa textarea textarea-accent"
             placeholder="Description..."
             cols={50}
             rows={5}
@@ -449,7 +449,6 @@ export default function Create() {
       <Link href="../home">
           <button className="home-btn btn btn-outline btn-success btn-sm">
             <FontAwesomeIcon icon={faHome} className="fa fa-home" />
-      
           </button>
         </Link>
       </div>

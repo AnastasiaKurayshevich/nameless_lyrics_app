@@ -467,6 +467,8 @@ div {
   padding: 5px 0 15px 0;
   font-size: 22px;
   font-weight: 300;
+}
+
 .your-songs-title {
   margin-top: 1rem;
   font-size: xx-large;
@@ -475,6 +477,9 @@ div {
 .input-section-your-songs {
   background-color: #252525;
   display: flex;
-  justify-content: center;
 }
+
+
+.input {
+  margin: 0px 70px 15px 0px;
 }

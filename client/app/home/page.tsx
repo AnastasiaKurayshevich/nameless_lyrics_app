@@ -76,8 +76,9 @@ export default function Home() {
         <h2 className="your-songs-title text-5xl text-center">Your Lyrics</h2>
     </div>
   
-    <div className="sticky top-0 z-10 w-full">
-        <div className="input-section-your-songs px-8">
+    <div className="sticky search-bar-div-your-songs top-0 z-10 w-full" style={{ backgroundColor: "#252525" }}>
+    <div className="input-section-your-songs flex mx-auto my-2">
+
             <input
                 className="input input-bordered w-full max-w-xs mx-auto"
                 type="text"
@@ -89,27 +90,34 @@ export default function Home() {
     </div>
 
     <div className="w-full">
-        <ul className="flex flex-col justify-center ">
-          {[...filteredSongs].reverse().map((song: Song) => (
-            <li key={song.id} className="bg-primary mb-5 rounded-lg">
-              <Link className="card-body text-center" href={`/home/${song.id}`}>{song.songName}</Link>
-              <div className="m-5">
-                <Link href={`/home/${song.id}/edit`}>
-                  <button className="btn btn-info btn-sm mr-5">
-                    <FontAwesomeIcon icon={faEdit} />
-                  </button>
+    <ul className="flex flex-col justify-center ">
+    {[...filteredSongs].reverse().map((song: Song) => (
+        <li key={song.id} className="bg-neutral mb-5 rounded-lg">
+            <div className="flex justify-between items-center p-5">
+                <Link className="card-body text-left overflow-hidden" href={`/home/${song.id}`}>
+                    <p className="overflow-ellipsis overflow-hidden whitespace-nowrap">{song.songName}</p>
                 </Link>
 
-                <button
-                  className="btn btn-error btn-sm"
-                  onClick={() => handleDelete(song.id)}
-                >
-                  <FontAwesomeIcon icon={faTrash} />
-                </button>
-              </div>
-            </li>
-          ))}
-        </ul>
+                <div className="flex-shrink-0 min-w-max">
+                    <Link href={`/home/${song.id}/edit`}>
+                        <button className="btn btn-info btn-sm mr-5">
+                            <FontAwesomeIcon icon={faEdit} />
+                        </button>
+                    </Link>
+
+                    <button
+                        className="btn btn-error btn-sm"
+                        onClick={() => handleDelete(song.id)}
+                    >
+                        <FontAwesomeIcon icon={faTrash} />
+                    </button>
+                </div>
+            </div>
+        </li>
+    ))}
+</ul>
+
+
 
         {showConfirmation && (
           <ConfirmationModal
