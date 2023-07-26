@@ -338,7 +338,7 @@ div {
   justify-content: space-between;
 }
 
-.nav__song-part {
+  .nav__song-part {
   margin: auto;
   padding-left: 20px;
 }
@@ -576,9 +576,8 @@ div {
 }
 
 .song-list-card {
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
-
 .song-list {
   width: 320px;
   margin-bottom: 45px;
