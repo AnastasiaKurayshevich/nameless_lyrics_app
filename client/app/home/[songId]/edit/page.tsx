@@ -340,7 +340,7 @@ export default function EditPage(props: Props) {
     <div className="create-flex-container">
       <input
         type="text"
-        className="description-input input input-bordered input-accent w-full max-w-xs"
+        className="description-input input input-sm w-full max-w-xs"
         value={songName}
         onChange={(e) => setSongName(e.target.value)}
       />{" "}

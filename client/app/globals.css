@@ -481,5 +481,8 @@ div {
 
 
 .description-input {
-  margin: 0px 70px 15px 0px;
+  margin: 0px 0px 15px 0px;
+  font-size: larger;
+  font-weight: 500;
+  border-radius: 5px;
 }
