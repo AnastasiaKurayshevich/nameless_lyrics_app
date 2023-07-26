@@ -71,17 +71,24 @@ export default function Home() {
   };
 
   return (
-    <main className="home-page flex min-h-screen flex-col items-center justify-center p-24">
-      <h2 className="text-5xl text-center">Your Lyrics</h2>
-      <input
-        className="input input-bordered w-full max-w-xs"
-        type="text"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-        placeholder="Search"
-      />
-      <div className="">
+<main className="home-page flex flex-col items-center justify-start min-h-screen pt-10">
+    <div className="">
+        <h2 className="your-songs-title text-5xl text-center">Your Lyrics</h2>
+    </div>
+  
+    <div className="sticky top-0 z-10 w-full">
+        <div className="input-section-your-songs px-8">
+            <input
+                className="input input-bordered w-full max-w-xs mx-auto"
+                type="text"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                placeholder="Search"
+            />
+        </div>
+    </div>
 
+    <div className="w-full">
         <ul className="flex flex-col justify-center ">
           {[...filteredSongs].reverse().map((song: Song) => (
             <li key={song.id} className="bg-primary mb-5 rounded-lg">
@@ -103,19 +110,26 @@ export default function Home() {
             </li>
           ))}
         </ul>
-      </div>
-      {showConfirmation && (
-        <ConfirmationModal
-          message="Are you Sure!"
-          onConfirm={handleConfirmDelete}
-          onCancel={handleCancelDelete}
-        />
-      )}
-      <Link href="/create">
-        <button className="add-new-home btn btn-success">
-          Create new song
-        </button>
-      </Link>
-    </main>
+
+        {showConfirmation && (
+          <ConfirmationModal
+            message="Are you Sure!"
+            onConfirm={handleConfirmDelete}
+            onCancel={handleCancelDelete}
+          />
+        )}
+
+        <Link href="/create">
+          <div className="navbar-fixed-bottom">
+          <button className="add-new-home btn btn-success">
+            Create new song
+          </button>
+          </div>
+        </Link>
+    </div>
+</main>
+
+  
+  
   );
 }
