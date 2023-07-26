@@ -512,6 +512,36 @@ div {
   .home-btn:hover svg {
     fill: black;
   }
+
+  /* ------------edit and delete ------------- */
+
+  .edit-btn:hover {
+    background-color: rgb(209, 101, 0);
+    border-radius: 10px;
+  }
+  
+  .edit-btn svg {
+    fill: #d0d0d0;
+  }
+  
+  .edit-btn:hover svg {
+    fill: black;
+  }
+  
+  .delete-btn:hover {
+    background-color: rgb(209, 101, 0);
+    border-radius: 10px;
+  }
+  
+  .delete-btn svg {
+    fill: #d0d0d0;
+  }
+  
+  .delete-btn:hover svg {
+    fill: black;
+  }
+  
+
   /* ---------- end ------------ */
 .your-song-loading {
   margin-top: 230px;
