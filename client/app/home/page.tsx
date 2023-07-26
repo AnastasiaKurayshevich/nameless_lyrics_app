@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import ConfirmationModal from "./[songId]/ConfirmationModal";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faTrash, faCirclePlus } from '@fortawesome/free-solid-svg-icons';
 
 type Song = {
   id: number;
@@ -29,7 +29,7 @@ export default function Home() {
       const response = await fetch(`http://localhost:8080/api/songs`);
       const data = await response.json();
       setSongs(data);
-      setIsLoading(false); 
+      setIsLoading(false);
     };
     getSongs();
   }, []);
@@ -73,79 +73,88 @@ export default function Home() {
   };
 
   return (
-<main className="home-page flex flex-col items-center justify-start min-h-screen pt-10">
-    <div className="">
+    <main className="home-page flex flex-col items-center justify-start min-h-screen pt-10">
+      <div className="">
         <h2 className="your-songs-title text-5xl text-center">Your Lyrics</h2>
-    </div>
-  
-    <div className="sticky search-bar-div-your-songs top-0 z-10 w-full" style={{ backgroundColor: "#252525" }}>
-    <div className="input-section-your-songs flex mx-auto my-2">
+      </div>
 
-            <input
-                className="input input-bordered w-full max-w-xs mx-auto"
-                type="text"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                placeholder="Search"
-            />
+      <div className="sticky search-bar-div-your-songs top-0 z-10 w-full" style={{ backgroundColor: "#252525" }}>
+        <div className="input-section-your-songs flex mx-auto my-2">
+
+          <input
+            className="input input-bordered w-full max-w-xs mx-auto"
+            type="text"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            placeholder="Search"
+          />
         </div>
-    </div>
+      </div>
 
-    <div className="w-full pb-20">
-        {isLoading ? ( 
-            // If isLoading is true, display the loading animation
-            <div className="flex justify-center">
-                <span className="your-song-loading loading loading-ring loading-lg"></span>
-            </div>
+      <div className="w-full pb-20">
+        {isLoading ? (
+          // If isLoading is true, display the loading animation
+          <div className="flex justify-center">
+            <span className="your-song-loading loading loading-ring loading-lg"></span>
+          </div>
         ) : (
-            // If isLoading is false, display the song list
-            <ul className="flex flex-col justify-center ">
-                {[...filteredSongs].reverse().map((song: Song) => (
-                    <li key={song.id} className="bg-neutral mb-5 rounded-lg">
-                        <div className="flex justify-between items-center p-5">
-                            <Link className="card-body text-left overflow-hidden" href={`/home/${song.id}`}>
-                                <p className="overflow-ellipsis overflow-hidden whitespace-nowrap">{song.songName}</p>
-                            </Link>
+          // If isLoading is false, display the song list
+          <ul className="flex flex-col justify-center ">
+            {[...filteredSongs].reverse().map((song: Song) => (
+              <li key={song.id} className="bg-neutral mb-5 rounded-lg">
+                <div className="flex justify-between items-center p-5">
+                  <Link className="card-body text-left overflow-hidden" href={`/home/${song.id}`}>
+                    <p className="overflow-ellipsis overflow-hidden whitespace-nowrap">{song.songName}</p>
+                  </Link>
 
-                            <div className="flex-shrink-0 min-w-max">
-                                <Link href={`/home/${song.id}/edit`}>
-                                    <button className="btn btn-info btn-sm mr-5">
-                                        <FontAwesomeIcon icon={faEdit} />
-                                    </button>
-                                </Link>
+                  <div className="flex-shrink-0 min-w-max">
+                    <Link href={`/home/${song.id}/edit`}>
+                      <button className=" btn-edit btn-sm mr-5">
+                        <FontAwesomeIcon icon={faEdit} />
+                      </button>
+                    </Link>
 
-                                <button
-                                    className="btn btn-error btn-sm"
-                                    onClick={() => handleDelete(song.id)}
-                                >
-                                    <FontAwesomeIcon icon={faTrash} />
-                                </button>
-                            </div>
-                        </div>
-                    </li>
-                ))}
-            </ul>
+                    <button
+                      className=" btn-delete btn-sm"
+                      onClick={() => handleDelete(song.id)}
+                    >
+                      <FontAwesomeIcon icon={faTrash} />
+                    </button>
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ul>
         )}
 
         {showConfirmation && (
-            <ConfirmationModal
-                message="Are you Sure!"
-                onConfirm={handleConfirmDelete}
-                onCancel={handleCancelDelete}
-            />
+          <ConfirmationModal
+            message="Are you Sure!"
+            onConfirm={handleConfirmDelete}
+            onCancel={handleCancelDelete}
+          />
         )}
 
         <Link href="/create">
-            <div className="navbar-fixed-bottom">
-                <button className="add-new-home btn btn-success">
-                    Create new song
-                </button>
-            </div>
-        </Link>
-    </div>
-</main>
+          <div className="navbar-fixed-bottom">
+            <button className="fa-solid fa-circle-plus">
+              {/* <FontAwesomeIcon icon={faCirclePlus} /> */}
+              <svg
+                className="btn-new-song"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 512 512"
+              >
+                <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM232 344V280H168c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V168c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H280v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z" />
+              </svg>
 
-  
-  
+
+            </button>
+          </div>
+        </Link>
+      </div>
+    </main>
+
+
+
   );
 }
