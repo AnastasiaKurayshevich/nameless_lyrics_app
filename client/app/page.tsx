@@ -16,10 +16,10 @@ export default function Start() {
           <p>AI powered lyric generator</p>
           <div className="button-dev mt-10">
             <Link href="/home">
-              <button className="btn btn-secondary mr-5 shadow-lg shadow-gray-700/50">Your Lyrics</button>
+              <button className="btn btn-secondary mr-5">Your Lyrics</button>
             </Link>
             <Link href="/create">
-              <button className="btn btn-primary shadow-lg shadow-gray-700/50">New lyrics</button>
+              <button className="btn btn-primary">New lyrics</button>
             </Link>
           </div>
         </div>
