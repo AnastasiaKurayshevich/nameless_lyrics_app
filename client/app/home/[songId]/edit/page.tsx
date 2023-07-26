@@ -6,8 +6,6 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 
-
-
 type SongPart = {
   name: string;
   lyrics: string;
@@ -429,7 +427,7 @@ export default function EditPage(props: Props) {
           type="button"
           onClick={() => setIsVisible(!isVisible)}
         >
-          Customise
+          Customise song structure
         </button>
         <SongStructure
           isVisible={isVisible}
@@ -471,11 +469,11 @@ export default function EditPage(props: Props) {
         </div>
       </form>
       <div className="navbar-fixed-bottom">
-      <Link href="/home">
-      <button className="home-btn btn btn-outline btn-success btn-sm">
+        <Link href="/home">
+          <button className="home-btn btn btn-outline btn-success btn-sm">
             <FontAwesomeIcon icon={faHome} className="fa fa-home" />
           </button>
-      </Link>
+        </Link>
       </div>
     </div>
   );
