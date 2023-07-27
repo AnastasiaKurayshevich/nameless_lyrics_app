@@ -26,6 +26,7 @@ body {
     rgb(var(--background-start-rgb));
 } */
 
+
 /*Ana's changes */
 .create-flex-container {
   padding: 30px;
@@ -688,6 +689,7 @@ div {
   height: 100%;
   -webkit-backface-visibility: hidden; /* Safari */
   backface-visibility: hidden;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
 /* Style the front side (fallback if image is missing) */
