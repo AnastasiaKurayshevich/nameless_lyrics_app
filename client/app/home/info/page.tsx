@@ -4,6 +4,10 @@ import React from 'react'
 export default function Info() {
   return (
     <>
+    <div>
+    <h2 className='into-page-header'>About the Project</h2>
+    <p className='info-page-paragraph'>Lyrigator is a fun creative playground for writing song lyrics with the help of AI. You can choose the genre and mood of your desired lyrics, add the description, customise the song structure and even start writing your own lyrics and let AI generate the whole song lyrics for you. Have fun! </p>
+    </div>
     <h2 className='into-page-header'>Project Developers</h2>
     <div className='flip-card-container'>
         <div className="flip-card">

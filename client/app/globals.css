@@ -657,6 +657,7 @@ div {
   justify-content: space-around;
   align-items: center;
   margin-top: 10px;
+  margin-bottom: 70px;
 }
 
 .flip-card {
@@ -714,8 +715,14 @@ div {
 
 .into-page-header {
   text-align: center;
-  margin-top: 25px;
+  margin-top: 30px;
   font-size: 1.7rem;
+}
+
+.info-page-paragraph {
+  margin: 20px 40px;
+  margin-bottom: 0;
+  text-align: center;
 }
 
 .flip-card-name {
