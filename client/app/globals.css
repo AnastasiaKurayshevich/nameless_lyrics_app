@@ -512,7 +512,7 @@ div {
     background-color: #3d3d3d;
   }
 
-.edit-btn-list, .delete-btn-list {
+.edit-btn-list, .delete-btn-list, .edit-btn-list {
     margin-top: 12px;
     margin-bottom: 12px;
     background-color: #3d3d3d;
@@ -545,6 +545,11 @@ div {
     border-radius: 10px;
   }
   
+  .info-btn-list:hover {
+    background-color: #1fb2a6;
+    border-radius: 10px;
+  }
+
   .edit-btn svg {
     fill: #d0d0d0;
     height: 20px;
@@ -553,6 +558,17 @@ div {
   .edit-btn-list {
     fill: #d0d0d0;
     height: 10px;
+  }
+
+  .info-btn-list {
+    fill: #d0d0d0;
+    height: 10px;
+
+  }
+
+  .title-info-section {
+    display: flex;
+    flex-direction: column;
   }
 
   .edit-btn:hover svg {

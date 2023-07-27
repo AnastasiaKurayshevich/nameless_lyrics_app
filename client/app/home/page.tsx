@@ -71,7 +71,22 @@ export default function Home() {
 
   return (
     <main className="home-page flex flex-col items-center justify-start min-h-screen pt-10">
-      <div className="">
+      <div className="title-info-section">
+
+        
+
+        <Link href="/home/info">
+          <button className="info-btn info-btn-list btn-sm">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="1em"
+              viewBox="0 0 512 512"
+            >
+              <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z" />
+            </svg>
+          </button>
+        </Link>
+
         <h2 className="your-songs-title text-5xl text-center">Your Lyrics</h2>
       </div>
 
@@ -142,21 +157,23 @@ export default function Home() {
         )}
       </div>
       <div className="w-full">
-       
-          <div className="navbar-fixed-bottom">
-            <button className="fa-solid fa-circle-plus">
-              <Link href="/create">
-                <svg
-                  className="btn-new-song"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 512 512"
-                >
-                  <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM232 344V280H168c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V168c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H280v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z" />
-                </svg>
-              </Link>
-            </button>
-          </div>
-      
+
+        <div className="navbar-fixed-bottom">
+     
+          <button className="fa-solid fa-circle-plus">
+            <Link href="/create">
+              <svg
+                className="btn-new-song"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 512 512"
+              >
+                <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM232 344V280H168c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V168c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H280v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z" />
+              </svg>
+            </Link>
+          </button>
+
+        </div>
+
       </div>
     </main>
   );
