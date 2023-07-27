@@ -658,6 +658,14 @@ div {
   right: 20px;
   top: 0;
 }
+.flip-link-icon-white {
+  fill: white;
+  height: 35px; 
+}
+
+.flip-link-white {
+  margin: auto;
+}
 
 @media (min-width: 1025px) {
   .song-name {
