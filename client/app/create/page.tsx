@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import SongStructure from "./SongStructure";
 import Link from "next/link";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   APISong,
   APISongPart,
@@ -12,7 +11,6 @@ import {
   SongPart,
   SongToSave,
 } from "../Types";
-import { faHome } from "@fortawesome/free-solid-svg-icons";
 
 export default function Create() {
   const [formData, setFormData] = useState<FormData>({
@@ -128,7 +126,6 @@ export default function Create() {
     \n If any of the parameters are null, you are free to generate the song based on random parameters.
     \n The lyrics you generate should only include the song part name and the lyrics for that part. No other information can be added.`;
 
-    console.log(prompt);
     return prompt;
   };
 
@@ -150,15 +147,10 @@ export default function Create() {
         setSongData(data);
 
         if (formData.structure.length === 0) {
-          console.log("I'm inside if statement");
           const randomStructure = data.songList.map((apiPart) => ({
             name: apiPart.lyricTitle.toUpperCase(),
             lyrics: apiPart.lyric,
           }));
-          randomStructure.map((line) => {
-            console.log("name: " + line.name);
-            console.log("lyrics: " + line.lyrics);
-          });
           setStructure(randomStructure);
         } else {
           const newStructure = formData.structure!.map((part) => {
@@ -215,8 +207,6 @@ export default function Create() {
         console.log(error);
         setIsGenerating(false);
       });
-
-    console.log(formData);
   };
 
   const handleSave = () => {
@@ -252,9 +242,7 @@ export default function Create() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         const songId = data.id;
-        console.log("this is song ID: " + songId);
         window.location.href = `/home/${songId}`;
       })
       .catch((error) => {
@@ -281,7 +269,6 @@ export default function Create() {
       body: dataToRegenerate,
     })
       .then((response) => {
-        console.log(response);
         return response.json();
       })
       .then((data: APISongPart) => {

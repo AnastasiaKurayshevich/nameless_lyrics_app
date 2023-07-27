@@ -2,31 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-} */
-
-/*Ana's changes */
 .create-flex-container {
   padding: 30px;
   display: flex;
@@ -51,7 +26,7 @@ body {
   margin-bottom: 20px;
   justify-content: space-between;
 }
-/*Ana's changes */
+
 .select {
   margin: 0px 0px 15px;
   min-height: 2rem !important;
@@ -90,12 +65,12 @@ body {
   margin: 20px;
   padding: 20px;
 }
-/*Ana's changes */
+
 .form-generate {
   max-width: 390px;
   padding-bottom: 30px;
 }
-/*Ana's changes */
+
 .textareaa {
   width: 100%;
   border-radius: 8px;
@@ -103,7 +78,7 @@ body {
   color: #d0d0d0;
   padding: 10px 15px;
 }
-/*Ana's changes */
+
 .customise-btn {
   width: 100%;
   margin: 10px 0px 20px 0px;
@@ -174,48 +149,6 @@ body {
   text-align: center;
 }
 
-/* .textareaa {
-  background-color: #dddddd;
-  color: #666666;
-  padding: 1em;
-  border-radius: 5px;
-  border: 2px solid transparent;
-  outline: none;
-  font-family: "Heebo", sans-serif;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.4;
-  width: 200px;
-  height: 100px;
-  transition: all 0.2s;
-}
-
-.textareaa:hover {
-  cursor: pointer;
-  background-color: #eeeeee;
-}
-
-.textareaa:focus {
-  cursor: text;
-  color: #333333;
-  background-color: white;
-  border-color: #333333;
-} */
-
-/* ------------- CARD CSS ----------------- */
-
-/* .orange {
-  background-color: #de8540 !important;
-} */
-
-/* .blue {
-  background-color: #407fde !important;
-} */
-
-/* .pink {
-  background-color: #d4195e !important;
-} */
-
 .green {
   background-color: #3d3d3d !important;
 }
@@ -223,7 +156,6 @@ body {
 body {
   margin: 0;
   padding: 0;
-  /* font-family: 'Quicksand', sans-serif; */
   font-size: 18px;
   background-color: #252525 !important;
 }
@@ -292,20 +224,20 @@ div {
 }
 
 .textarea-auto {
-  flex: 1; /* Make the textarea take the remaining vertical space */
+  flex: 1; 
   resize: none;
   width: 100%;
   background: none;
   font: inherit;
   color: inherit;
-  min-height: 120px; /* Set a minimum height for the textarea */
-  overflow-y: auto; /* Add a vertical scrollbar when content overflows */
+  min-height: 120px;
+  overflow-y: auto; 
   border: none;
   padding: none;
 }
 
 .card .text {
-  flex: 1 1 auto; /* This means it will grow and shrink as needed, and its basis is auto */
+  flex: 1 1 auto;
   padding: 0.3rem 1rem 1rem 1rem;
 }
 
@@ -379,8 +311,8 @@ div {
 .card .text > textarea {
   min-height: 120px;
 
-  height: 150px; /* Set a fixed height for the textarea */
-  overflow: auto; /* Enable scrolling when the content overflows the fixed height */
+  height: 150px; 
+  overflow: auto;
 }
 
 .card-draggable {
@@ -476,36 +408,6 @@ div {
   border-radius: 5px;
 }
 
-@media (max-width: 1024px) {
-  .navbar-fixed-bottom {
-    margin-top: 20px;
-    bottom: 0;
-    position: fixed;
-    background-color: #3d3d3d;
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-  }
-
-  /* ---------- new button design ------------ */
-
-  .home-btn,
-  .edit-btn,
-  .delete-btn {
-    margin-top: 12px;
-    margin-bottom: 12px;
-    background-color: #3d3d3d;
-  }
-
-  .edit-btn-list,
-  .delete-btn-list,
-  .edit-btn-list {
-    margin-top: 12px;
-    margin-bottom: 12px;
-    background-color: #3d3d3d;
-  }
-}
-
 .home-btn:hover {
   background-color: #d0d0d0;
   border-radius: 10px;
@@ -519,8 +421,6 @@ div {
 .home-btn:hover svg {
   fill: black;
 }
-
-/* ------------edit and delete ------------- */
 
 .edit-btn:hover {
   background-color: #1fb2a6;
@@ -593,7 +493,6 @@ div {
   fill: black;
 }
 
-/* ---------- end ------------ */
 .your-song-loading {
   margin-top: 180px;
   font-size: 200;
@@ -604,13 +503,7 @@ div {
   border-radius: 10px;
 }
 
-/* .btn-delete {
-  padding-left: 0px;
-  margin-right: 5px;
-} */
-
 .btn-delete:hover {
-  /* margin-right: 5px; */
   background-color: rgb(209, 101, 0);
   border-radius: 10px;
 }
@@ -645,9 +538,6 @@ div {
   margin-right: 8px;
 }
 
-.your-song-loading-text {
-  /* margin-top: 50px; */
-}
 .flip-card-container {
   height: 700px;
   display: flex;
@@ -663,10 +553,9 @@ div {
   width: 280px;
   height: 200px;
 
-  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+  perspective: 1000px; 
 }
 
-/* This container is needed to position the front and back side */
 .flip-card-inner {
   position: relative;
   width: 100%;
@@ -676,30 +565,26 @@ div {
   transform-style: preserve-3d;
 }
 
-/* Do an horizontal flip when you move the mouse over the flip box container */
 .flip-card:hover .flip-card-inner {
   transform: rotateY(180deg);
 }
 
-/* Position the front and back side */
 .flip-card-front,
 .flip-card-back {
   position: absolute;
   width: 100%;
   height: 100%;
-  -webkit-backface-visibility: hidden; /* Safari */
+  -webkit-backface-visibility: hidden; 
   backface-visibility: hidden;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
     rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
-/* Style the front side (fallback if image is missing) */
 .flip-card-front {
   background-color: #3d3d3d;
   border-radius: 10px;
 }
 
-/* Style the back side */
 .flip-card-back {
   background: #ece9e6;
   background: -webkit-linear-gradient(to right, #ffffff, #ece9e6);
@@ -741,7 +626,6 @@ div {
 .flip-link-icon {
   height: 25px;
 }
-
 
 .confirmation-overlay {
   position: fixed;
@@ -841,5 +725,33 @@ div {
     position: absolute;
     right: 46rem;
     top: 0;
+  }
+}
+
+@media (max-width: 1024px) {
+  .navbar-fixed-bottom {
+    margin-top: 20px;
+    bottom: 0;
+    position: fixed;
+    background-color: #3d3d3d;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .home-btn,
+  .edit-btn,
+  .delete-btn {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    background-color: #3d3d3d;
+  }
+
+  .edit-btn-list,
+  .delete-btn-list,
+  .edit-btn-list {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    background-color: #3d3d3d;
   }
 }
