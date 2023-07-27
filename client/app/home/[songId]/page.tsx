@@ -40,8 +40,7 @@ export default function Song(props: Props) {
   }, [props.params.songId]);
 
 
-  const handleDelete = async (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.stopPropagation();
+  const handleDelete = async () => {
     setShowConfirmation(true);
   };
   

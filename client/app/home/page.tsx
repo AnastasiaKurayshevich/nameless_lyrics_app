@@ -39,7 +39,6 @@ export default function Home() {
   );
 
   const handleDelete = async (id: number) => {
-    console.log("handleDelete called");
     setSongToDelete(id);
     setShowConfirmation(true);
   };
@@ -93,12 +92,10 @@ export default function Home() {
 
       <div className="song-list">
         {isLoading ? (
-          // If isLoading is true, display the loading animation
           <div className="flex justify-center">
             <span className="your-song-loading loading loading-ring loading-lg"></span>
           </div>
         ) : (
-          // If isLoading is false, display the song list
           <ul className="flex flex-col justify-center ">
             {[...filteredSongs].reverse().map((song: Song) => (
               <li key={song.id} className="bg-neutral mb-5 rounded-lg">
@@ -134,7 +131,7 @@ export default function Home() {
 
         {showConfirmation && (
           <ConfirmationModal
-            message="Are you sure you want to delete this song?"
+            message="Delete this song?"
             onConfirm={handleConfirmDelete}
             onCancel={handleCancelDelete}
           />

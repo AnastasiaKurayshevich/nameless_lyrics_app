@@ -11,43 +11,34 @@ const ConfirmationModal: React.FC<Props> = ({
   onConfirm,
   onCancel,
 }) => {
+
+  const handleOverlayClick = (event: React.MouseEvent) => {
+    event.stopPropagation();
+    onCancel();
+  };
+
+  const handleModalClick = (event: React.MouseEvent) => {
+    event.stopPropagation();
+  };
+
   return (
     <div
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        width: "100%",
-        height: "100%",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        backgroundColor: "rgba(0, 0, 0, 0.5)",
-      }}
+      className="confirmation-overlay"
+      onClick={handleOverlayClick}
     >
       <div
-        style={{
-          backgroundColor: "#252525",
-          padding: "1rem",
-          borderRadius: "0.30rem",
-          boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
-        }}
+        className="confirmation-modal"
+        onClick={handleModalClick}
       >
         <p>{message}</p>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "flex-end",
-            marginTop: "1rem",
-          }}
-        >
-           <button className="btn btn- mr-5" onClick={onCancel}>
+        <div className="modal-buttons">
+        <button className="btn btn-neutral btn-sm mr-5" onClick={onCancel}>
             Cancel
           </button>
-          <button className="btn btn-error" onClick={onConfirm}>
+          <button className="btn btn-error btn-sm" onClick={onConfirm}>
             Delete
           </button>
-         
+          
         </div>
       </div>
     </div>
