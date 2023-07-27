@@ -101,7 +101,7 @@ export default function Home() {
               <li key={song.id} className="bg-neutral mb-5 rounded-lg">
                 <div className="song-list-card flex justify-between items-center">
                   <Link className="card-list-text card-body text-left overflow-hidden" href={`/home/${song.id}`}>
-                    <p className="overflow-ellipsis overflow-hidden whitespace-nowrap">{song.songName}</p>
+                    <p className="lyric-card-name overflow-ellipsis overflow-hidden whitespace-nowrap">{song.songName}</p>
                   </Link>
 
                   <div className="flex-shrink-0 min-w-max">

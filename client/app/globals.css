@@ -603,21 +603,47 @@ div {
 }
 
 @media (min-width: 1025px) {
-  .navbar-fixed-bottom {
+  /* .navbar-fixed-bottom {
     position: fixed;
     top: 0;
     right: 0;
     left: 0;
-    background-color: #3d3d3d;
+    background-color: #252525;
     width: 100%;
     display: flex;
     justify-content: space-around;
-    z-index: 100; /* Added this to ensure navbar is above other content */
+    z-index: 100; 
+  } */
+
+  .navbar-fixed-bottom {
+    margin-top: 20px;
+    bottom: 0;
+    position: fixed;
+    background-color: #3d3d3d;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    padding-left: 200px;
+    padding-right: 200px;
   }
 
-  .navbar-fixed-bottom .nav-button {
-    cursor: pointer !important;
+  .home-btn, .edit-btn, .delete-btn {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    background-color: #3d3d3d;
   }
+
+ .your-songs-title {
+  margin-top: 30px;
+ }
+
+.lyric-card-name {
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  padding-left: 0;
+}
+
 
 
 }
