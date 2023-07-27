@@ -50,7 +50,7 @@ body {
   gap: 20px;
   flex-wrap: wrap;
   margin-bottom: 20px;
-
+  justify-content: space-between;
 }
 /*Ana's changes */
 .select {
@@ -70,6 +70,13 @@ body {
 .song-name {
   font-size: 31px;
   font-weight: 600;
+  margin-top: 30px;
+  margin-left: 30px;
+  margin-bottom: 30px;
+  padding-right: 30px;
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start
 }
 
 .song-title-done {
@@ -87,7 +94,7 @@ body {
 /*Ana's changes */
 .form-generate {
   max-width: 390px;
-  padding-bottom: 20px;
+  padding-bottom: 30px;
 }
 /*Ana's changes */
 .textareaa {
@@ -393,8 +400,11 @@ div {
 }
 
 .song-card {
-  margin: 10px;
-  margin-bottom: 40px;  
+  margin-left: 30px;
+  margin-bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
 }
 
 .loading {
@@ -480,7 +490,7 @@ div {
   border-radius: 5px;
 }
 
-@media (max-width: 750px) {
+@media (max-width: 1024px) {
   .navbar-fixed-bottom {
     margin-top: 20px;
     bottom: 0;
@@ -491,22 +501,31 @@ div {
     justify-content: space-around;
   }
 
+  
+
   /* ---------- new button design ------------ */
   
   .home-btn, .edit-btn, .delete-btn {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    background-color: #3d3d3d;
+  }
+
+.edit-btn-list, .delete-btn-list {
+    margin-top: 12px;
+    margin-bottom: 12px;
     background-color: #3d3d3d;
   }
   }
 
   .home-btn:hover {
-    background-color: rgb(209, 101, 0);
+    background-color: #d0d0d0;
     border-radius: 10px;
   }
 
   .home-btn svg {
     fill: #d0d0d0;
+    height: 20px;
   }
   
   .home-btn:hover svg {
@@ -516,15 +535,30 @@ div {
   /* ------------edit and delete ------------- */
 
   .edit-btn:hover {
-    background-color: rgb(209, 101, 0);
+    background-color: #1fb2a6;
+    border-radius: 10px;
+  }
+
+  .edit-btn-list:hover {
+    background-color: #1fb2a6;
     border-radius: 10px;
   }
   
   .edit-btn svg {
     fill: #d0d0d0;
+    height: 20px;
   }
   
+  .edit-btn-list {
+    fill: #d0d0d0;
+    height: 10px;
+  }
+
   .edit-btn:hover svg {
+    fill: black;
+  }
+
+  .edit-btn-list:hover svg {
     fill: black;
   }
   
@@ -532,12 +566,29 @@ div {
     background-color: rgb(209, 101, 0);
     border-radius: 10px;
   }
+
+  .delete-btn-list:hover {
+    background-color: rgb(209, 101, 0);
+    border-radius: 10px;
+  }
+
   
   .delete-btn svg {
     fill: #d0d0d0;
+    height: 20px;
   }
+
+  .delete-btn-list {
+    fill: #d0d0d0;
+    height: 10px;
+  }
+
   
   .delete-btn:hover svg {
+    fill: black;
+  }
+
+  .delete-btn-list:hover svg {
     fill: black;
   }
   
@@ -580,7 +631,7 @@ div {
 }
 .song-list {
   width: 320px;
-  margin-bottom: 45px;
+  margin-bottom: 55px;
 }
 
 .card-list-text {
@@ -657,4 +708,103 @@ div {
   height: 90%;
   margin: auto;
   margin-top: 10px;
+}
+
+@media (min-width: 1025px) {
+  /* .navbar-fixed-bottom {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    background-color: #252525;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    z-index: 100; 
+  } */
+
+  .song-name {
+    font-size: 31px;
+    font-weight: 600;
+    margin-top: 30px;
+    margin-left: 30px;
+    margin-bottom: 30px;
+    padding-right: 30px;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+  }
+  .song-card {
+    margin-left: 30px;
+    margin-bottom: 80px;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+  }
+
+  .navbar-fixed-bottom {
+    margin-top: 20px;
+    bottom: 0;
+    position: fixed;
+    background-color: #3d3d3d;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    padding-left: 200px;
+    padding-right: 200px;
+  }
+
+  .home-btn, .edit-btn, .delete-btn {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    background-color: #3d3d3d;
+  }
+
+  .edit-btn-list, .delete-btn-list {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    background-color: #3d3d3d;
+  }
+
+ .your-songs-title {
+  margin-top: 30px;
+ }
+
+.lyric-card-name {
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  padding-left: 0;
+}
+
+.form-generate {
+  margin-bottom: 50px;
+}
+
+}
+
+.confirmation-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  z-index: 9999;
+}
+
+.confirmation-modal {
+  background-color: #252525;
+  padding: 1rem;
+  border-radius: 0.25rem;
+  box-shadow: 0 2px 4px rgba(180, 98, 11, 0.2);
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 1rem;
 }
