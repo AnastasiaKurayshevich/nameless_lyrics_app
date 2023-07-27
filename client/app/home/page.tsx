@@ -24,7 +24,7 @@ export default function Home() {
 
   useEffect(() => {
     const getSongs = async () => {
-      const response = await fetch(`http://namelessly.azurewebsites.net/api/songs`);
+      const response = await fetch(`https://namelessly.azurewebsites.net/api/songs`);
       const data = await response.json();
       setSongs(data);
       setIsLoading(false);
@@ -47,7 +47,7 @@ export default function Home() {
     if (songToDelete !== null) {
       try {
         const response = await fetch(
-          `http://namelessly.azurewebsites.net/api/songs/${songToDelete}`,
+          `https://namelessly.azurewebsites.net/api/songs/${songToDelete}`,
           {
             method: "DELETE",
           }
@@ -75,7 +75,7 @@ export default function Home() {
         <Link href="/home/info">
           <button className="info-btn info-btn-list btn-sm">
             <svg
-              xmlns="http://www.w3.org/2000/svg"
+              xmlns="https://www.w3.org/2000/svg"
               height="1em"
               viewBox="0 0 512 512"
             >
@@ -126,7 +126,7 @@ export default function Home() {
                     <Link href={`/home/${song.id}/edit`}>
                       <button className="edit-list edit-btn-list btn-sm mr-5">
                         <svg
-                          xmlns="http://www.w3.org/2000/svg"
+                          xmlns="https://www.w3.org/2000/svg"
                           height="1em"
                           viewBox="0 0 512 512"
                         >
@@ -140,7 +140,7 @@ export default function Home() {
                       onClick={() => handleDelete(song.id)}
                     >
                       <svg
-                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns="https://www.w3.org/2000/svg"
                         height="1em"
                         viewBox="0 0 448 512"
                       >
@@ -173,7 +173,7 @@ export default function Home() {
             <Link href="/create">
               <svg
                 className="btn-new-song"
-                xmlns="http://www.w3.org/2000/svg"
+                xmlns="https://www.w3.org/2000/svg"
                 viewBox="0 0 512 512"
               >
                 <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM232 344V280H168c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V168c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H280v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z" />
