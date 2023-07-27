@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import ConfirmationModal from "./ConfirmationModal";
 import { faHome, faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -24,6 +25,7 @@ type Props = {
 
 export default function Song(props: Props) {
   const [song, setSong] = useState<Song>();
+  const [showConfirmation, setShowConfirmation] = useState(false);
 
   useEffect(() => {
     const getSongs = async () => {
@@ -37,7 +39,14 @@ export default function Song(props: Props) {
     getSongs();
   }, [props.params.songId]);
 
-  const handleDelete = async () => {
+
+  const handleDelete = async (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
+    setShowConfirmation(true);
+  };
+  
+
+  const handleConfirmDelete = async () => {
     try {
       const response = await fetch(
         `http://localhost:8080/api/songs/${props.params.songId}`,
@@ -56,7 +65,13 @@ export default function Song(props: Props) {
         "An error occurred while trying to delete the song:",
         error
       );
+    } finally {
+      setShowConfirmation(false);
     }
+  };
+
+  const handleCancelDelete = () => {
+    setShowConfirmation(false);
   };
 
   return (
@@ -101,6 +116,13 @@ export default function Song(props: Props) {
           </button>
         </Link>
       </div>
+      {showConfirmation && (
+        <ConfirmationModal
+          message="Are you sure you want to delete this song?"
+          onConfirm={handleConfirmDelete}
+          onCancel={handleCancelDelete}
+        />
+      )}
 
     </div>
   );

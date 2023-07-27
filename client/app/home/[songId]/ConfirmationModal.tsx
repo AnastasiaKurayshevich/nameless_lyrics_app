@@ -27,9 +27,9 @@ const ConfirmationModal: React.FC<Props> = ({
     >
       <div
         style={{
-          backgroundColor: "#fff",
+          backgroundColor: "#252525",
           padding: "1rem",
-          borderRadius: "0.25rem",
+          borderRadius: "0.30rem",
           boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
         }}
       >
@@ -41,12 +41,13 @@ const ConfirmationModal: React.FC<Props> = ({
             marginTop: "1rem",
           }}
         >
-          <button className="btn btn-error mr-2" onClick={onConfirm}>
-            Confirm
-          </button>
-          <button className="btn btn-primary" onClick={onCancel}>
+           <button className="btn btn- mr-5" onClick={onCancel}>
             Cancel
           </button>
+          <button className="btn btn-error" onClick={onConfirm}>
+            Delete
+          </button>
+         
         </div>
       </div>
     </div>

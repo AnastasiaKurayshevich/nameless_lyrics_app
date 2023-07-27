@@ -134,7 +134,7 @@ export default function Home() {
 
         {showConfirmation && (
           <ConfirmationModal
-            message="Are you Sure?"
+            message="Are you sure you want to delete this song?"
             onConfirm={handleConfirmDelete}
             onCancel={handleCancelDelete}
           />
