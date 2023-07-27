@@ -596,7 +596,7 @@ div {
 
   /* ---------- end ------------ */
 .your-song-loading {
-  margin-top: 230px;
+  margin-top: 180px;
   font-size: 200;
 }
 
@@ -648,7 +648,7 @@ div {
 }
 
 .your-song-loading-text {
-  margin-top: 320px;
+  /* margin-top: 50px; */
 }
 .flip-card-container {
   height: 700px;
