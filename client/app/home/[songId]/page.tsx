@@ -89,7 +89,7 @@ export default function Song(props: Props) {
           ))}
         </ul>
       ) : (
-        <p className="loading loading-ring loading-lg"></p>
+        <p className="your-song-loading-text loading loading-ring loading-lg"></p>
       )}
       <div className="navbar-fixed-bottom">
         <button className="delete-btn btn-sm" onClick={handleDelete}>
