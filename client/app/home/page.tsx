@@ -2,8 +2,6 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import ConfirmationModal from "./[songId]/ConfirmationModal";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEdit, faTrash, faCirclePlus } from '@fortawesome/free-solid-svg-icons';
 
 type Song = {
   id: number;
@@ -77,9 +75,11 @@ export default function Home() {
         <h2 className="your-songs-title text-5xl text-center">Your Lyrics</h2>
       </div>
 
-      <div className="sticky search-bar-div-your-songs top-0 z-10 w-full" style={{ backgroundColor: "#252525" }}>
+      <div
+        className="sticky search-bar-div-your-songs top-0 z-10 w-full"
+        style={{ backgroundColor: "#252525" }}
+      >
         <div className="input-section-your-songs flex mx-auto my-2">
-
           <input
             className="input input-bordered w-full max-w-xs mx-auto"
             type="text"
@@ -124,20 +124,22 @@ export default function Home() {
                   </div>
                 </div>
               </li>
-
             ))}
           </ul>
         )}
 
         {showConfirmation && (
           <ConfirmationModal
-            message="Delete this song?"
+            message="Delete "
+            songName={
+              songToDelete !== null
+                ? songs.find((song) => song.id === songToDelete)?.songName ?? ""
+                : ""
+            }
             onConfirm={handleConfirmDelete}
             onCancel={handleCancelDelete}
           />
         )}
-
-
       </div>
       <div className="w-full">
        
@@ -157,8 +159,5 @@ export default function Home() {
       
       </div>
     </main>
-
-
-
   );
 }
