@@ -394,8 +394,11 @@ div {
 }
 
 .song-card {
-  margin: 10px;
-  margin-bottom: 40px;  
+  margin-left: 30px;
+  margin-bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
 }
 
 .loading {
@@ -501,15 +504,22 @@ div {
     margin-bottom: 12px;
     background-color: #3d3d3d;
   }
+
+.edit-btn-list, .delete-btn-list {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    background-color: #3d3d3d;
+  }
   }
 
   .home-btn:hover {
-    background-color: rgb(209, 101, 0);
+    background-color: #d0d0d0;
     border-radius: 10px;
   }
 
   .home-btn svg {
     fill: #d0d0d0;
+    height: 20px;
   }
   
   .home-btn:hover svg {
@@ -519,15 +529,30 @@ div {
   /* ------------edit and delete ------------- */
 
   .edit-btn:hover {
-    background-color: rgb(209, 101, 0);
+    background-color: #1fb2a6;
+    border-radius: 10px;
+  }
+
+  .edit-btn-list:hover {
+    background-color: #1fb2a6;
     border-radius: 10px;
   }
   
   .edit-btn svg {
     fill: #d0d0d0;
+    height: 20px;
   }
   
+  .edit-btn-list {
+    fill: #d0d0d0;
+    height: 10px;
+  }
+
   .edit-btn:hover svg {
+    fill: black;
+  }
+
+  .edit-btn-list:hover svg {
     fill: black;
   }
   
@@ -535,12 +560,29 @@ div {
     background-color: rgb(209, 101, 0);
     border-radius: 10px;
   }
+
+  .delete-btn-list:hover {
+    background-color: rgb(209, 101, 0);
+    border-radius: 10px;
+  }
+
   
   .delete-btn svg {
     fill: #d0d0d0;
+    height: 20px;
   }
+
+  .delete-btn-list {
+    fill: #d0d0d0;
+    height: 10px;
+  }
+
   
   .delete-btn:hover svg {
+    fill: black;
+  }
+
+  .delete-btn-list:hover svg {
     fill: black;
   }
   
@@ -628,6 +670,12 @@ div {
   }
 
   .home-btn, .edit-btn, .delete-btn {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    background-color: #3d3d3d;
+  }
+
+  .edit-btn-list, .delete-btn-list {
     margin-top: 12px;
     margin-bottom: 12px;
     background-color: #3d3d3d;
