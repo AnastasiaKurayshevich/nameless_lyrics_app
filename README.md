@@ -1,4 +1,5 @@
-# <img src="https://github.com/AnastasiaKurayshevich/nameless_lyrics_app/assets/48127840/daf2c645-b823-4f34-ac71-eaf9da172377" alt="Lyrigator_image_1-modified" width="100" style="vertical-align: middle; margin-bottom: -5px;"> lyrigator_lyrics_app
+# <img src="https://github.com/AnastasiaKurayshevich/nameless_lyrics_app/assets/125829513/d3451597-980f-42a5-8451-c0326cd5994f" alt="Lyrigator_image_1-modified" width="100" style="vertical-align: middle; margin-bottom: -5px;"> lyrigator_lyrics_app
+
 
 A powerful AI-driven song lyrics generator application. 
 
@@ -28,8 +29,7 @@ By incorporating these additional features, we aim to enhance the user experienc
 
 ### Project's Architecture 
 
-<img width="1269" alt="Lyrigator App Architecture" src="https://github.com/AnastasiaKurayshevich/nameless_lyrics_app/assets/125829513/417e2a5c-c147-4b7a-95c3-5c263e12ce20">
-
+<img width="1269" alt="Lyrigator App Architecture" src="https://github.com/AnastasiaKurayshevich/nameless_lyrics_app/assets/125829513/7a5350c4-2b93-47d0-a7ba-938abd0e0af4">
 
 See detailed veiw: [Lyrigator App Architecture.pdf](https://github.com/AnastasiaKurayshevich/nameless_lyrics_app/files/12048292/Lyrigator.App.Architecture.pdf)
 
