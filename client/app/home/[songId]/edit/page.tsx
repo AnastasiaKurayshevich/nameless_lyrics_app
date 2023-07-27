@@ -91,7 +91,6 @@ export default function EditPage(props: Props) {
         } else {
           throw new Error("songList is undefined in the returned data");
         }
-        console.log(data);
         setSongData(data);
       })
       .catch((error) =>
@@ -177,7 +176,6 @@ export default function EditPage(props: Props) {
         \n If any of the parameters are null, you are free to generate the song based on random parameters.
         \n The lyrics you generate should only include the song part name and the lyrics for that part. No other information can be added.`;
 
-    console.log(prompt);
     return prompt;
   };
 
@@ -250,8 +248,6 @@ export default function EditPage(props: Props) {
         console.log(error);
         setIsGenerating(false);
       });
-
-    console.log(formData);
   };
 
   const handleModalSave = () => {
@@ -280,9 +276,7 @@ export default function EditPage(props: Props) {
         return response.json();
       })
       .then((data) => {
-        console.log(data);
         const songId = data.id;
-        console.log("this is song ID: " + songId);
         window.location.href = `/home/${songId}`;
       })
       .catch((error) => {
