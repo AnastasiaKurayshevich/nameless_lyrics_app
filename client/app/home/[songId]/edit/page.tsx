@@ -69,7 +69,7 @@ export default function EditPage(props: Props) {
   const [songName, setSongName] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:8080/api/songs/${props.params.songId}`)
+    fetch(`http://namelessly.azurewebsites.net/api/songs/${props.params.songId}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -186,7 +186,7 @@ export default function EditPage(props: Props) {
     event.preventDefault();
     setIsGenerating(true);
 
-    fetch("http://localhost:8080/api/new-song", {
+    fetch("http://namelessly.azurewebsites.net/api/new-song", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -220,7 +220,7 @@ export default function EditPage(props: Props) {
   const handleRegenerate = () => {
     setIsGenerating(true);
 
-    fetch("http://localhost:8080/api/new-song", {
+    fetch("http://namelessly.azurewebsites.net/api/new-song", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -266,7 +266,7 @@ export default function EditPage(props: Props) {
       })),
     };
 
-    fetch(`http://localhost:8080/api/songs/${props.params.songId}`, {
+    fetch(`http://namelessly.azurewebsites.net/api/songs/${props.params.songId}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -300,7 +300,7 @@ export default function EditPage(props: Props) {
       songPart: part,
     };
 
-    fetch("http://localhost:8080/api/regenerate-part", {
+    fetch("http://namelessly.azurewebsites.net/api/regenerate-part", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

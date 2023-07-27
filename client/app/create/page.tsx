@@ -137,7 +137,7 @@ export default function Create() {
     event.preventDefault();
     setIsGenerating(true);
 
-    fetch("http://localhost:8080/api/new-song", {
+    fetch("http://namelessly.azurewebsites.net/api/new-song", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -185,7 +185,7 @@ export default function Create() {
   const handleRegenerate = () => {
     setIsGenerating(true);
 
-    fetch("http://localhost:8080/api/new-song", {
+    fetch("http://namelessly.azurewebsites.net/api/new-song", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -243,7 +243,7 @@ export default function Create() {
       songList: songPartsToSave,
     };
 
-    fetch("http://localhost:8080/api/save-song", {
+    fetch("http://namelessly.azurewebsites.net/api/save-song", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -273,7 +273,7 @@ export default function Create() {
 
     const dataToRegenerate = regeneratePrompt(data);
 
-    fetch("http://localhost:8080/api/regenerate-part", {
+    fetch("http://namelessly.azurewebsites.net/api/regenerate-part", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

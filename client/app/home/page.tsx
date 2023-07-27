@@ -24,7 +24,7 @@ export default function Home() {
 
   useEffect(() => {
     const getSongs = async () => {
-      const response = await fetch(`http://localhost:8080/api/songs`);
+      const response = await fetch(`http://namelessly.azurewebsites.net/api/songs`);
       const data = await response.json();
       setSongs(data);
       setIsLoading(false);
@@ -47,7 +47,7 @@ export default function Home() {
     if (songToDelete !== null) {
       try {
         const response = await fetch(
-          `http://localhost:8080/api/songs/${songToDelete}`,
+          `http://namelessly.azurewebsites.net/api/songs/${songToDelete}`,
           {
             method: "DELETE",
           }

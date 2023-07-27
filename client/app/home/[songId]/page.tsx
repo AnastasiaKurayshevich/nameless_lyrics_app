@@ -28,7 +28,7 @@ export default function Song(props: Props) {
   useEffect(() => {
     const getSongs = async () => {
       const response = await fetch(
-        `http://localhost:8080/api/songs/${props.params.songId}`
+        `http://namelessly.azurewebsites.net/api/songs/${props.params.songId}`
       );
       const data = await response.json();
       setSong(data);
@@ -43,7 +43,7 @@ export default function Song(props: Props) {
   const handleConfirmDelete = async () => {
     try {
       const response = await fetch(
-        `http://localhost:8080/api/songs/${props.params.songId}`,
+        `http://namelessly.azurewebsites.net/api/songs/${props.params.songId}`,
         {
           method: "DELETE",
         }
