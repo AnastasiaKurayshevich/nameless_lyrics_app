@@ -448,20 +448,21 @@ export default function Create() {
               placeholder="Enter song name"
             />
             <div className="modal-buttons-container">
-              <button
-                className="modal-button btn btn-outline btn-success btn-sm"
-                type="button"
-                onClick={handleModalSave}
-              >
-                Save
-              </button>
-              <button
+               <button
                 className="modal-button btn btn-outline btn-success btn-sm"
                 type="button"
                 onClick={handleModalCancel}
               >
                 Cancel
               </button>
+              <button
+                className="modal-button btn btn-outline btn-accent btn-sm"
+                type="button"
+                onClick={handleModalSave}
+              >
+                Save
+              </button>
+             
             </div>
           </div>
         </div>
