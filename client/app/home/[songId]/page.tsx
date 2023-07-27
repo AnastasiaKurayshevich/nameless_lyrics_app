@@ -69,7 +69,7 @@ export default function Song(props: Props) {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="flex flex-col items-center justify-center min-h-screen">
       <h1 className="song-name">{song?.songName}</h1>
       {song?.songList ? (
         <ul className="song-card">
