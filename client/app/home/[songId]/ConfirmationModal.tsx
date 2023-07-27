@@ -2,50 +2,38 @@ import React from "react";
 
 type Props = {
   message: string;
+  songName: string;
   onConfirm: () => void;
   onCancel: () => void;
 };
 
 const ConfirmationModal: React.FC<Props> = ({
   message,
+  songName,
   onConfirm,
   onCancel,
 }) => {
+  const handleOverlayClick = (event: React.MouseEvent) => {
+    event.stopPropagation();
+    onCancel();
+  };
+
+  const handleModalClick = (event: React.MouseEvent) => {
+    event.stopPropagation();
+  };
+
   return (
-    <div
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        width: "100%",
-        height: "100%",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        backgroundColor: "rgba(0, 0, 0, 0.5)",
-      }}
-    >
-      <div
-        style={{
-          backgroundColor: "#fff",
-          padding: "1rem",
-          borderRadius: "0.25rem",
-          boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
-        }}
-      >
-        <p>{message}</p>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "flex-end",
-            marginTop: "1rem",
-          }}
-        >
-          <button className="btn btn-error mr-2" onClick={onConfirm}>
-            Confirm
-          </button>
-          <button className="btn btn-primary" onClick={onCancel}>
+    <div className="confirmation-overlay" onClick={handleOverlayClick}>
+      <div className="confirmation-modal" onClick={handleModalClick}>
+        <p>
+          {message} <strong>{songName}</strong> ?
+        </p>
+        <div className="modal-buttons">
+          <button className="btn btn-neutral btn-sm mr-5" onClick={onCancel}>
             Cancel
+          </button>
+          <button className="btn btn-error btn-sm" onClick={onConfirm}>
+            Delete
           </button>
         </div>
       </div>

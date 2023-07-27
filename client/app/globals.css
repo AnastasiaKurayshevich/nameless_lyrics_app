@@ -2,34 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-/* :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-} */
-
-/*Ana's changes */
 .create-flex-container {
   padding: 30px;
-  display: flex; 
+  display: flex;
   flex-direction: column;
   align-items: center;
 }
@@ -42,7 +17,6 @@ body {
 
 .customise-btn {
   margin: 10px 0px 20px 0px;
-
 }
 
 .add-song-part {
@@ -50,9 +24,9 @@ body {
   gap: 20px;
   flex-wrap: wrap;
   margin-bottom: 20px;
-
+  justify-content: space-between;
 }
-/*Ana's changes */
+
 .select {
   margin: 0px 0px 15px;
   min-height: 2rem !important;
@@ -63,13 +37,20 @@ body {
   gap: 10px;
 }
 
- .add-new-home {
+.add-new-home {
   margin: 10px;
 }
 
 .song-name {
   font-size: 31px;
   font-weight: 600;
+  margin-top: 30px;
+  margin-left: 30px;
+  margin-bottom: 30px;
+  padding-right: 30px;
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
 }
 
 .song-title-done {
@@ -84,28 +65,27 @@ body {
   margin: 20px;
   padding: 20px;
 }
-/*Ana's changes */
+
 .form-generate {
   max-width: 390px;
-  
+  padding-bottom: 30px;
 }
-/*Ana's changes */
+
 .textareaa {
   width: 100%;
   border-radius: 8px;
   background-color: #3d3d3d;
   color: #d0d0d0;
   padding: 10px 15px;
-  
 }
-/*Ana's changes */
+
 .customise-btn {
   width: 100%;
   margin: 10px 0px 20px 0px;
 }
 
 .customise-options {
- width: 29%;
+  width: 29%;
 }
 
 .generate-btn {
@@ -137,8 +117,6 @@ body {
   border-radius: 5px;
   display: flex;
   flex-direction: column;
-  
-  
 }
 
 .modal-background {
@@ -149,11 +127,10 @@ body {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 9998;
-  
 }
 
 .modal-input {
-  width: 100%; 
+  width: 100%;
   margin: 25px 5px 30px;
   background-color: #3d3d3d;
   color: #d0d0d0;
@@ -165,61 +142,12 @@ body {
 }
 
 .modal-button {
-  width: 40%; 
- 
+  width: 40%;
 }
 
 .modal-header {
   text-align: center;
 }
-
-
-
-/* .textareaa {
-  background-color: #dddddd;
-  color: #666666;
-  padding: 1em;
-  border-radius: 5px;
-  border: 2px solid transparent;
-  outline: none;
-  font-family: "Heebo", sans-serif;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.4;
-  width: 200px;
-  height: 100px;
-  transition: all 0.2s;
-}
-
-.textareaa:hover {
-  cursor: pointer;
-  background-color: #eeeeee;
-}
-
-.textareaa:focus {
-  cursor: text;
-  color: #333333;
-  background-color: white;
-  border-color: #333333;
-} */
-
-
-/* ------------- CARD CSS ----------------- */
-
-
-
-
-/* .orange {
-  background-color: #de8540 !important;
-} */
-
-/* .blue {
-  background-color: #407fde !important;
-} */
-
-/* .pink {
-  background-color: #d4195e !important;
-} */
 
 .green {
   background-color: #3d3d3d !important;
@@ -228,7 +156,6 @@ body {
 body {
   margin: 0;
   padding: 0;
-  /* font-family: 'Quicksand', sans-serif; */
   font-size: 18px;
   background-color: #252525 !important;
 }
@@ -240,7 +167,6 @@ div {
 * {
   box-sizing: border-box;
 }
-
 
 .material-icons-round {
   font-size: 2rem;
@@ -261,9 +187,9 @@ div {
   width: 100%;
   height: 300px;
   border-radius: 10px;
-  box-shadow: 0px 0px 8px -3px rgba(0, 0, 0, 0.75), 0px 17px 22px -16px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 8px -3px rgba(0, 0, 0, 0.75),
+    0px 17px 22px -16px rgba(0, 0, 0, 0.75);
   margin-bottom: 15px;
-
 
   resize: both;
   overflow: auto;
@@ -280,38 +206,38 @@ div {
 }
 
 .bottom-nav-button {
-
   border: none;
   background-color: transparent;
   color: white;
   cursor: pointer;
 }
 
-.card .nav, .card .title {
-  flex: 0 0 auto; 
+.card .nav,
+.card .title {
+  flex: 0 0 auto;
 }
 
 .text {
-  flex: 1 1 auto; 
-  display: flex; 
-  flex-direction: column; 
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .textarea-auto {
-  flex: 1; /* Make the textarea take the remaining vertical space */
+  flex: 1; 
   resize: none;
   width: 100%;
   background: none;
   font: inherit;
   color: inherit;
-  min-height: 120px; /* Set a minimum height for the textarea */
-  overflow-y: auto; /* Add a vertical scrollbar when content overflows */
+  min-height: 120px;
+  overflow-y: auto; 
   border: none;
   padding: none;
 }
 
 .card .text {
-  flex: 1 1 auto; /* This means it will grow and shrink as needed, and its basis is auto */
+  flex: 1 1 auto;
   padding: 0.3rem 1rem 1rem 1rem;
 }
 
@@ -343,13 +269,14 @@ div {
   padding-left: 20px;
 }
 
-
-.card .title, .card .text {
+.card .title,
+.card .text {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.card .title > textarea, .card .text > textarea {
+.card .title > textarea,
+.card .text > textarea {
   resize: none;
   width: 100%;
   background: none;
@@ -360,10 +287,12 @@ div {
   border: none;
   padding: none;
 }
-.card .title > textarea::placeholder, .card .text > textarea::placeholder {
+.card .title > textarea::placeholder,
+.card .text > textarea::placeholder {
   color: rgba(255, 255, 255, 0.5);
 }
-.card .title > textarea:focus, .card .text > textarea:focus {
+.card .title > textarea:focus,
+.card .text > textarea:focus {
   border: none;
   outline: none;
 }
@@ -382,8 +311,8 @@ div {
 .card .text > textarea {
   min-height: 120px;
 
-  height: 150px; /* Set a fixed height for the textarea */
-  overflow: auto; /* Enable scrolling when the content overflows the fixed height */
+  height: 150px; 
+  overflow: auto;
 }
 
 .card-draggable {
@@ -393,8 +322,11 @@ div {
 }
 
 .song-card {
-  margin: 10px;
-  margin-bottom: 40px;  
+  margin-left: 30px;
+  margin-bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
 }
 
 .loading {
@@ -412,9 +344,7 @@ div {
 }
 
 .btn-regenerate:hover {
-
   background-color: rgb(209, 101, 0);
-
 }
 
 .btn-regenerate[disabled]:hover {
@@ -426,7 +356,7 @@ div {
 }
 
 .fa_custom {
-  color: #FF8400;
+  color: #ff8400;
   padding-right: 1px;
   transition: color 0.1s ease-in;
 }
@@ -440,7 +370,7 @@ div {
 }
 
 .text-warning-focus {
-  color: #FF8400;
+  color: #ff8400;
 }
 
 .welcome-message {
@@ -453,7 +383,6 @@ div {
 .welcome-message h2 {
   font-size: 3.5rem;
   font-weight: 600;
-
 }
 
 .welcome-message p {
@@ -472,7 +401,6 @@ div {
   display: flex;
 }
 
-
 .description-input {
   margin: 0px 0px 15px 0px;
   font-size: larger;
@@ -480,50 +408,102 @@ div {
   border-radius: 5px;
 }
 
-@media (max-width: 750px) {
-  .navbar-fixed-bottom {
-    margin-top: 20px;
-    bottom: 0;
-    position: fixed;
-    background-color: #3d3d3d;
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-  }
+.home-btn:hover {
+  background-color: #d0d0d0;
+  border-radius: 10px;
+}
 
-  /* ---------- new button design ------------ */
-  
-  .home-btn, .edit-btn, .delete-btn {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    background-color: #3d3d3d;
-  }
-  }
+.home-btn svg {
+  fill: #d0d0d0;
+  height: 20px;
+}
 
-  .home-btn:hover {
-    background-color: rgb(209, 101, 0);
-    border-radius: 10px;
-  }
+.home-btn:hover svg {
+  fill: black;
+}
 
-  .home-btn svg {
-    fill: #d0d0d0;
-  }
-  
-  .home-btn:hover svg {
-    fill: black;
-  }
-  /* ---------- end ------------ */
+.edit-btn:hover {
+  background-color: #1fb2a6;
+  border-radius: 10px;
+}
+
+.edit-btn-list:hover {
+  background-color: #1fb2a6;
+  border-radius: 10px;
+}
+
+.info-btn-list:hover {
+  background-color: #1fb2a6;
+  border-radius: 10px;
+}
+
+.edit-btn svg {
+  fill: #d0d0d0;
+  height: 20px;
+}
+
+.edit-btn-list {
+  fill: #d0d0d0;
+  height: 10px;
+}
+
+.info-btn-list {
+  fill: #d0d0d0;
+  height: 10px;
+}
+
+.title-info-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-btn:hover svg {
+  fill: black;
+}
+
+.edit-btn-list:hover svg {
+  fill: black;
+}
+
+.delete-btn:hover {
+  background-color: rgb(209, 101, 0);
+  border-radius: 10px;
+}
+
+.delete-btn-list:hover {
+  background-color: rgb(209, 101, 0);
+  border-radius: 10px;
+}
+
+.delete-btn svg {
+  fill: #d0d0d0;
+  height: 20px;
+}
+
+.delete-btn-list {
+  fill: #d0d0d0;
+  height: 10px;
+}
+
+.delete-btn:hover svg {
+  fill: black;
+}
+
+.delete-btn-list:hover svg {
+  fill: black;
+}
+
 .your-song-loading {
-  margin-top: 230px;
+  margin-top: 180px;
   font-size: 200;
 }
 
-.btn-edit:hover{
+.btn-edit:hover {
   background-color: #505050;
   border-radius: 10px;
 }
 
-.btn-delete:hover{
+.btn-delete:hover {
   background-color: rgb(209, 101, 0);
   border-radius: 10px;
 }
@@ -536,4 +516,242 @@ div {
 
 .btn-new-song:hover {
   fill: #28e2d3;
+}
+
+.song-list-card {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.song-list {
+  width: 320px;
+  margin-bottom: 55px;
+}
+
+.card-list-text {
+  margin-left: 12px;
+}
+
+.delete-list {
+  margin-right: 3px;
+}
+
+.edit-list {
+  margin-right: 8px;
+}
+
+.flip-card-container {
+  height: 700px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 70px;
+}
+
+.flip-card {
+  background-color: transparent;
+  width: 280px;
+  height: 200px;
+
+  perspective: 1000px; 
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; 
+  backface-visibility: hidden;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.flip-card-front {
+  background-color: #3d3d3d;
+  border-radius: 10px;
+}
+
+.flip-card-back {
+  background: #ece9e6;
+  background: -webkit-linear-gradient(to right, #ffffff, #ece9e6);
+  background: linear-gradient(to right, #ffffff, #ece9e6);
+  color: #252525;
+  transform: rotateY(180deg);
+  border-radius: 10px;
+}
+
+.flip-card-img {
+  height: 90%;
+  margin: auto;
+  margin-top: 10px;
+}
+
+.into-page-header {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 1.7rem;
+}
+
+.info-page-paragraph {
+  margin: 20px 40px;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.flip-card-name {
+  margin-top: 50px;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.flip-link {
+  display: inline-block;
+  margin: 12px;
+}
+
+.flip-link-icon {
+  height: 25px;
+}
+
+.confirmation-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  z-index: 9999;
+}
+
+.confirmation-modal {
+  background-color: #252525;
+  padding: 1rem;
+  border-radius: 0.25rem;
+  box-shadow: 0 2px 4px rgba(180, 98, 11, 0.2);
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 1rem;
+}
+
+.info-link {
+  position: absolute;
+  right: 20px;
+  top: 0;
+}
+
+@media (min-width: 1025px) {
+  .song-name {
+    font-size: 31px;
+    font-weight: 600;
+    margin-top: 30px;
+    margin-left: 30px;
+    margin-bottom: 30px;
+    padding-right: 30px;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+  }
+  .song-card {
+    margin-left: 30px;
+    margin-bottom: 80px;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+  }
+
+  .navbar-fixed-bottom {
+    margin-top: 20px;
+    bottom: 0;
+    position: fixed;
+    background-color: #3d3d3d;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    padding-left: 200px;
+    padding-right: 200px;
+  }
+
+  .home-btn,
+  .edit-btn,
+  .delete-btn {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    background-color: #3d3d3d;
+  }
+
+  .edit-btn-list,
+  .delete-btn-list {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    background-color: #3d3d3d;
+  }
+
+  .your-songs-title {
+    margin-top: 30px;
+  }
+
+  .lyric-card-name {
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-left: 0;
+  }
+
+  .form-generate {
+    margin-bottom: 50px;
+  }
+
+  .info-link {
+    position: absolute;
+    right: 46rem;
+    top: 0;
+  }
+}
+
+@media (max-width: 1024px) {
+  .navbar-fixed-bottom {
+    margin-top: 20px;
+    bottom: 0;
+    position: fixed;
+    background-color: #3d3d3d;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .home-btn,
+  .edit-btn,
+  .delete-btn {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    background-color: #3d3d3d;
+  }
+
+  .edit-btn-list,
+  .delete-btn-list,
+  .edit-btn-list {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    background-color: #3d3d3d;
+  }
 }

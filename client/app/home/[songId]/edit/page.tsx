@@ -69,7 +69,7 @@ export default function EditPage(props: Props) {
   const [songName, setSongName] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:8080/api/songs/${props.params.songId}`)
+    fetch(`http://namelessly.azurewebsites.net/api/songs/${props.params.songId}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -91,7 +91,6 @@ export default function EditPage(props: Props) {
         } else {
           throw new Error("songList is undefined in the returned data");
         }
-        console.log(data);
         setSongData(data);
       })
       .catch((error) =>
@@ -177,7 +176,6 @@ export default function EditPage(props: Props) {
         \n If any of the parameters are null, you are free to generate the song based on random parameters.
         \n The lyrics you generate should only include the song part name and the lyrics for that part. No other information can be added.`;
 
-    console.log(prompt);
     return prompt;
   };
 
@@ -186,7 +184,7 @@ export default function EditPage(props: Props) {
     event.preventDefault();
     setIsGenerating(true);
 
-    fetch("http://localhost:8080/api/new-song", {
+    fetch("http://namelessly.azurewebsites.net/api/new-song", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -220,7 +218,7 @@ export default function EditPage(props: Props) {
   const handleRegenerate = () => {
     setIsGenerating(true);
 
-    fetch("http://localhost:8080/api/new-song", {
+    fetch("http://namelessly.azurewebsites.net/api/new-song", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -250,8 +248,6 @@ export default function EditPage(props: Props) {
         console.log(error);
         setIsGenerating(false);
       });
-
-    console.log(formData);
   };
 
   const handleModalSave = () => {
@@ -266,7 +262,7 @@ export default function EditPage(props: Props) {
       })),
     };
 
-    fetch(`http://localhost:8080/api/songs/${props.params.songId}`, {
+    fetch(`http://namelessly.azurewebsites.net/api/songs/${props.params.songId}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -280,9 +276,7 @@ export default function EditPage(props: Props) {
         return response.json();
       })
       .then((data) => {
-        console.log(data);
         const songId = data.id;
-        console.log("this is song ID: " + songId);
         window.location.href = `/home/${songId}`;
       })
       .catch((error) => {
@@ -300,7 +294,7 @@ export default function EditPage(props: Props) {
       songPart: part,
     };
 
-    fetch("http://localhost:8080/api/regenerate-part", {
+    fetch("http://namelessly.azurewebsites.net/api/regenerate-part", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
