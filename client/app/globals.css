@@ -70,6 +70,7 @@ body {
 .song-name {
   font-size: 31px;
   font-weight: 600;
+  margin-top: 10px;
 }
 
 .song-title-done {
