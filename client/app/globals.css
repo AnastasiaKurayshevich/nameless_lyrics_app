@@ -653,9 +653,9 @@ div {
   height: 700px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
-  margin-top: 30px;
+  margin-top: 10px;
 }
 
 .flip-card {
@@ -708,6 +708,12 @@ div {
   height: 90%;
   margin: auto;
   margin-top: 10px;
+}
+
+.into-page-header {
+  text-align: center;
+  margin-top: 25px;
+
 }
 
 @media (min-width: 1025px) {
@@ -808,3 +814,5 @@ div {
   justify-content: space-evenly;
   margin-top: 1rem;
 }
+
+
