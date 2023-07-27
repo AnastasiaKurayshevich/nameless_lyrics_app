@@ -88,7 +88,7 @@ body {
 /*Ana's changes */
 .form-generate {
   max-width: 390px;
-  padding-bottom: 20px;
+  padding-bottom: 30px;
 }
 /*Ana's changes */
 .textareaa {
@@ -497,8 +497,8 @@ div {
   /* ---------- new button design ------------ */
   
   .home-btn, .edit-btn, .delete-btn {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 12px;
+    margin-bottom: 12px;
     background-color: #3d3d3d;
   }
   }
@@ -583,7 +583,7 @@ div {
 }
 .song-list {
   width: 320px;
-  margin-bottom: 45px;
+  margin-bottom: 55px;
 }
 
 .card-list-text {
