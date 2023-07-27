@@ -715,9 +715,24 @@ div {
 .into-page-header {
   text-align: center;
   margin-top: 25px;
-
+  font-size: 1.7rem;
 }
 
+.flip-card-name {
+  margin-top: 50px;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.flip-link {
+  display: inline-block;
+  margin: 12px;
+ 
+}
+
+.flip-link-icon {
+  height: 25px;
+}
 @media (min-width: 1025px) {
   /* .navbar-fixed-bottom {
     position: fixed;
