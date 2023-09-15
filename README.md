@@ -1,37 +1,60 @@
-# <img src="https://github.com/AnastasiaKurayshevich/nameless_lyrics_app/assets/125829513/d3451597-980f-42a5-8451-c0326cd5994f" alt="Lyrigator_image_1-modified" width="100" style="vertical-align: middle; margin-bottom: -5px;"> lyrigator_lyrics_app
+# <img src="https://github.com/AnastasiaKurayshevich/nameless_lyrics_app/assets/125829513/d3451597-980f-42a5-8451-c0326cd5994f" alt="Lyrigator_image_1-modified" width="100" style="vertical-align: middle; margin-bottom: -5px;"> Lyrigator - Lyrics Generator App
+
+**Welcome to Lyrigator - a powerful AI-driven song lyrics generator application.**
+
+Lyrigator is your creative companion in the world of music and lyrics. Whether you're a songwriter looking for inspiration or just want to have fun generating unique lyrics, our app has you covered. With Lyrigator, you can explore various musical styles, moods, and artists to craft lyrics that resonate with your vision.
 
 
-A powerful AI-driven song lyrics generator application. 
+## Project Overview
+Lyrigator was created as a final project idea by the nameless_team in just two weeks. This mobile-first app harnesses the capabilities of OpenAI to generate song lyrics based on user inputs, offering a unique creative experience. Users can specify the style, mood, and song structure, or even input specific lyrics for the song. Once satisfied, the app generates lyrics accordingly.
 
-### nameless_team's Final Project Idea: Song Lyrics Generator connected with OpenAI API
-The premise of this project is to develop a mobile-first app that allows users to generate song lyrics based on their inputs. Users can specify the style, mood, and artists that inspire them, as well as provide a description or input specific lyrics for the song. Once the user is satisfied with their input, the app will generate the lyrics accordingly. Users will also have the ability to modify song components such as verses, pre-choruses, choruses, bridges, etc. They can drag and drop components to change the song's structure, edit, delete or regenerate selected sections, or regenerate the entire song.
+### Core Features
+- **Lyrics Customization**: Modify song components like verses, pre-choruses, choruses, bridges, and more. Drag and drop sections to change the song's structure, edit, delete, or regenerate selected parts, or even the entire song.
+- **Song Management**: Save your generated songs to your personal songs list, allowing you to access, search, edit, or delete specific songs at any time.
 
-Once users are satisfied with the generated lyrics, they can save the song to their personal songs list. Within this list, users can access existing songs, search through the collection, and edit or delete specific songs.
+Please note that Lyrigator generates text lyrics and does not provide music composition.
 
-It's important to note that the app will only generate text lyrics and will not provide music composition.
+### Additional Features (If time permits)
+- **Authentication**: Sign-up and log-in pages for multiple users to access their personal accounts.
+- **Social Connections**: Interact with other users' profiles, such as upvoting songs or saving them as favorites.
+- **Filtering**: Easily filter your song list based on various categories.
+- **Multiple Lyric Options**: Get multiple song options generated based on the same input, allowing you to choose your preferred version.
+- **Export as PDF**: Save lyrics in PDF format.
+- **Social Sharing**: Share your songs on social media platforms with a single click.
 
-The aforementioned functionality represents the core features that we aim to achieve. If time permits, we plan to introduce additional features, including:
+We continually aim to enhance the user experience and provide a comprehensive song lyrics generation platform.
 
-- Authentication: Implement sign-up and log-in pages to allow multiple users to access their personal accounts.
-- Social connections: Create an interface for users to interact with each other's profiles, such as upvoting other users' songs or saving them as favorites.
-- Filtering: Enable users to filter their song list based on various categories.
-- Multiple lyric options: Provide users with multiple song options generated based on the same input, allowing them to choose their preferred version.
-- Saving the song as PDF: Implement functionality to save lyrics in PDF format.
-- Sharing the song: Allow users to share their songs via social media platforms by simply pressing a button.
+## Screenshots and Video
+![Screenshot 1](insert_screenshot1_url_here)
+![Screenshot 2](insert_screenshot2_url_here)
 
-By incorporating these additional features, we aim to enhance the user experience and offer a comprehensive song lyrics generation platform.
+Check out a demo of the app in action [here](insert_video_url_here).
 
-### Technical specification: 
+## Setting Up the App
+To set up Lyrigator locally, follow these steps:
 
-- Backend: Java Spring
-- Frontend: TypeScript React Next.js
-- Database: Postgresql
+1. Clone this repository.
+2. Install the required dependencies for the backend and frontend.
+3. Configure your PostgreSQL database.
+4. Run the backend server using Java Spring.
+5. Start the frontend using TypeScript React Next.js.
 
-### Project's Architecture 
+For detailed setup instructions, please refer to the [documentation](insert_documentation_url_here).
 
-<img width="1269" alt="Lyrigator App Architecture" src="https://github.com/AnastasiaKurayshevich/nameless_lyrics_app/assets/125829513/7a5350c4-2b93-47d0-a7ba-938abd0e0af4">
+## Tech Stack
+Lyrigator is built with the following technologies:
 
-See detailed veiw: [Lyrigator App Architecture.pdf](https://github.com/AnastasiaKurayshevich/nameless_lyrics_app/files/12048292/Lyrigator.App.Architecture.pdf)
+- **Backend**: Java Spring
+- **Frontend**: TypeScript React Next.js
+- **Database**: PostgreSQL
 
+## Developers
+- [Your Name](https://github.com/your-username)
+- [Contributor 1](https://github.com/contributor1)
+- [Contributor 2](https://github.com/contributor2)
 
+Feel free to contribute to the project by submitting issues or pull requests!
 
+---
+
+Thank you for choosing Lyrigator. Create unique song lyrics and let your creativity flow!
