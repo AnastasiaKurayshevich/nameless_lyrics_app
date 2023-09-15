@@ -42,6 +42,20 @@ Lyrigator is built with the following technologies:
 - **Database**: PostgreSQL
 - **Deployment**: Microsoft Azure
 
+## Getting Started / Installation
+Follow these steps to get the application up and running in your local environment:
+
+1. Clone this repository repo using SSH option. Run in terminal
+`git clone` ``` git@github.com:AnastasiaKurayshevich/nameless_lyrics_app.git ```
+2. Configure your PostgreSQL database.
+
+| Steps                            | Front-end                 | Back-end                  |
+| ---------------------------------| ------------------------- | ------------------------- |
+| 3. Navigate into repo            | `cd client`               | `cd server`               |
+| 4. Install Dependencies          | `npm install`             | `mvn clean install`       |
+| 5. Run the project               | `npm run dev`             | `mvn start`               |
+
+#
 
 ## Developers
 |Creators          | Socials |
