@@ -7,13 +7,16 @@ Lyrigator is your creative companion in the world of music and lyrics. Whether y
 
 <br/><br/>
 ## Project Overview
-Lyrigator was created as a final graduation project idea by the ***nameless_team*** in just two weeks sprint at School of Applied Technology SALT, Stockholm. This mobile-first app harnesses the capabilities of OpenAI to generate song lyrics based on user inputs, offering a unique creative experience. Users can specify the style, mood, and song structure, or even input specific lyrics for the song. Once satisfied, the app generates lyrics accordingly.
+Lyrigator was created as a final graduation project idea by the ***nameless_team*** in just two weeks sprint at School of Applied Technology SALT, Stockholm. This mobile-first app harnesses the capabilities of OpenAI to generate song lyrics based on user inputs, offering a unique creative experience. Users can specify the style, mood, and song structure, or even input specific lyrics for the song. Once satisfied, the app generates lyrics accordingly.  
+
 
 ### Core Features
 - **Lyrics Customization**: Modify song components like verses, pre-choruses, choruses, bridges, and more. Drag and drop sections to change the song's structure, edit, delete, or regenerate selected parts, or even the entire song.
 - **Song Management**: Save your generated songs to a songs list, allowing you to access, search, edit, or delete specific songs at any time.
 
 Please note that Lyrigator generates text lyrics and does not provide music composition.
+
+![version](https://img.shields.io/badge/version-1.0.0-blue) ![example workflow](https://github.com/AnastasiaKurayshevich/nameless_lyrics_app/actions/workflows/azure-webapps-java-jar.yml/badge.svg)
 
 ### Additional Features we are planning to implement in future
 - **Authentication**: Sign-up and log-in pages for multiple users to access their personal accounts.
@@ -27,11 +30,16 @@ We continually aim to enhance the user experience and provide a comprehensive so
 
 ## Application's Layout 
 
-Bellow you can see how the appliccation looks like when accessed from mobile device: 
+Below, you can view the mobile device interface of the application:
 
 <img width="741" alt="Screenshot 2023-09-15 at 15 13 13" src="https://github.com/AnastasiaKurayshevich/nameless_lyrics_app/assets/125829513/94ca0a64-b349-4603-9ddc-69bd69ad5a36">
 
 Check out a video demo of the app in action [here](https://youtu.be/N-W-yzOP5M4).
+
+## Application's Architecture 
+<img width="1269" alt="Lyrigator App Architecture" src="https://github.com/AnastasiaKurayshevich/nameless_lyrics_app/assets/125829513/7a5350c4-2b93-47d0-a7ba-938abd0e0af4">
+
+See detailed veiw: [Lyrigator App Architecture.pdf](https://github.com/AnastasiaKurayshevich/nameless_lyrics_app/files/12048292/Lyrigator.App.Architecture.pdf)
 
 
 ## Tech Stack
