@@ -28,21 +28,11 @@ We continually aim to enhance the user experience and provide a comprehensive so
 ## Application's Layout 
 
 Bellow you can see how the appliccation looks like when accessed from mobile device: 
-![Screenshot 1](insert_screenshot1_url_here)
-![Screenshot 2](insert_screenshot2_url_here)
 
-Check out a demo of the app in action [here](insert_video_url_here).
+<img width="741" alt="Screenshot 2023-09-15 at 15 13 13" src="https://github.com/AnastasiaKurayshevich/nameless_lyrics_app/assets/125829513/94ca0a64-b349-4603-9ddc-69bd69ad5a36">
 
-## Setting Up the App
-To set up Lyrigator locally, follow these steps:
+Check out a video demo of the app in action [here](https://youtu.be/N-W-yzOP5M4).
 
-1. Clone this repository.
-2. Install the required dependencies for the backend and frontend.
-3. Configure your PostgreSQL database.
-4. Run the backend server using Java Spring.
-5. Start the frontend using TypeScript React Next.js.
-
-For detailed setup instructions, please refer to the [documentation](insert_documentation_url_here).
 
 ## Tech Stack
 Lyrigator is built with the following technologies:
@@ -50,13 +40,16 @@ Lyrigator is built with the following technologies:
 - **Backend**: Java Spring
 - **Frontend**: TypeScript React Next.js
 - **Database**: PostgreSQL
+- **Deployment**: Microsoft Azure
+
 
 ## Developers
-- [Your Name](https://github.com/your-username)
-- [Contributor 1](https://github.com/contributor1)
-- [Contributor 2](https://github.com/contributor2)
+|Creators          | Socials |
+| ----------------------- | ------- |
+| Nate Arafayne           | [![Github-Nate](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/NateAra) [![LinkedIn-Nate](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/nate-tklay-arafayne-20898925a/) |
+| Anastasia Kurayshevich  | [![Github-Anastasia](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/AnastasiaKurayshevich) [![LinkedIn-Anastasia](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/anastasia-kurayshevich/) |
+| Edward Arvinius         | [![Github-Edward](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/EdwardArvinius) [![LinkedIn-Edward](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/edward-arvinius-248819117/) |
 
-Feel free to contribute to the project by submitting issues or pull requests!
 
 ---
 
