@@ -3,7 +3,7 @@
 
 **Welcome to Lyrigator - a powerful AI-driven song lyrics generator application.**
 
-Lyrigator is your creative companion in the world of music and lyrics. Whether you're a songwriter looking for inspiration or just want to have fun generating unique lyrics, our app has you covered. With Lyrigator, you can explore various musical styles, moods, and artists to craft lyrics that resonate with your vision.
+[Lyrigator](https://www.lyrigator.com/) is your creative companion in the world of music and lyrics. Whether you're a songwriter looking for inspiration or just want to have fun generating unique lyrics, our app has you covered. With Lyrigator, you can explore various musical styles, moods, and artists to craft lyrics that resonate with your vision.
 
 <br/><br/>
 ## Project Overview
@@ -75,4 +75,4 @@ Follow these steps to get the application up and running in your local environme
 
 ---
 
-Thank you for choosing Lyrigator. Create unique song lyrics and let your creativity flow!
+Thank you for choosing [Lyrigator](https://www.lyrigator.com/). Create unique song lyrics and let your creativity flow!
